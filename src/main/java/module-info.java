@@ -13,4 +13,6 @@ module projeto.projeto_poo {
 
     opens projeto.projeto_poo to javafx.fxml;
     exports projeto.projeto_poo;
+    exports projeto.projeto_poo.controller;
+    opens projeto.projeto_poo.controller to javafx.fxml;
 }

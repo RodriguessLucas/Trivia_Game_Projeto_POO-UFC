@@ -1,4 +1,4 @@
-package projeto.projeto_poo;
+package projeto.projeto_poo.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
