@@ -6,24 +6,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.controller.AppController">
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.controller.AppTelaInicialController">
    <children>
-      <Button id="iniciar" layoutX="235.0" layoutY="446.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Iniciar">
+      <Button id="btnIniciar" layoutX="235.0" layoutY="446.0" mnemonicParsing="false" onAction="#iniciarEntradaJogador" prefHeight="50.0" prefWidth="130.0" text="Iniciar">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Label layoutX="222.0" layoutY="301.0" prefHeight="29.0" prefWidth="157.0" text="Digie seu nome:">
+
+      <Label fx:id="txtInstrucao" layoutX="222.0" layoutY="301.0" prefHeight="29.0" prefWidth="157.0" text="Digie seu nome:">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="181.0" layoutY="359.0" prefHeight="41.0" prefWidth="239.0" text="Ex: 20comer70fugir">
+
+      <TextField fx:id="entradaNomeJogador" layoutX="181.0" layoutY="359.0" prefHeight="41.0" prefWidth="239.0" text="Ex: 20comer70fugir">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <Label layoutX="150.0" layoutY="412.0" prefHeight="18.0" prefWidth="301.0" text="Caso nao digite o nome, sera atribuido &quot;Jogador&quot;" />
+
+      <Label fx:id="lblInformacao" layoutX="150.0" layoutY="412.0" prefHeight="18.0" prefWidth="301.0" text="Caso nao digite o nome, sera atribuido &quot;Jogador&quot;" />
+      <Label fx:id="lblAviso" layoutX="150.0" layoutY="511.0" prefHeight="95.0" prefWidth="314.0" text="Seu nick:" textFill="#113be4">
+         <font>
+            <Font size="21.0" />
+         </font></Label>
    </children>
 </AnchorPane>
