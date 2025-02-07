@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.controller.AppController">
+   <children>
+      <Button id="iniciar" layoutX="235.0" layoutY="446.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="130.0" text="Iniciar">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="222.0" layoutY="301.0" prefHeight="29.0" prefWidth="157.0" text="Digie seu nome:">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField layoutX="181.0" layoutY="359.0" prefHeight="41.0" prefWidth="239.0" text="Ex: 20comer70fugir">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </TextField>
+      <Label layoutX="150.0" layoutY="412.0" prefHeight="18.0" prefWidth="301.0" text="Caso nao digite o nome, sera atribuido &quot;Jogador&quot;" />
+   </children>
+</AnchorPane>
