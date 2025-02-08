@@ -16,7 +16,10 @@ public class Jogador {
         return nome;
     }
     public void setNome(String nome) {
-        this.nome = nome.isEmpty()|| nome.equals("Ex: 20comer70fugir") ? nome : nome.toUpperCase();
+        if (nome.isEmpty() || nome.equalsIgnoreCase("Ex: 20comer70fugir") || nome.matches("\\s*")) {
+            this.nome = nome;
+        }
+        this.nome = "Jogador";
     }
     public int getPontuacao() {
         return pontuacao;

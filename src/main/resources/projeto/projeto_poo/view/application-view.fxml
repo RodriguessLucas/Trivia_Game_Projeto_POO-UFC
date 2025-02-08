@@ -8,13 +8,13 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.controller.AppTelaInicialController">
    <children>
-      <Button id="btnIniciar" layoutX="235.0" layoutY="446.0" mnemonicParsing="false" onAction="#iniciarEntradaJogador" prefHeight="50.0" prefWidth="130.0" text="Iniciar">
+      <Button fx:id="btnIniciar" layoutX="235.0" layoutY="446.0" mnemonicParsing="false" onAction="#iniciarEntradaJogador" prefHeight="50.0" prefWidth="130.0" text="Iniciar">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
 
-      <Label fx:id="txtInstrucao" layoutX="222.0" layoutY="301.0" prefHeight="29.0" prefWidth="157.0" text="Digie seu nome:">
+      <Label fx:id="txtInstrucao" layoutX="207.0" layoutY="306.0" prefHeight="29.0" prefWidth="200.0" text="Digite seu nickname:">
          <font>
             <Font size="20.0" />
          </font>
