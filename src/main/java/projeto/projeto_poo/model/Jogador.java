@@ -1,7 +1,5 @@
 package projeto.projeto_poo.model;
 
-import java.util.Objects;
-
 public class Jogador {
     private String nome;
     private int pontuacao;
@@ -16,7 +14,7 @@ public class Jogador {
         return nome;
     }
     public void setNome(String nome) {
-        if (nome.isEmpty() || nome.equalsIgnoreCase("Ex: 20comer70fugir") || nome.matches("\\s*")) {
+        if (nome.isEmpty() || nome.equalsIgnoreCase("Ex: astuto") || nome.matches("\\s*")) {
             this.nome = nome;
         }
         this.nome = "Jogador";
