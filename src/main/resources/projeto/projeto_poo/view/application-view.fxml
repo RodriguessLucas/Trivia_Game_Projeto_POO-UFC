@@ -27,9 +27,5 @@
       </TextField>
 
       <Label fx:id="lblInformacao" layoutX="150.0" layoutY="412.0" prefHeight="18.0" prefWidth="301.0" text="Caso nao digite o nome, sera atribuido &quot;Jogador&quot;" />
-      <Label fx:id="lblAviso" layoutX="150.0" layoutY="511.0" prefHeight="95.0" prefWidth="314.0" text="Seu nick:" textFill="#113be4">
-         <font>
-            <Font size="21.0" />
-         </font></Label>
    </children>
 </AnchorPane>

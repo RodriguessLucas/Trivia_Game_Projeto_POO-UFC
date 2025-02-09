@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ComboBox id="cbMenuDificuldade" layoutX="193.0" layoutY="250.0" prefHeight="26.0" prefWidth="215.0" promptText="Selecione a dificuldade" />
+      <Button fx:id="btnIniciarJogo" layoutX="216.0" layoutY="438.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="170.0" text="Iniciar jogo">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

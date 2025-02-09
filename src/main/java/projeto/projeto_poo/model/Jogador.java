@@ -14,10 +14,12 @@ public class Jogador {
         return nome;
     }
     public void setNome(String nome) {
-        if (nome.isEmpty() || nome.equalsIgnoreCase("Ex: astuto") || nome.matches("\\s*")) {
+        if (!nome.isEmpty() && (!nome.equalsIgnoreCase("Ex: astuto")) && (!nome.matches("\\s*")) ) {
             this.nome = nome;
         }
-        this.nome = "Jogador";
+        else{
+            this.nome = "Jogador";
+        }
     }
     public int getPontuacao() {
         return pontuacao;
