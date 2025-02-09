@@ -31,26 +31,25 @@ public class GameMenuController {
 
     @FXML
     public  void iniciarMenuDificuldade() {
-        MenuDificuldadeController menuDificuldade = ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/menuDificuldade-view.fxml",600,800);
-
+        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/menuDificuldade-view.fxml",600,800);
+        System.out.println("Indo para tela de menu dificuldade");
     }
 
     @FXML
     public void estatisticas() {
-        EstatisticasController estatisticasController = ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/estatisticas-view.fxml",600,800);
-
-
+        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/estatisticas-view.fxml",600,800);
+        System.out.println("Indo para tela estatisticas");
     }
 
     @FXML
     public void configuracoes() {
-        ConfigController configController = ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/config-view.fxml",600,800);
-
+        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/config-view.fxml",600,800);
+        System.out.println("Indo para tela configuracoes");
     }
 
     @FXML
     public void irTelaInicial() {
-        AppTelaInicialController telaInicial = ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/application-view.fxml",600,800);
+        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/application-view.fxml",600,800);
         System.out.println("Indo para tela Inicial");
     }
 

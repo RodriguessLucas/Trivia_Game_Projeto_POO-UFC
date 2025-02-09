@@ -2,8 +2,6 @@ package projeto.projeto_poo.model;
 
 public class Jogador {
     private String nome;
-    private int pontuacao;
-    private int pontuacaoMaxima;
 
     public Jogador() {}
     public Jogador(String nome){
@@ -21,17 +19,4 @@ public class Jogador {
             this.nome = "Jogador";
         }
     }
-    public int getPontuacao() {
-        return pontuacao;
-    }
-    public void setPontuacao(int pontuacao) {
-        this.pontuacao = pontuacao;
-    }
-    public int getPontuacaoMaxima() {
-        return pontuacaoMaxima;
-    }
-    public void setPontuacaoMaxima(int pontuacaoMaxima) {
-        this.pontuacaoMaxima = pontuacaoMaxima;
-    }
-
 }
