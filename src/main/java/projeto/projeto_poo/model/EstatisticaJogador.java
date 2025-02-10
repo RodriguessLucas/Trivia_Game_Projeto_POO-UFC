@@ -13,6 +13,7 @@ public class EstatisticaJogador {
     HashMap <String, Integer> acertosPorAssunto;
     HashMap <String, Integer> errosPorAssunto;
 
+    // opa
     public EstatisticaJogador(){
         this.maiorSequenciaAcerto = 0;
         this.assuntoMaiorAcerto = "";
