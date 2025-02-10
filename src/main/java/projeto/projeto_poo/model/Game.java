@@ -1,4 +1,4 @@
 package projeto.projeto_poo.model;
 
-public class Estatisticas {
+public class Game {
 }
