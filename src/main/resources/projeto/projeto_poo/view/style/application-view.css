@@ -1,0 +1,64 @@
+/* Importando a Fonte */
+@font-face {
+    font-family: 'Baloo2';
+    src: url('projeto/projeto_poo/view/style/fonts/Baloo2-Regular.ttf') format('truetype');
+}
+
+/* Aplicar a fonte globalmente */
+.root {
+    -fx-font-family: 'Baloo2';
+    -fx-background-color: #004643; /* Fundo azul-esverdeado */
+}
+
+/* Título alinhado à esquerda */
+.title-label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+    -fx-alignment: BASELINE_LEFT;
+}
+
+/* Campo de Entrada */
+.input-field {
+    -fx-max-width: Infinity;
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px;
+    -fx-text-fill: white;
+    -fx-padding: 10px;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.6);
+}
+
+/* Quando o campo estiver focado */
+.input-field:focused {
+    -fx-border-color: #FFFFFF;
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Mensagem Informativa */
+.info-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: white;
+    -fx-padding: 5px;
+}
+
+/* Botão Start (fixado no fim da tela) */
+.start-button {
+    -fx-max-width: Infinity;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-background-color: #F8C660;
+    -fx-border-radius: 20px;
+    -fx-background-radius: 20px;
+    -fx-padding: 10px;
+    -fx-min-width: 250px;
+}
+
+/* Efeito hover no botão */
+.start-button:hover {
+    -fx-background-color: #FFAB00;
+}
