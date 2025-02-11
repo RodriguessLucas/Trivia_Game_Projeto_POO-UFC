@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class GerenciadorBanco {
     private static final String XML_PATH = "projeto/projeto_poo/data/question.xml";
 
