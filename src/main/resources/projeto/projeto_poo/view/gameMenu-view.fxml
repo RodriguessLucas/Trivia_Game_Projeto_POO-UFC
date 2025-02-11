@@ -2,35 +2,65 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.controller.GameMenuController">
-   <children>
-      <Label fx:id="txtEntradaJogador" alignment="CENTER" layoutX="28.0" layoutY="45.0" prefHeight="108.0" prefWidth="550.0" text="Teste">
-         <font>
-            <Font size="20.0" />
-         </font></Label>
-      <Button fx:id="btnIniciarJogo" layoutX="191.0" layoutY="209.0" mnemonicParsing="false" onAction="#iniciarMenuDificuldade" prefHeight="80.0" prefWidth="219.0" text="Iniciar jogo">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnEstatisticas" layoutX="194.0" layoutY="326.0" mnemonicParsing="false" onAction="#estatisticas" prefHeight="80.0" prefWidth="219.0" text="Estatisticas">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnConfiguracoes" layoutX="194.0" layoutY="448.0" mnemonicParsing="false" onAction="#configuracoes" prefHeight="80.0" prefWidth="219.0" text="Configurações">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnTelaInicial" layoutX="191.0" layoutY="570.0" mnemonicParsing="false" onAction="#irTelaInicial" prefHeight="80.0" prefWidth="219.0" text="Voltar a tela inicial">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-   </children>
+<VBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1054.0" spacing="30" style="-fx-background-color: #191919;" stylesheets="@style/gameMenu-view.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.controller.GameMenuController">
 
-</AnchorPane>
+   <!-- Caixa de Boas-Vindas -->
+   <VBox alignment="CENTER" maxHeight="200" maxWidth="793.0" minHeight="200" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200" prefWidth="950.0" spacing="10" style="-fx-padding: 20px; -fx-background-color: #1A8C88; -fx-background-radius: 0 0 73 73;">
+
+      <Label fx:id="txtEntradaJogador" alignment="CENTER" prefHeight="108.0" prefWidth="550.0" text="Bem-Vindo, !">
+         <font>
+            <Font name="Baloo 2 SemiBold" size="12.0" />
+         </font>
+      </Label>
+
+      <!-- HBox Superior - Ajustado o spacing -->
+      <HBox alignment="CENTER" spacing="30">
+         <Button fx:id="btnIniciarJogoCima" mnemonicParsing="false" onAction="#iniciarMenuDificuldade" prefHeight="38.0" prefWidth="125.0" styleClass="top-circular-button" text="Jogar">
+            <font>
+               <Font name="Baloo 2 SemiBold" size="12.0" />
+            </font>
+         </Button>
+
+         <Button fx:id="DefinirBotao" mnemonicParsing="false" onAction="#iniciarMenuDificuldade" prefHeight="37.0" prefWidth="124.0" styleClass="top-circular-button" text="Iniciar jogo">
+            <font>
+               <Font name="Baloo 2 SemiBold" size="12.0" />
+            </font>
+         </Button>
+      </HBox>
+
+   </VBox>
+   <VBox alignment="CENTER" prefHeight="386.0" prefWidth="1057.0" style="-fx-background-color: #282828; -fx-background-radius: 34;" VBox.vgrow="ALWAYS">
+      <children>
+      
+         <!-- Espaçamento para empurrar os botões para baixo -->
+         <Region prefHeight="445.0" prefWidth="711.0" />
+      </children>
+   </VBox>
+
+   <!-- HBox Inferior - Adicionado spacing -->
+   <HBox alignment="CENTER" prefHeight="186.0" prefWidth="1054.0" spacing="50" style="-fx-padding: 20px;">
+      <Button fx:id="btnIniciarJogo" mnemonicParsing="false" onAction="#iniciarMenuDificuldade" prefHeight="50.0" prefWidth="80.0" styleClass="circular-button" text="Iniciar jogo">
+         <font>
+            <Font name="Baloo 2 SemiBold" size="12.0" />
+         </font>
+      </Button>
+
+      <Button fx:id="btnConfiguracoes" mnemonicParsing="false" onAction="#configuracoes" prefHeight="50.0" prefWidth="80.0" styleClass="circular-button" text="Configurações">
+         <font>
+            <Font name="Baloo 2 SemiBold" size="12.0" />
+         </font>
+      </Button>
+
+      <Button fx:id="btnEstatisticas" mnemonicParsing="false" onAction="#estatisticas" prefHeight="50.0" prefWidth="80.0" styleClass="circular-button" text="Estatísticas">
+         <font>
+            <Font name="Baloo 2 SemiBold" size="12.0" />
+         </font>
+      </Button>
+   </HBox>
+
+</VBox>

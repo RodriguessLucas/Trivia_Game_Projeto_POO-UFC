@@ -26,7 +26,7 @@ public class GameMenuController {
             System.out.println("O texto está vazio");
             return;
         }
-        txtEntradaJogador.setText("Bem-Vindo "+ mesagem);
+        txtEntradaJogador.setText("Bem-vindo, "+ mesagem + "!");
     }
 
     @FXML

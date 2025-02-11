@@ -3,28 +3,25 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox stylesheets="@style/application-view.css" prefHeight="800.0" prefWidth="400.0"
-      spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="projeto.projeto_poo.controller.AppTelaInicialController"
-      style="-fx-background-color: #2E7D79; -fx-padding: 40px;">
+<VBox alignment="CENTER" prefHeight="1024.0" prefWidth="954.0" spacing="10" style="-fx-padding: 40px;" stylesheets="@style/application-view.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.controller.AppTelaInicialController">
 
-   <!-- Label do Nome, Alinhado à Esquerda -->
-   <Label fx:id="txtInstrucao" text="Digite seu nome:" styleClass="title-label" alignment="BASELINE_LEFT" maxWidth="Infinity"/>
+   <VBox alignment="CENTER_LEFT" maxHeight="200" minHeight="200" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200" spacing="10" style="-fx-padding: 20px; -fx-max-width: 350;">
+      <!-- Label do Nome, Alinhado à Esquerda -->
+      <Label fx:id="txtInstrucao" alignment="BASELINE_LEFT" maxWidth="Infinity" styleClass="title-label" text="Digite seu nome:" />
+   
+      <!-- Campo de Entrada -->
+      <TextField fx:id="entradaNomeJogador" maxWidth="-Infinity" promptText="Ex: S'chn T'gai Spock" styleClass="input-field" />
 
-   <!-- Campo de Entrada -->
-   <TextField fx:id="entradaNomeJogador" promptText="Ex: S'chn T'gai Spock" styleClass="input-field" maxWidth="-Infinity"/>
+      <!-- Mensagem Informativa -->
+      <Label fx:id="lblInformacao" maxWidth="-Infinity" styleClass="info-label" text="Caso não digite o nome, será atribuído 'Jogador'" />
 
-   <!-- Mensagem Informativa -->
-   <Label fx:id="lblInformacao" text="Caso não digite o nome, será atribuído 'Jogador'" styleClass="info-label" maxWidth="-Infinity"/>
+      <!-- Espaço para empurrar o botão para baixo -->
+      <Region VBox.vgrow="ALWAYS" />
 
-   <!-- Espaço para empurrar o botão para baixo -->
-   <Region VBox.vgrow="ALWAYS" />
-
-   <!-- Botão Iniciar no Fim da Tela -->
-   <Button fx:id="btnIniciar" text="Iniciar" styleClass="start-button" onAction="#iniciarEntradaJogador"/>
+      <!-- Botão Iniciar no Fim da Tela -->
+      <Button fx:id="btnIniciar" onAction="#iniciarEntradaJogador" styleClass="start-button" text="Iniciar" />
+   </VBox>
 </VBox>

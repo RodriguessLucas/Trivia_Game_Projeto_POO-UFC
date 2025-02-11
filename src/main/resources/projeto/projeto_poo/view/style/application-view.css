@@ -7,7 +7,7 @@
 /* Aplicar a fonte globalmente */
 .root {
     -fx-font-family: 'Baloo2';
-    -fx-background-color: #004643; /* Fundo azul-esverdeado */
+    -fx-background-color: #1A1A1A;
 }
 
 /* Título alinhado à esquerda */
@@ -51,7 +51,7 @@
     -fx-font-size: 18px;
     -fx-font-weight: bold;
     -fx-text-fill: white;
-    -fx-background-color: #F8C660;
+    -fx-background-color: #1A8C89;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-padding: 10px;
@@ -60,5 +60,5 @@
 
 /* Efeito hover no botão */
 .start-button:hover {
-    -fx-background-color: #FFAB00;
+    -fx-background-color: #0b6562;
 }
