@@ -1,0 +1,30 @@
+.circular-button {
+    -fx-background-radius: 50%; /* Faz o botão ficar circular */
+    -fx-min-width: 114px;
+    -fx-min-height: 114px;
+    -fx-max-width: 114px;
+    -fx-max-height: 114px;
+    -fx-text-fill: #1A8C88;
+    -fx-background-color: #282828; /* Cor do botão */
+    -fx-border-width: 2px;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+    -fx-content-display: center;
+
+}
+
+.top-circular-button{
+    -fx-background-radius: 30px;
+    -fx-border-radius: 30px;
+    -fx-min-width: 178px;
+    -fx-min-height: 98px;
+    -fx-max-width: 178px;
+    -fx-max-height: 98px;
+    -fx-text-fill: #141414;
+    -fx-background-color: #fafafa; /* Cor do botão */
+    -fx-border-width: 3px;
+    -fx-border-color: #fafafa;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+    -fx-content-display: center;
+}

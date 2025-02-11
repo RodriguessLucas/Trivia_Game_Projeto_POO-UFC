@@ -1,0 +1,106 @@
+<quizzes>
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual é a função usada para exibir algo na tela em Python?</pergunta>
+        <alternativas>
+            <alternativa>echo()</alternativa>
+            <alternativa>printf()</alternativa>
+            <alternativa>print()</alternativa>
+            <alternativa>console.log()</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual símbolo é usado para fazer comentários de uma linha em Python?</pergunta>
+        <alternativas>
+            <alternativa>//</alternativa>
+            <alternativa>#</alternativa>
+            <alternativa>/* */</alternativa>
+            <alternativa>--</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <alternativas>
+            <alternativa>O(1)</alternativa>
+            <alternativa>O(n)</alternativa>
+            <alternativa>O(log n)</alternativa>
+            <alternativa>O(n log n)</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <alternativas>
+            <alternativa>O(1)</alternativa>
+            <alternativa>O(n)</alternativa>
+            <alternativa>O(log n)</alternativa>
+            <alternativa>O(n log n)</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <alternativas>
+            <alternativa>O(1)</alternativa>
+            <alternativa>O(n)</alternativa>
+            <alternativa>O(log n)</alternativa>
+            <alternativa>O(n log n)</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <alternativas>
+            <alternativa>O(1)</alternativa>
+            <alternativa>O(n)</alternativa>
+            <alternativa>O(log n)</alternativa>
+            <alternativa>O(n log n)</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <alternativas>
+            <alternativa>O(1)</alternativa>
+            <alternativa>O(n)</alternativa>
+            <alternativa>O(log n)</alternativa>
+            <alternativa>O(n log n)</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <alternativas>
+            <alternativa>O(1)</alternativa>
+            <alternativa>O(n)</alternativa>
+            <alternativa>O(log n)</alternativa>
+            <alternativa>O(n log n)</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+</quizzes>

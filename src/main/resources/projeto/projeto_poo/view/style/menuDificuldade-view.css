@@ -1,0 +1,73 @@
+/* Fundo geral da aplicação */
+AnchorPane {
+    -fx-background-color: #191919;
+}
+
+/* Header superior arredondado */
+.header {
+    -fx-background-color: #1A8C88;
+    -fx-background-radius: 0 0 40 40;
+}
+
+/* Título */
+.title {
+    -fx-text-fill: #1A8C88;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* Container dos quizzes */
+.quiz-container {
+    -fx-background-color: #262626;
+    -fx-padding: 20px;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+}
+
+/* Estilização individual dos quizzes */
+.quiz-item {
+    -fx-background-color: white;
+    -fx-padding: 10px;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+
+/* Estilização do texto dos quizzes */
+.quiz-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #191919;
+}
+
+/* Informações dos quizzes */
+.quiz-info {
+    -fx-font-size: 12px;
+    -fx-text-fill: #666666;
+}
+
+/* Botão de iniciar quiz */
+.quiz-play-button {
+    -fx-background-radius: 50%;
+    -fx-background-color: #1A8C88;
+    -fx-text-fill: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-font-size: 18px;
+}
+
+.quiz-play-button:hover{
+    -fx-background-color: #195653;
+}
+
+/* Barra de navegação inferior */
+.bottom-nav {
+    -fx-background-color: transparent;
+    -fx-padding: 20px;
+}
+
+/* Ícones da barra de navegação */
+.nav-button {
+    -fx-background-color: #282828;
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+}
