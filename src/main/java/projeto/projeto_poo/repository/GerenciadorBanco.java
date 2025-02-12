@@ -9,15 +9,18 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Map;
+import java.util.HashMap;
 
 
 public class GerenciadorBanco {
     private static final String XML_PATH = "projeto/projeto_poo/data/question.xml";
+    private static Map<String, List<Questao>> bancoQuestoes = new HashMap<>();
 
-    public static List<Questao> carregarQuestoes(){
-        List<Questao> listaQuestoes = new ArrayList<>();
-        try{
+    public static Map<String, List<Questao>> carregarQuestoes(){
+        bancoQuestoes.clear();
+
+        try {
             File file = new File(XML_PATH);
             DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -26,9 +29,9 @@ public class GerenciadorBanco {
 
             NodeList quizList = doc.getElementsByTagName("quiz");
 
-            for (int i = 0; i < quizList.getLength(); i++){
+            for (int i = 0; i < quizList.getLength(); i++) {
                 Node node = quizList.item(i);
-                if(node.getNodeType() == Node.ELEMENT_NODE){
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
 
                     String assunto = element.getElementsByTagName("categoria").item(0).getTextContent();
@@ -44,13 +47,24 @@ public class GerenciadorBanco {
                         alternativas.add(alternativaNodes.item(j).getTextContent());
                     }
 
-                    listaQuestoes.add(new Questao(pergunta, alternativas, correta, dificuldade, assunto));
+                    Questao questao = new Questao(pergunta, alternativas, correta, dificuldade, assunto);
+
+                    // Adicionando ao HashMap
+                    bancoQuestoes.putIfAbsent(assunto, new ArrayList<>());
+                    bancoQuestoes.get(assunto).add(questao);
                 }
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return listaQuestoes;
+        return bancoQuestoes;
     }
+
+    public static void adicionarQuestao(Questao questao) {
+        bancoQuestoes.putIfAbsent(questao.getAssunto(), new ArrayList<>());
+        bancoQuestoes.get(questao.getAssunto()).add(questao);
+    }
+
 }
+
