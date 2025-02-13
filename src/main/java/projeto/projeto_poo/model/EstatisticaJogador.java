@@ -4,83 +4,58 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EstatisticaJogador {
-    private int maiorSequenciaAcerto;
-    private String assuntoMaiorAcerto;
-    private String assuntoMenorAcerto;
-    private int maiorPontuacao;
-    private int totalAcertos;
-    private int totalErros;
-    HashMap <String, Integer> acertosPorAssunto;
-    HashMap <String, Integer> errosPorAssunto;
+    private static int maiorSequenciaAcerto = 0;
+    private static String assuntoMaiorAcerto = "";
+    private static String assuntoMenorAcerto = "";
+    private static int maiorPontuacao = 0;
+    private static int totalAcertos = 0;
+    private static int totalErros = 0;
+    private static Map<String, Integer> acertosPorAssunto = new HashMap<>();
+    private static Map<String, Integer> errosPorAssunto = new HashMap<>();
 
-    // opa
-    public EstatisticaJogador(){
-        this.maiorSequenciaAcerto = 0;
-        this.assuntoMaiorAcerto = "";
-        this.assuntoMenorAcerto = "";
-        this.maiorPontuacao = 0;
-        this.totalAcertos = 0;
-        this.totalErros = 0;
-        this.acertosPorAssunto = new HashMap<>();
-        this.errosPorAssunto = new HashMap<>();
-
-        for(Assunto assunto: Assunto.values()){
-            acertosPorAssunto.put(assunto.getDescricao(),0);
-            errosPorAssunto.put(assunto.getDescricao(),0);
+    static {
+        for (Assunto assunto : Assunto.values()) {
+            acertosPorAssunto.put(assunto.getDescricao(), 0);
+            errosPorAssunto.put(assunto.getDescricao(), 0);
         }
     }
 
-
-    public void contabilizarAcertosAssunto(String assunto, int pontos){
-        acertosPorAssunto.put(assunto, acertosPorAssunto.get(assunto)+pontos);
+    public static void contabilizarAcertosAssunto(String assunto, int pontos) {
+        acertosPorAssunto.put(assunto, acertosPorAssunto.getOrDefault(assunto, 0) + pontos);
         totalAcertos += pontos;
     }
 
-    public void contabilizarErrosAssunto(String assunto, int pontos){
-        errosPorAssunto.put(assunto, acertosPorAssunto.get(assunto)+pontos);
-        totalAcertos += pontos;
+    public static void contabilizarErrosAssunto(String assunto, int pontos) {
+        errosPorAssunto.put(assunto, errosPorAssunto.getOrDefault(assunto, 0) + pontos);
+        totalErros += pontos;
     }
 
+    public static int getMaiorSequenciaAcerto() { return maiorSequenciaAcerto; }
+    public static void setMaiorSequenciaAcerto(int maiorSequencia) { maiorSequenciaAcerto = maiorSequencia; }
 
-    public int getMaiorSequenciaAcerto() {
-        return maiorSequenciaAcerto;
-    }
-    public void setMaiorSequenciaAcerto(int maiorSequenciaAcerto) {
-        this.maiorSequenciaAcerto = maiorSequenciaAcerto;
-    }
+    public static String getAssuntoMaiorAcerto() { return assuntoMaiorAcerto; }
+    public static void setAssuntoMaiorAcerto(String assunto) { assuntoMaiorAcerto = assunto; }
 
-    public String getAssuntoMaiorAcerto() {
-        return assuntoMaiorAcerto;
-    }
-    public void setAssuntoMaiorAcerto(String assuntoMaiorAcerto) {
-        this.assuntoMaiorAcerto = assuntoMaiorAcerto;
-    }
+    public static String getAssuntoMenorAcerto() { return assuntoMenorAcerto; }
+    public static void setAssuntoMenorAcerto(String assunto) { assuntoMenorAcerto = assunto; }
 
-    public String getAssuntoMenorAcerto() {
-        return assuntoMenorAcerto;
-    }
-    public void setAssuntoMenorAcerto(String assuntoMenorAcerto) {
-        this.assuntoMenorAcerto = assuntoMenorAcerto;
-    }
+    public static int getMaiorPontuacao() { return maiorPontuacao; }
+    public static void setMaiorPontuacao(int pontuacao) { maiorPontuacao = pontuacao; }
 
-    public int getMaiorPontuacao() {
-        return maiorPontuacao;
-    }
-    public void setMaiorPontuacao(int maiorPontuacao) {
-        this.maiorPontuacao = maiorPontuacao;
-    }
+    public static int getTotalAcertos() { return totalAcertos; }
+    public static int getTotalErros() { return totalErros; }
 
-    public int getTotalAcertos() {
-        return totalAcertos;
-    }
-    public void setTotalAcertos(int totalAcertos) {
-        this.totalAcertos = totalAcertos;
-    }
+    public static void atualizarEstatisticaJogador() {
+        assuntoMaiorAcerto = acertosPorAssunto.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse("");
 
-    public int getTotalErros() {
-        return totalErros;
+        assuntoMenorAcerto = errosPorAssunto.entrySet().stream()
+                .max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse("");
     }
-    public void setTotalErros(int totalErros) { this.totalErros = totalErros; }
 
     @Override
     public String toString() {
@@ -95,18 +70,4 @@ public class EstatisticaJogador {
                 "  \"errosPorAssunto\": " + errosPorAssunto + "\n" +
                 "}";
     }
-
-    public void atualizarEstatisticaJogador(){
-        assuntoMaiorAcerto = acertosPorAssunto.entrySet().stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
-                .orElse("");
-
-        assuntoMenorAcerto = errosPorAssunto.entrySet().stream()
-                .max(Map.Entry.comparingByValue())
-                .map(Map.Entry::getKey)
-                .orElse("");
-
-    }
-
 }
