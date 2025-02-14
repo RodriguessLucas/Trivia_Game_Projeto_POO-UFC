@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1054.0" spacing="30" style="-fx-background-color: #191919;" stylesheets="@style/gameMenu-view.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.controller.GameMenuController">
+<VBox alignment="TOP_CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="800.0" prefWidth="1054.0" spacing="30" style="-fx-background-color: #191919;" stylesheets="@style/gameMenu-view.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.view.TelaMenuViewController">
 
    <!-- Caixa de Boas-Vindas -->
    <VBox alignment="CENTER" maxHeight="200" maxWidth="793.0" minHeight="200" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200" prefWidth="950.0" spacing="10" style="-fx-padding: 20px; -fx-background-color: #1A8C88; -fx-background-radius: 0 0 73 73;">

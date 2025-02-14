@@ -1,24 +1,24 @@
-package projeto.projeto_poo.controller;
+package projeto.projeto_poo.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import projeto.projeto_poo.model.Jogador;
 
+public class TelaMenuViewController {
+    @FXML private Label txtEntradaJogador;
+    @FXML private Button btnIniciarJogo;
+    @FXML private Button btnEstatisticas;
+    @FXML private Button btnConfiguracoes;
 
-public class GameMenuController {
-    @FXML
-    private Label txtEntradaJogador;
+    private Jogador jogador;
+    private TelaMenuView view;
 
-    @FXML
-    private Button btnIniciarJogo;
-
-    @FXML
-    private Button btnEstatisticas;
-
-    @FXML
-    private Button btnConfiguracoes;
-
-
+    public void initTelaMenuViewController(Jogador jogador, TelaMenuView view) {
+        this.jogador = jogador;
+        this.view = view;
+        setMensagem(jogador.getNome());
+    }
 
     @FXML
     public void setMensagem(String mesagem) {
@@ -49,7 +49,7 @@ public class GameMenuController {
 
     @FXML
     public void irTelaInicial() {
-        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/application-view.fxml",600,800);
+        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/telaInicial-view.fxml",600,800);
         System.out.println("Indo para tela Inicial");
     }
 

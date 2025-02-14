@@ -1,4 +1,4 @@
-package projeto.projeto_poo.controller;
+package projeto.projeto_poo.view;
 
 public class EstatisticasController {
 }

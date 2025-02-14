@@ -4,7 +4,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="projeto.projeto_poo.controller.ConfigController"
+            fx:controller="projeto.projeto_poo.view.ConfigController"
             prefHeight="400.0" prefWidth="600.0">
 
 </AnchorPane>
