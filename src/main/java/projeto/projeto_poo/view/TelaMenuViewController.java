@@ -38,21 +38,23 @@ public class TelaMenuViewController {
 
     @FXML
     public void estatisticas() {
-        //TelaEstatisticasView telaEstatisticas = new TelaEstatisticasView();
-        //telaEstatisticas.initTelaEstatisticasView((Stage) btnEstatisticas.getScene().getWindow(), jogador);
+        EstatisticasView telaEstatisticas = new EstatisticasView();
+        telaEstatisticas.initEstatisticasView((Stage) btnEstatisticas.getScene().getWindow(), jogador);
         System.out.println("Indo para a tela de estatísticas...");
     }
 
     @FXML
     public void configuracoes() {
-        //TelaConfiguracoesView telaConfiguracoes = new TelaConfiguracoesView();
-        //telaConfiguracoes.initTelaConfiguracoesView((Stage) btnConfiguracoes.getScene().getWindow(), jogador);
+        Stage stageAtual = (Stage) btnConfiguracoes.getScene().getWindow(); // Obtém o Stage correto
+        ConfiguracaoView telaConfiguracoes = new ConfiguracaoView();
+        telaConfiguracoes.initConfiguracaoView(stageAtual, jogador);
         System.out.println("Indo para a tela de configurações...");
     }
 
+
     public void irTelaInicial() {
         TelaInicialView telaInicial = new TelaInicialView();
-        telaInicial.initTelaInicialView((Stage) btnConfiguracoes.getScene().getWindow(), jogador);
+        telaInicial.handleEvent((Stage) btnConfiguracoes.getScene().getWindow(), jogador);
         System.out.println("Voltando para a tela inicial...");
     }
 

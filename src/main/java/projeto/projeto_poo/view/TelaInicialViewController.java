@@ -23,14 +23,20 @@ public class TelaInicialViewController {
     }
 
     @FXML
-    private void iniciarMenuJogo() {
+    private void handleEvent() {
         if (jogador == null) {
             System.out.println("Erro: jogador não foi inicializado!");
             return;
         }
 
         String nome = entradaNomeJogador.getText().trim();
-        jogador.setNome(nome);
+        if (nome.isEmpty() || (nome.equalsIgnoreCase("Ex: astuto")) || (nome.matches("\\s*")) ) {
+            jogador.setNome("Jogador");
+        }
+        else{
+            jogador.setNome(nome);
+        }
+
         System.out.println("Nome salvo no jogador: " + jogador.getNome());
 
         // Troca para a Tela de Menu

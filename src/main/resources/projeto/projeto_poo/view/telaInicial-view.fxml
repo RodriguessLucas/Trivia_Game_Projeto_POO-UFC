@@ -22,6 +22,6 @@
       <Region VBox.vgrow="ALWAYS" />
 
       <!-- Botão Iniciar no Fim da Tela -->
-      <Button fx:id="btnIniciar" onAction="#iniciarMenuJogo" styleClass="start-button" text="Iniciar" />
+      <Button fx:id="btnIniciar" onAction="#handleEvent" styleClass="start-button" text="Iniciar" />
    </VBox>
 </VBox>

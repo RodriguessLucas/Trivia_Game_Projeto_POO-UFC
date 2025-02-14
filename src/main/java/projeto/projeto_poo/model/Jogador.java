@@ -17,12 +17,7 @@ public class Jogador {
         return nome;
     }
     public void setNome(String nome) {
-        if (!nome.isEmpty() && (!nome.equalsIgnoreCase("Ex: astuto")) && (!nome.matches("\\s*")) ) {
-            this.nome = nome;
-        }
-        else{
-            this.nome = "Jogador";
-        }
+        this.nome = nome;
         notifica();
     }
 

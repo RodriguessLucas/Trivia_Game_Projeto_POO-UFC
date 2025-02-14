@@ -13,7 +13,7 @@ public class TelaInicialView implements Observer {
     private TelaInicialViewController controller;
     private Stage stage;
 
-    public void initTelaInicialView(Stage stage, Jogador jogador) {
+    public void handleEvent(Stage stage, Jogador jogador) {
         this.jogador = jogador;
         this.stage = stage;
         jogador.attachObserver(this);

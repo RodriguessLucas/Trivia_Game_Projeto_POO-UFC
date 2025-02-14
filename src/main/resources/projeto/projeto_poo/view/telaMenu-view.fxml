@@ -32,7 +32,7 @@
 
       <!-- Adicionando ScrollPane para permitir rolagem -->
       <ScrollPane fitToWidth="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="600.0" style="-fx-background-color: #000000;">
-         <VBox alignment="CENTER" prefWidth="650.0" spacing="10" style="-fx-background-color: #222; -fx-padding: 15px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
+         <VBox fx:id="fundoTelaInicial" alignment="CENTER" prefWidth="650.0" spacing="10" style="-fx-background-color: #222; -fx-padding: 15px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
 
             <!-- Quiz 1 -->
             <HBox prefHeight="40.0" prefWidth="720.0" spacing="15" style="-fx-background-color: #fff; -fx-padding: 10px; -fx-border-radius: 10px; -fx-background-radius: 10px;">

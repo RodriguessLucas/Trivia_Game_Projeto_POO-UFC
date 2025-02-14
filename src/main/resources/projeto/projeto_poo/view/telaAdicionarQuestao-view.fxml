@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="15" prefWidth="600" prefHeight="800"
+      style="-fx-background-color: #191919; -fx-padding: 20px;"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="projeto.projeto_poo.view.AdicionarQuestaoViewController">
+
+    <Label text="Adicionar Nova Questão" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #ffcc00;" />
+
+    <!-- Campo para inserir o enunciado -->
+    <Label text="Enunciado da Questão:" style="-fx-text-fill: white;" />
+    <TextField fx:id="txtEnunciado" promptText="Digite a pergunta aqui..." />
+
+    <!-- Escolha da dificuldade -->
+    <Label text="Dificuldade:" style="-fx-text-fill: white;" />
+    <ChoiceBox fx:id="choiceDificuldade" />
+
+    <!-- Campos para inserir as alternativas -->
+    <Label text="Alternativas:" style="-fx-text-fill: white;" />
+    <TextField fx:id="txtAlternativaA" promptText="Alternativa A" />
+    <TextField fx:id="txtAlternativaB" promptText="Alternativa B" />
+    <TextField fx:id="txtAlternativaC" promptText="Alternativa C" />
+    <TextField fx:id="txtAlternativaD" promptText="Alternativa D" />
+
+    <!-- Escolha da alternativa correta -->
+    <Label text="Selecione a alternativa correta:" style="-fx-text-fill: white;" />
+    <ToggleGroup fx:id="toggleCorreta" />
+    <RadioButton fx:id="radioAlternativaA" text="A" toggleGroup="$toggleCorreta" style="-fx-text-fill: white;" />
+    <RadioButton fx:id="radioAlternativaB" text="B" toggleGroup="$toggleCorreta" style="-fx-text-fill: white;" />
+    <RadioButton fx:id="radioAlternativaC" text="C" toggleGroup="$toggleCorreta" style="-fx-text-fill: white;" />
+    <RadioButton fx:id="radioAlternativaD" text="D" toggleGroup="$toggleCorreta" style="-fx-text-fill: white;" />
+
+    <!-- Botões de ação -->
+    <Button fx:id="btnSalvarQuestao" text="Salvar Questão" onAction="#salvarQuestao"
+            style="-fx-background-color: #ffcc00; -fx-text-fill: black; -fx-font-size: 16px;" />
+
+    <Button fx:id="btnCancelar" text="Cancelar" onAction="#voltarConfiguracoes"
+            style="-fx-background-color: #555; -fx-text-fill: white; -fx-font-size: 16px;" />
+</VBox>
