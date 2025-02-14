@@ -30,11 +30,6 @@ public class TelaInicialViewController {
         }
 
         String nome = entradaNomeJogador.getText().trim();
-        if (nome.isEmpty()) {
-            lblInformacao.setText("Nome não pode estar vazio!");
-            return;
-        }
-
         jogador.setNome(nome);
         System.out.println("Nome salvo no jogador: " + jogador.getNome());
 

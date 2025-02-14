@@ -30,7 +30,7 @@ public class TelaMenuView implements Observer {
 
             // Configura a cena e exibe a janela
             stage.setTitle("Debug & Win");
-            stage.setScene(new Scene(root, 600, 800));
+            stage.setScene(new Scene(root, 650, 800));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

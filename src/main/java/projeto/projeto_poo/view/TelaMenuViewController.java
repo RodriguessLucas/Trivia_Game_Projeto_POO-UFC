@@ -3,6 +3,7 @@ package projeto.projeto_poo.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import projeto.projeto_poo.model.Jogador;
 
 public class TelaMenuViewController {
@@ -37,21 +38,26 @@ public class TelaMenuViewController {
 
     @FXML
     public void estatisticas() {
-        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/estatisticas-view.fxml",600,800);
-        System.out.println("Indo para tela estatisticas");
+        //TelaEstatisticasView telaEstatisticas = new TelaEstatisticasView();
+        //telaEstatisticas.initTelaEstatisticasView((Stage) btnEstatisticas.getScene().getWindow(), jogador);
+        System.out.println("Indo para a tela de estatísticas...");
     }
 
     @FXML
     public void configuracoes() {
-        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/config-view.fxml",600,800);
-        System.out.println("Indo para tela configuracoes");
+        //TelaConfiguracoesView telaConfiguracoes = new TelaConfiguracoesView();
+        //telaConfiguracoes.initTelaConfiguracoesView((Stage) btnConfiguracoes.getScene().getWindow(), jogador);
+        System.out.println("Indo para a tela de configurações...");
+    }
+
+    public void irTelaInicial() {
+        TelaInicialView telaInicial = new TelaInicialView();
+        telaInicial.initTelaInicialView((Stage) btnConfiguracoes.getScene().getWindow(), jogador);
+        System.out.println("Voltando para a tela inicial...");
     }
 
     @FXML
-    public void irTelaInicial() {
-        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/telaInicial-view.fxml",600,800);
-        System.out.println("Indo para tela Inicial");
-    }
+    public void teste(){}
 
 
 

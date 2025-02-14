@@ -26,7 +26,7 @@ public class TelaInicialView implements Observer {
             controller.initTelaInicialViewController(jogador, this);
 
             stage.setTitle("Debug & Win");
-            stage.setScene(new Scene(root, 600, 800));
+            stage.setScene(new Scene(root, 650, 800));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
