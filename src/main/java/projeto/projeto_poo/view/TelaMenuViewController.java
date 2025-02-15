@@ -30,11 +30,22 @@ public class TelaMenuViewController {
         txtEntradaJogador.setText("Bem-vindo, "+ mesagem + "!");
     }
 
+
+    /*
+        Aqui precisamos ir call para conectar os botoes,
+        os botoes para iniciar jogo aleatorio
+        botoes para iniciar jogo dos quizz que estao feitos no menu de rolagem
+     */
+
     @FXML
     public  void iniciarMenuDificuldade() {
         ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/menuDificuldade-view.fxml",600,800);
         System.out.println("Indo para tela de menu dificuldade");
+        // aqui é do botao iniciar jogo aleatorio
     }
+
+
+
 
     @FXML
     public void estatisticas() {

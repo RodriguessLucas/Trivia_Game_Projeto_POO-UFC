@@ -1,5 +1,6 @@
 package projeto.projeto_poo.model;
 
+import projeto.projeto_poo.repository.GerenciadorBanco;
 import projeto.projeto_poo.view.Observer;
 
 import java.util.ArrayList;
@@ -10,18 +11,32 @@ public class DebugWin {
     private List<Questao> questoes;
     private int pontuacao;
     private int questaoAtual;
+    private Dificuldade dificuldade;
+    private boolean ehAleatorio;
     private Configuracoes configuracoes;
     private ArrayList<Observer> observers = new ArrayList<>();
 
     public DebugWin() {}
-    public DebugWin(Configuracoes configuracoes){
+
+    public DebugWin(Configuracoes configuracoes, Dificuldade dificuldade, boolean ehAleatorio) {
         this.configuracoes = configuracoes;
-        questoes = new ArrayList<>();// aqui tem q chamar o GerenciadorBanco
+        questoes = GerenciadorBanco.obterQuestoes(dificuldade, configuracoes.getQntdQuestoesPorJogo(), ehAleatorio);
+        this.dificuldade = dificuldade;
+        this.ehAleatorio = ehAleatorio;
         pontuacao = 0;
     }
 
     public int getPontuacao() { return this.pontuacao; }
     public void setPontuacao(int pontuacao) {}
+
+    public Configuracoes getConfiguracoes() { return this.configuracoes; }
+    public void setConfiguracoes(Configuracoes configuracoes) {}
+
+    public Dificuldade getDificuldade() { return this.dificuldade; }
+    public void setDificuldade(Dificuldade dificuldade) {}
+
+    public boolean isEhAleatorio() { return this.ehAleatorio; }
+    public void setEhAleatorio(boolean ehAleatorio) {}
 
     public void proximaQuestao(){
     }
@@ -40,6 +55,9 @@ public class DebugWin {
 
     public void responderQuestao(int resposta){
         if(!temMaisQuestao()){ return; }
+
+        // quando for fazer o teste, verifica se as reposta batem
+        // pois o guilherme fez o xml com os indices de 1 a 4 e não de 0 a 3;
 
         Questao questao = questoes.get(questaoAtual);
         if(questao.verificarResposta(resposta) ){

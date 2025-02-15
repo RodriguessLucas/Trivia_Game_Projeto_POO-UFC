@@ -1,5 +1,6 @@
 package projeto.projeto_poo.repository;
 
+import projeto.projeto_poo.model.Configuracoes;
 import projeto.projeto_poo.model.Dificuldade;
 import projeto.projeto_poo.model.Questao;
 
@@ -67,7 +68,16 @@ public class GerenciadorBanco {
     }
 
     // tem que fazer o metodo para caçar as questoes
-
+    public static List<Questao> obterQuestoes(Dificuldade dificuldade, int quantidade, boolean ehAleatorio) {
+        /*
+        aqui tem q fzer uma verificação
+        se for alatorio, ignorar o Dificuldade dificuldade
+        se não considerar apenas Dificuldade dificuldade
+        e usar para as duas situacoes o random para gerar as questoes pela quantidade de questoes vindas(se for aleatorio)
+        caso nao seja aleatorio, seja definida sempre 10 questoes a ser buscadas
+         */
+        return null ;
+    }
 
 
 

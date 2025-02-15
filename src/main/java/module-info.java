@@ -11,6 +11,7 @@ module projeto.projeto_poo {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires javafx.graphics;
+    requires java.desktop;
 
 
     opens projeto.projeto_poo to javafx.fxml;

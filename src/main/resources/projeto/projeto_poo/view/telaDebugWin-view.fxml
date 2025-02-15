@@ -1,12 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20" prefWidth="650" prefHeight="800" style="-fx-background-color: #191919; -fx-padding: 20px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.view.DebugWinViewController">
-
-    <Label text="Questao" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #00b894;" />
+<VBox alignment="CENTER" prefHeight="800" prefWidth="650" spacing="20" style="-fx-background-color: #191919; -fx-padding: 20px;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projeto.projeto_poo.view.DebugWinViewController">
+   <VBox alignment="TOP_CENTER" prefHeight="106.0" prefWidth="610.0">
+      <children>
+      
+                <Label alignment="CENTER" prefHeight="50.0" prefWidth="120.0" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #00b894;" text="Questão">
+            <font>
+               <Font size="20.0" />
+            </font>
+         </Label>
+         <HBox alignment="TOP_CENTER" prefHeight="66.0" prefWidth="610.0" />
+      </children>
+   </VBox>
+   <VBox alignment="CENTER" prefHeight="351.0" prefWidth="610.0">
+      <children>
+         <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+            <children>
+               <Label contentDisplay="CENTER" prefHeight="111.0" prefWidth="609.0" text="Label" textAlignment="CENTER" textFill="WHITE">
+                  <font>
+                     <Font size="15.0" />
+                  </font>
+               </Label>
+            </children>
+         </HBox>
+         <Button contentDisplay="CENTER" mnemonicParsing="false" text="Letra A">
+            <font>
+               <Font size="15.0" />
+            </font>
+         </Button>
+         <Button mnemonicParsing="false" text="Button" />
+         <Button mnemonicParsing="false" text="Button" />
+         <Button mnemonicParsing="false" text="Button" />
+      </children>
+   </VBox>
+   <VBox prefHeight="200.0" prefWidth="100.0" />
 
 
 </VBox>
