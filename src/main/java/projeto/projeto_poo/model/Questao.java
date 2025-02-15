@@ -15,15 +15,6 @@ public class Questao {
 
     public Questao() {}
 
-    public Questao(String enunciado, List<String> alternativas, int correta, Dificuldade dificuldade, String assunto) {
-        this.pergunta = enunciado;
-        this.alternativas = alternativas;
-        this.correta = correta;
-        this.dificuldade = dificuldade;
-        this.assunto = Assunto.valueOf(assunto);
-
-        notificarObservers();
-    }
     public Questao(String enunciado, List<String> alternativas, int correta, String dificuldade, String assunto) {
         this.pergunta = enunciado;
         this.alternativas = alternativas;

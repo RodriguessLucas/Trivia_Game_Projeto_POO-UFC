@@ -1,12 +1,13 @@
 package projeto.projeto_poo.view;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import projeto.projeto_poo.model.EstatisticaJogador;
 import projeto.projeto_poo.model.Jogador;
 
-public class EstatisticasViewController {
+public class EstatisticasViewController implements Observer{
     @FXML private Label lblMaiorSequenciaAcertos;
     @FXML private Label lblAssuntoMaiorAcerto;
     @FXML private Label lblAssuntoMenorAcerto;
@@ -20,6 +21,7 @@ public class EstatisticasViewController {
     public void initEstatisticasViewController(Jogador jogador, EstatisticasView view) {
         this.jogador = jogador;
         this.view = view;
+        EstatisticaJogador.adicionarObservador(this);
         atualizarEstatisticas();
     }
 
@@ -34,8 +36,17 @@ public class EstatisticasViewController {
 
     @FXML
     public void voltarMenu() {
+        EstatisticaJogador.removerObservador(this);
         TelaMenuView telaMenu = new TelaMenuView();
         telaMenu.initTelaMenuView((Stage) lblMaiorSequenciaAcertos.getScene().getWindow(), jogador);
         System.out.println("Voltando para a tela do menu.");
     }
+
+    @Override
+    public void update() {
+        atualizarEstatisticas();
+    }
+
+
 }
+

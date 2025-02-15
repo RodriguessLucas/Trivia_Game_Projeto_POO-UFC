@@ -23,7 +23,7 @@ public class EstatisticasView {
             controller = loader.getController();
             controller.initEstatisticasViewController(jogador, this);
 
-            stage.setTitle("Estatísticas do Jogador");
+            stage.setTitle("Debug & Win");
             stage.setScene(new Scene(root, 650, 800));
             stage.show();
         } catch (IOException e) {

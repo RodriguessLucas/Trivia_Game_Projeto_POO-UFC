@@ -47,7 +47,7 @@ public class GerenciadorBanco {
                         alternativas.add(alternativaNodes.item(j).getTextContent());
                     }
 
-                    Questao questao = new Questao(pergunta, alternativas, correta, dificuldade, assunto);
+                    Questao questao = new Questao(pergunta, alternativas, correta, dificuldade.getDescricao(), assunto);
 
                     // Adicionando ao HashMap
                     bancoQuestoes.putIfAbsent(assunto, new ArrayList<>());
