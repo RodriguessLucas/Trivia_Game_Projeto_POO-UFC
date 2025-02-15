@@ -1,13 +1,389 @@
 <quizzes>
     <quiz>
-        <categoria>Python</categoria>
+        <categoria>Estruturas de Dados</categoria>
         <dificuldade>Fácil</dificuldade>
-        <pergunta>Qual é a função usada para exibir algo na tela em Python?</pergunta>
+        <pergunta>Qual das seguintes estruturas de dados não permite acesso direto a um elemento pelo seu índice?</pergunta>
         <alternativas>
-            <alternativa>echo()</alternativa>
-            <alternativa>printf()</alternativa>
-            <alternativa>print()</alternativa>
-            <alternativa>console.log()</alternativa>
+            <alternativa>Vetor</alternativa>
+            <alternativa>Lista ligada</alternativa>
+            <alternativa>Matriz</alternativa>
+            <alternativa>Tabela Hash</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual estrutura de dados segue a regra FIFO (First In, First Out)?</pergunta>
+        <alternativas>
+            <alternativa>Pilha</alternativa>
+            <alternativa>Fila</alternativa>
+            <alternativa>Lista ligada</alternativa>
+            <alternativa>Árvore binária</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual das seguintes estruturas de dados utiliza operações de inserção e remoção apenas em uma das extremidades?</pergunta>
+        <alternativas>
+            <alternativa>Fila</alternativa>
+            <alternativa>Deque</alternativa>
+            <alternativa>Pilha</alternativa>
+            <alternativa>Lista duplamente ligada</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual estrutura de dados é mais adequada para implementar uma função "desfazer" em um editor de texto?</pergunta>
+        <alternativas>
+            <alternativa>Fila</alternativa>
+            <alternativa>Árvore</alternativa>
+            <alternativa>Pilha</alternativa>
+            <alternativa>Lista ligada</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual das seguintes operações em uma fila requer percorrer todos os elementos?</pergunta>
+        <alternativas>
+            <alternativa>Inserir um elemento</alternativa>
+            <alternativa>Remover um elemento</alternativa>
+            <alternativa>Consultar o primeiro elemento</alternativa>
+            <alternativa>Buscar um elemento específico</alternativa>
+        </alternativas>
+        <correta>4</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual estrutura de dados é mais eficiente para buscar um elemento de forma rápida, assumindo uma boa função de dispersão?</pergunta>
+        <alternativas>
+            <alternativa>Lista ligada</alternativa>
+            <alternativa>Árvore binária de busca</alternativa>
+            <alternativa>Tabela Hash</alternativa>
+            <alternativa>Fila</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual das seguintes estruturas de dados é ideal para implementar uma fila de prioridade?</pergunta>
+        <alternativas>
+            <alternativa>Lista ligada</alternativa>
+            <alternativa>Heap</alternativa>
+            <alternativa>Pilha</alternativa>
+            <alternativa>Deque</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual é a complexidade de tempo média para buscar um elemento em uma tabela hash bem projetada?</pergunta>
+        <alternativas>
+            <alternativa>O(1)</alternativa>
+            <alternativa>O(log n)</alternativa>
+            <alternativa>O(n)</alternativa>
+            <alternativa>O(n log n)</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Em uma lista duplamente ligada, quantos ponteiros cada nó armazena?</pergunta>
+        <alternativas>
+            <alternativa>Apenas um, apontando para o próximo nó</alternativa>
+            <alternativa>Dois, apontando para o próximo e o anterior</alternativa>
+            <alternativa>Três, incluindo um ponteiro para a cabeça da lista</alternativa>
+            <alternativa>Quatro, incluindo um ponteiro para o final da lista</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Em uma árvore binária de busca, qual é a propriedade que deve ser mantida para garantir sua eficiência?</pergunta>
+        <alternativas>
+            <alternativa>Todos os filhos devem ser menores que o nó pai</alternativa>
+            <alternativa>Todos os filhos devem ser maiores que o nó pai</alternativa>
+            <alternativa>Os filhos à esquerda devem ser menores, e os filhos à direita, maiores que o nó pai</alternativa>
+            <alternativa>Os filhos à esquerda e à direita devem ter o mesmo valor</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>O que acontece se um nó for removido de uma árvore binária de busca e possuir dois filhos?</pergunta>
+        <alternativas>
+            <alternativa>O nó é simplesmente removido, sem substituição</alternativa>
+            <alternativa>O menor elemento da subárvore direita o substitui</alternativa>
+            <alternativa>O maior elemento da subárvore esquerda o substitui</alternativa>
+            <alternativa>O nó é removido e seus filhos são reorganizados aleatoriamente</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>Qual é a complexidade de tempo do pior caso para busca em uma árvore binária de busca desbalanceada?</pergunta>
+        <alternativas>
+            <alternativa>O(1)</alternativa>
+            <alternativa>O(log n)</alternativa>
+            <alternativa>O(n)</alternativa>
+            <alternativa>O(n log n)</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>O que caracteriza uma árvore B em relação a outras árvores balanceadas?</pergunta>
+        <alternativas>
+            <alternativa>Possui apenas dois filhos por nó</alternativa>
+            <alternativa>Possui nós com múltiplos filhos e mantém balanceamento</alternativa>
+            <alternativa>Não possui um critério fixo para balanceamento</alternativa>
+            <alternativa>É usada apenas para representar expressões matemáticas</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>Qual estrutura de dados é mais adequada para realizar uma busca eficiente em grandes conjuntos de dados ordenados?</pergunta>
+        <alternativas>
+            <alternativa>Lista encadeada</alternativa>
+            <alternativa>Árvore AVL</alternativa>
+            <alternativa>Fila</alternativa>
+            <alternativa>Pilha</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>Qual das seguintes operações pode causar o desbalanceamento de uma árvore AVL?</pergunta>
+        <alternativas>
+            <alternativa>Busca</alternativa>
+            <alternativa>Remoção</alternativa>
+            <alternativa>Acesso direto a um nó</alternativa>
+            <alternativa>Contagem de nós</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>Em uma estrutura de lista encadeada simples em C, qual é a forma correta de alocar um novo nó dinamicamente?</pergunta>
+        <alternativas>
+            <alternativa>node *novo = malloc(sizeof(node));</alternativa>
+            <alternativa>node novo = malloc(sizeof(node));</alternativa>
+            <alternativa>node *novo = (node) malloc(sizeof(node));</alternativa>
+            <alternativa>node novo = (node*) malloc(sizeof(node));</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>Qual é o principal benefício de usar uma lista duplamente encadeada em vez de uma lista encadeada simples?</pergunta>
+        <alternativas>
+            <alternativa>Menor uso de memória</alternativa>
+            <alternativa>Possibilidade de percorrer a lista em ambas as direções</alternativa>
+            <alternativa>Inserção e remoção mais eficientes</alternativa>
+            <alternativa>Menor complexidade para busca</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>O que acontece se um nó de uma lista encadeada for desalocado sem atualizar os ponteiros dos nós adjacentes?</pergunta>
+        <alternativas>
+            <alternativa>O nó é removido corretamente</alternativa>
+            <alternativa>O programa automaticamente ajusta os ponteiros</alternativa>
+            <alternativa>Ocorrerá um acesso inválido de memória (segmentation fault)</alternativa>
+            <alternativa>Os dados do nó são preservados indefinidamente</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>Qual é a forma correta de liberar toda a memória alocada dinamicamente em uma lista encadeada simples?</pergunta>
+        <alternativas>
+            <alternativa>free(head);</alternativa>
+            <alternativa>while (head) { node *temp = head; head = head->prox; free(temp); }</alternativa>
+            <alternativa>delete(head);</alternativa>
+            <alternativa>head = NULL;</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Média</dificuldade>
+        <pergunta>Qual é a principal vantagem de usar uma fila implementada com lista encadeada ao invés de um array?</pergunta>
+        <alternativas>
+            <alternativa>O tempo de acesso é constante para qualquer elemento</alternativa>
+            <alternativa>O tamanho da fila pode crescer dinamicamente</alternativa>
+            <alternativa>Menor uso de memória</alternativa>
+            <alternativa>As operações de enfileiramento e desenfileiramento são mais complexas</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é a principal vantagem do uso de uma pilha implementada com uma lista encadeada em comparação com uma implementação baseada em vetor?</pergunta>
+        <alternativas>
+            <alternativa>Melhor eficiência na busca de elementos</alternativa>
+            <alternativa>Menor uso de memória</alternativa>
+            <alternativa>Alocação dinâmica e sem limite de tamanho</alternativa>
+            <alternativa>Menor complexidade para inserção e remoção</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece se um programa liberar um ponteiro que já foi desalocado?</pergunta>
+        <alternativas>
+            <alternativa>O compilador automaticamente ignora a operação</alternativa>
+            <alternativa>Comportamento indefinido, podendo causar erros ou falhas</alternativa>
+            <alternativa>O ponteiro é restaurado para o estado original</alternativa>
+            <alternativa>O programa é encerrado imediatamente</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual das opções abaixo pode causar um memory leak em C?</pergunta>
+        <alternativas>
+            <alternativa>Não liberar memória alocada dinamicamente</alternativa>
+            <alternativa>Acessar memória desalocada</alternativa>
+            <alternativa>Usar ponteiros nulos</alternativa>
+            <alternativa>Chamar free() mais de uma vez para o mesmo ponteiro</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que define o comportamento de uma fila de prioridade?</pergunta>
+        <alternativas>
+            <alternativa>A ordem de inserção dos elementos</alternativa>
+            <alternativa>O valor do elemento inserido</alternativa>
+            <alternativa>A ordem de remoção dos elementos</alternativa>
+            <alternativa>A quantidade de elementos na fila</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que caracteriza uma lista encadeada circular?</pergunta>
+        <alternativas>
+            <alternativa>O último nó aponta para o primeiro nó da lista, formando um ciclo</alternativa>
+            <alternativa>Todos os nós possuem dois ponteiros: um para o próximo e outro para o anterior</alternativa>
+            <alternativa>Ela permite inserções e remoções de elementos apenas no início ou no fim</alternativa>
+            <alternativa>Os nós são armazenados em um arranjo contíguo de memória</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é a principal diferença entre uma lista encadeada simples e uma lista encadeada duplamente?</pergunta>
+        <alternativas>
+            <alternativa>Na lista encadeada duplamente, cada nó contém dois ponteiros, um para o próximo e outro para o anterior</alternativa>
+            <alternativa>Na lista encadeada simples, cada nó possui um ponteiro para o próximo e um campo de dados</alternativa>
+            <alternativa>Na lista encadeada simples, os nós são armazenados de forma contígua em memória</alternativa>
+            <alternativa>Na lista encadeada duplamente, não há necessidade de ponteiros</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é a principal vantagem de usar uma fila de prioridade em vez de uma fila simples?</pergunta>
+        <alternativas>
+            <alternativa>A fila de prioridade permite a inserção de elementos em ordem crescente</alternativa>
+            <alternativa>A fila de prioridade garante que o elemento de maior prioridade será removido primeiro</alternativa>
+            <alternativa>A fila de prioridade tem uma complexidade de tempo constante para inserção</alternativa>
+            <alternativa>A fila de prioridade sempre permite que o elemento mais antigo seja removido primeiro</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que caracteriza uma árvore binária completa?</pergunta>
+        <alternativas>
+            <alternativa>Todos os níveis, exceto possivelmente o último, estão completamente preenchidos</alternativa>
+            <alternativa>Cada nó possui exatamente dois filhos</alternativa>
+            <alternativa>A árvore é balanceada, com a diferença de altura entre subárvores sendo no máximo 1</alternativa>
+            <alternativa>Todos os nós folha estão localizados no último nível</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual das operações em uma árvore binária de busca (BST) tem a complexidade de tempo O(log n) no melhor caso?</pergunta>
+        <alternativas>
+            <alternativa>Busca</alternativa>
+            <alternativa>Inserção</alternativa>
+            <alternativa>Remoção</alternativa>
+            <alternativa>Todas as operações</alternativa>
+        </alternativas>
+        <correta>4</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Estruturas de Dados</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é o principal benefício de usar um algoritmo de busca em profundidade (DFS) em vez de um algoritmo de busca em largura (BFS) em grafos?</pergunta>
+        <alternativas>
+            <alternativa>DFS geralmente encontra o caminho mais curto mais rapidamente</alternativa>
+            <alternativa>DFS utiliza menos memória que BFS, já que não precisa armazenar todos os níveis de uma árvore de busca</alternativa>
+            <alternativa>DFS é mais adequado para grafos com muitos ciclos</alternativa>
+            <alternativa>DFS sempre encontra a solução mais eficiente em termos de tempo</alternativa>
         </alternativas>
         <correta>2</correta>
     </quiz>
@@ -15,12 +391,51 @@
     <quiz>
         <categoria>Python</categoria>
         <dificuldade>Fácil</dificuldade>
-        <pergunta>Qual símbolo é usado para fazer comentários de uma linha em Python?</pergunta>
+        <pergunta>Qual destas opções é usada para criar um loop que percorre uma lista em Python?</pergunta>
+        <alternativas>
+            <alternativa>loop()</alternativa>
+            <alternativa>while</alternativa>
+            <alternativa>for</alternativa>
+            <alternativa>foreach</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual é o operador usado para multiplicação em Python?</pergunta>
+        <alternativas>
+            <alternativa>x</alternativa>
+            <alternativa>*</alternativa>
+            <alternativa>#</alternativa>
+            <alternativa>/</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Como se inicia um comentário de linha única em Python?</pergunta>
         <alternativas>
             <alternativa>//</alternativa>
+            <alternativa>/*</alternativa>
             <alternativa>#</alternativa>
-            <alternativa>/* */</alternativa>
             <alternativa>--</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual destas opções é um tipo de dado válido em Python?</pergunta>
+        <alternativas>
+            <alternativa>int</alternativa>
+            <alternativa>number</alternativa>
+            <alternativa>digit</alternativa>
+            <alternativa>var</alternativa>
         </alternativas>
         <correta>1</correta>
     </quiz>
@@ -28,12 +443,12 @@
     <quiz>
         <categoria>Python</categoria>
         <dificuldade>Fácil</dificuldade>
-        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <pergunta>Qual dessas opções é a maneira correta de verificar se duas variáveis são iguais?</pergunta>
         <alternativas>
-            <alternativa>O(1)</alternativa>
-            <alternativa>O(n)</alternativa>
-            <alternativa>O(log n)</alternativa>
-            <alternativa>O(n log n)</alternativa>
+            <alternativa>a = b</alternativa>
+            <alternativa>a == b</alternativa>
+            <alternativa>a === b</alternativa>
+            <alternativa>a != b</alternativa>
         </alternativas>
         <correta>2</correta>
     </quiz>
@@ -41,12 +456,51 @@
     <quiz>
         <categoria>Python</categoria>
         <dificuldade>Fácil</dificuldade>
-        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <pergunta>Qual função é usada para obter a quantidade de elementos em uma lista?</pergunta>
         <alternativas>
-            <alternativa>O(1)</alternativa>
-            <alternativa>O(n)</alternativa>
-            <alternativa>O(log n)</alternativa>
-            <alternativa>O(n log n)</alternativa>
+            <alternativa>size()</alternativa>
+            <alternativa>count()</alternativa>
+            <alternativa>length()</alternativa>
+            <alternativa>len()</alternativa>
+        </alternativas>
+        <correta>4</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual dessas opções é a forma correta de declarar uma variável em Python?</pergunta>
+        <alternativas>
+            <alternativa>var x = 10</alternativa>
+            <alternativa>int x = 10</alternativa>
+            <alternativa>x = 10</alternativa>
+            <alternativa>declare x = 10</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que acontece se você tentar acessar um índice que não existe em uma lista?</pergunta>
+        <alternativas>
+            <alternativa>O Python retorna None</alternativa>
+            <alternativa>O Python cria automaticamente um novo índice</alternativa>
+            <alternativa>O Python gera um erro</alternativa>
+            <alternativa>O Python remove o último elemento da lista</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual destas funções converte um número em uma string?</pergunta>
+        <alternativas>
+            <alternativa>int()</alternativa>
+            <alternativa>str()</alternativa>
+            <alternativa>float()</alternativa>
+            <alternativa>char()</alternativa>
         </alternativas>
         <correta>2</correta>
     </quiz>
@@ -54,53 +508,1449 @@
     <quiz>
         <categoria>Python</categoria>
         <dificuldade>Fácil</dificuldade>
-        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <pergunta>Qual estrutura de controle é usada para repetir um bloco de código um número específico de vezes?</pergunta>
         <alternativas>
-            <alternativa>O(1)</alternativa>
-            <alternativa>O(n)</alternativa>
-            <alternativa>O(log n)</alternativa>
-            <alternativa>O(n log n)</alternativa>
+            <alternativa>if</alternativa>
+            <alternativa>for</alternativa>
+            <alternativa>switch</alternativa>
+            <alternativa>case</alternativa>
         </alternativas>
         <correta>2</correta>
     </quiz>
 
     <quiz>
         <categoria>Python</categoria>
-        <dificuldade>Fácil</dificuldade>
-        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que a função `enumerate()` faz em Python?</pergunta>
         <alternativas>
-            <alternativa>O(1)</alternativa>
-            <alternativa>O(n)</alternativa>
-            <alternativa>O(log n)</alternativa>
-            <alternativa>O(n log n)</alternativa>
+            <alternativa>Cria uma lista de números</alternativa>
+            <alternativa>Adiciona índices automaticamente a uma sequência iterável</alternativa>
+            <alternativa>Ordena uma lista</alternativa>
+            <alternativa>Remove elementos duplicados de uma lista</alternativa>
         </alternativas>
         <correta>2</correta>
     </quiz>
 
     <quiz>
         <categoria>Python</categoria>
-        <dificuldade>Fácil</dificuldade>
-        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que acontece se você tentar modificar um elemento de uma tupla em Python?</pergunta>
         <alternativas>
-            <alternativa>O(1)</alternativa>
-            <alternativa>O(n)</alternativa>
-            <alternativa>O(log n)</alternativa>
-            <alternativa>O(n log n)</alternativa>
+            <alternativa>O valor será alterado normalmente</alternativa>
+            <alternativa>O Python gera um erro</alternativa>
+            <alternativa>A tupla será automaticamente convertida em uma lista</alternativa>
+            <alternativa>O elemento será removido</alternativa>
         </alternativas>
         <correta>2</correta>
     </quiz>
 
     <quiz>
         <categoria>Python</categoria>
-        <dificuldade>Fácil</dificuldade>
-        <pergunta>Qual a complexidade de tempo do algoritmo de busca binária?</pergunta>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é a diferença entre `append()` e `extend()` em listas?</pergunta>
         <alternativas>
-            <alternativa>O(1)</alternativa>
-            <alternativa>O(n)</alternativa>
-            <alternativa>O(log n)</alternativa>
-            <alternativa>O(n log n)</alternativa>
+            <alternativa>`append()` adiciona elementos individualmente, enquanto `extend()` concatena listas</alternativa>
+            <alternativa>`append()` remove o último elemento da lista, enquanto `extend()` adiciona um novo elemento</alternativa>
+            <alternativa>`append()` só funciona com números, enquanto `extend()` funciona com strings</alternativa>
+            <alternativa>`extend()` é um sinônimo de `append()`</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que o método `split()` faz em uma string?</pergunta>
+        <alternativas>
+            <alternativa>Divide a string em uma lista com base em um delimitador</alternativa>
+            <alternativa>Substitui espaços por vírgulas</alternativa>
+            <alternativa>Inverte a string</alternativa>
+            <alternativa>Transforma a string em uma tupla</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual dessas opções representa um dicionário válido em Python?</pergunta>
+        <alternativas>
+            <alternativa>{1, 2, 3, 4}</alternativa>
+            <alternativa>[("chave", "valor")]</alternativa>
+            <alternativa>{"chave": "valor"}</alternativa>
+            <alternativa>({"chave", "valor"})</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que acontece se você chamar `list.remove(x)` e `x` não estiver na lista?</pergunta>
+        <alternativas>
+            <alternativa>A lista permanece inalterada</alternativa>
+            <alternativa>O Python gera um erro</alternativa>
+            <alternativa>O último elemento da lista é removido</alternativa>
+            <alternativa>O valor `None` é retornado</alternativa>
         </alternativas>
         <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Como se chama o processo de criar uma função em Python?</pergunta>
+        <alternativas>
+            <alternativa>Definição</alternativa>
+            <alternativa>Declaração</alternativa>
+            <alternativa>Criação</alternativa>
+            <alternativa>Definir com `def`</alternativa>
+        </alternativas>
+        <correta>4</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é o propósito do operador `**` em Python?</pergunta>
+        <alternativas>
+            <alternativa>Multiplicação de dois números</alternativa>
+            <alternativa>Exponenciação, ou potência</alternativa>
+            <alternativa>Divisão inteira</alternativa>
+            <alternativa>Concatação de strings</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que o método `split()` faz em Python?</pergunta>
+        <alternativas>
+            <alternativa>Divide uma string em uma lista de caracteres</alternativa>
+            <alternativa>Divide uma string em uma lista de substrings</alternativa>
+            <alternativa>Converte uma lista de substrings em uma string</alternativa>
+            <alternativa>Divide uma lista de strings em várias listas</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que significa `x = [1, 2, 3] * 2` em Python?</pergunta>
+        <alternativas>
+            <alternativa>Multiplica os elementos da lista por 2</alternativa>
+            <alternativa>Repete os elementos da lista duas vezes</alternativa>
+            <alternativa>Cria uma lista com a soma dos elementos</alternativa>
+            <alternativa>Repete a lista duas vezes e a retorna como tupla</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que a função `setdefault()` faz em um dicionário Python?</pergunta>
+        <alternativas>
+            <alternativa>Verifica se uma chave existe no dicionário e, caso contrário, a cria com um valor padrão</alternativa>
+            <alternativa>Exclui uma chave do dicionário se ela existir</alternativa>
+            <alternativa>Retorna o valor da chave, caso exista, ou `None` caso contrário</alternativa>
+            <alternativa>Atualiza o valor da chave com o valor fornecido</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é a principal diferença entre `@classmethod` e `@staticmethod` em Python?</pergunta>
+        <alternativas>
+            <alternativa>`@classmethod` recebe a instância da classe como primeiro argumento, enquanto `@staticmethod` não recebe a instância nem a classe</alternativa>
+            <alternativa>`@classmethod` é usado para definir métodos que alteram a estrutura da classe, enquanto `@staticmethod` é usado para métodos que não dependem da classe</alternativa>
+            <alternativa>`@classmethod` pode acessar atributos privados da classe, enquanto `@staticmethod` não pode</alternativa>
+            <alternativa>`@staticmethod` é usado apenas em classes que possuem herança, enquanto `@classmethod` pode ser usado em qualquer classe</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Como o Python lida com variáveis globais dentro de uma função?</pergunta>
+        <alternativas>
+            <alternativa>O Python cria automaticamente uma cópia local das variáveis globais dentro das funções</alternativa>
+            <alternativa>As variáveis globais podem ser modificadas diretamente dentro das funções sem necessidade de declaração especial</alternativa>
+            <alternativa>As variáveis globais só podem ser acessadas dentro de funções, mas não podem ser modificadas</alternativa>
+            <alternativa>Para modificar variáveis globais dentro de uma função, é necessário usar a palavra-chave `global`</alternativa>
+        </alternativas>
+        <correta>4</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece quando a função `lambda` é usada em Python?</pergunta>
+        <alternativas>
+            <alternativa>Cria uma função anônima que pode ser usada para operações simples, sem a necessidade de um nome</alternativa>
+            <alternativa>Cria uma função que retorna sempre o mesmo valor</alternativa>
+            <alternativa>Cria uma função recursiva sem a necessidade de declaração explícita de chamada</alternativa>
+            <alternativa>Cria uma função com um número fixo de parâmetros, que não pode ser alterado</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que a função `zip()` faz em Python?</pergunta>
+        <alternativas>
+            <alternativa>Combina dois ou mais iteráveis em um único iterável</alternativa>
+            <alternativa>Cria uma lista de tuplas com os elementos dos iteráveis combinados por índice</alternativa>
+            <alternativa>Cria um dicionário a partir de dois iteráveis</alternativa>
+            <alternativa>Concatena dois iteráveis em uma lista</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é a diferença entre uma lista e uma tupla em Python?</pergunta>
+        <alternativas>
+            <alternativa>Listas são mutáveis, enquanto tuplas são imutáveis</alternativa>
+            <alternativa>Listas podem conter apenas números, enquanto tuplas podem conter qualquer tipo de objeto</alternativa>
+            <alternativa>Tuplas podem ser alteradas após sua criação, enquanto listas não</alternativa>
+            <alternativa>Tuplas são mais lentas para iteração em comparação com listas</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que a função `super()` faz em Python?</pergunta>
+        <alternativas>
+            <alternativa>Chama um método de uma classe base diretamente, sem precisar de uma instância</alternativa>
+            <alternativa>Chama um método da classe base, mas somente se o método não for encontrado na classe atual</alternativa>
+            <alternativa>Chama um método de uma classe base usando a instância atual da classe</alternativa>
+            <alternativa>Chama um método de classe estática diretamente</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é o efeito de usar o operador `*` em uma lista ou tupla em Python?</pergunta>
+        <alternativas>
+            <alternativa>Multiplica cada elemento da lista ou tupla por um valor constante</alternativa>
+            <alternativa>Repete os elementos da lista ou tupla pelo número de vezes especificado</alternativa>
+            <alternativa>Desempacota a lista ou tupla em múltiplos valores</alternativa>
+            <alternativa>Cria uma nova lista ou tupla com os elementos duplicados</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que significa a expressão `*args` em uma função Python?</pergunta>
+        <alternativas>
+            <alternativa>Permite que a função aceite um número variável de argumentos posicionais</alternativa>
+            <alternativa>Permite que a função aceite um número variável de argumentos nomeados</alternativa>
+            <alternativa>Permite que a função aceite argumentos apenas do tipo lista</alternativa>
+            <alternativa>Permite que a função aceite apenas argumentos de tipo inteiro</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Python</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece quando uma função Python é chamada recursivamente sem uma condição de parada?</pergunta>
+        <alternativas>
+            <alternativa>A função será executada infinitamente, consumindo toda a memória da pilha de chamadas</alternativa>
+            <alternativa>A função entrará em um loop infinito, mas com utilização controlada de memória</alternativa>
+            <alternativa>A função será interrompida com um erro de `RecursionError` após atingir o limite máximo de recursões</alternativa>
+            <alternativa>A função simplesmente terminará com o valor `None` retornado</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que faz a função `printf()` em C?</pergunta>
+        <alternativas>
+            <alternativa>Exibe uma mensagem na tela de saída padrão</alternativa>
+            <alternativa>Retorna o valor de um cálculo realizado</alternativa>
+            <alternativa>Modifica o valor de uma variável</alternativa>
+            <alternativa>Lê dados de entrada do usuário</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual é a função usada em C para ler dados de entrada do usuário?</pergunta>
+        <alternativas>
+            <alternativa>scanf()</alternativa>
+            <alternativa>input()</alternativa>
+            <alternativa>read()</alternativa>
+            <alternativa>get()</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual dessas variáveis está correta em C?</pergunta>
+        <alternativas>
+            <alternativa>int 1var;</alternativa>
+            <alternativa>float var_1;</alternativa>
+            <alternativa>double @var;</alternativa>
+            <alternativa>char &var;</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Como se declara uma constante em C?</pergunta>
+        <alternativas>
+            <alternativa>const int x = 10;</alternativa>
+            <alternativa>let int x = 10;</alternativa>
+            <alternativa>static int x = 10;</alternativa>
+            <alternativa>final int x = 10;</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que é um ponteiro em C?</pergunta>
+        <alternativas>
+            <alternativa>Uma variável que armazena o endereço de outra variável</alternativa>
+            <alternativa>Uma variável que armazena um valor inteiro</alternativa>
+            <alternativa>Uma variável que guarda uma função</alternativa>
+            <alternativa>Uma variável que armazena um caractere</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual é o valor do tipo de dado `char` em C?</pergunta>
+        <alternativas>
+            <alternativa>2 bytes</alternativa>
+            <alternativa>1 byte</alternativa>
+            <alternativa>4 bytes</alternativa>
+            <alternativa>Depende do compilador</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que o operador `&` faz em C?</pergunta>
+        <alternativas>
+            <alternativa>Atribui um valor à variável</alternativa>
+            <alternativa>Realiza uma operação lógica E</alternativa>
+            <alternativa>Retorna o endereço de memória de uma variável</alternativa>
+            <alternativa>Retorna o valor de uma variável</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Em C, qual é o tipo de dado usado para armazenar números com ponto flutuante?</pergunta>
+        <alternativas>
+            <alternativa>int</alternativa>
+            <alternativa>float</alternativa>
+            <alternativa>char</alternativa>
+            <alternativa>double</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual é o comando usado para incluir uma biblioteca padrão em um programa C?</pergunta>
+        <alternativas>
+            <alternativa>#include <stdio.h></alternativa>
+            <alternativa>#import <stdio.h></alternativa>
+            <alternativa>#library <stdio.h></alternativa>
+            <alternativa>#open <stdio.h></alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que faz o operador `*` em um ponteiro em C?</pergunta>
+        <alternativas>
+            <alternativa>Atribui o valor a uma variável</alternativa>
+            <alternativa>Declara uma variável do tipo ponteiro</alternativa>
+            <alternativa>Desreferencia um ponteiro, acessando o valor apontado</alternativa>
+            <alternativa>Cria um novo ponteiro</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que acontece se uma variável local não for inicializada em C?</pergunta>
+        <alternativas>
+            <alternativa>A variável terá o valor zero</alternativa>
+            <alternativa>A variável terá um valor indefinido</alternativa>
+            <alternativa>A variável será automaticamente inicializada com o valor 1</alternativa>
+            <alternativa>A variável gerará um erro de compilação</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que faz a função `malloc()` em C?</pergunta>
+        <alternativas>
+            <alternativa>Aloca memória estática</alternativa>
+            <alternativa>Libera memória previamente alocada</alternativa>
+            <alternativa>Aloca memória dinamicamente</alternativa>
+            <alternativa>Desreferencia um ponteiro</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é o resultado da expressão `x++ * ++x` quando `x = 5`?</pergunta>
+        <alternativas>
+            <alternativa>25</alternativa>
+            <alternativa>30</alternativa>
+            <alternativa>35</alternativa>
+            <alternativa>40</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que acontece se você tentar acessar um índice fora do limite de um array em C?</pergunta>
+        <alternativas>
+            <alternativa>O programa gera um erro de compilação</alternativa>
+            <alternativa>O valor é ignorado e o programa continua</alternativa>
+            <alternativa>O programa pode acessar um valor aleatório da memória</alternativa>
+            <alternativa>O programa imprime um aviso de erro</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que é um tipo de dado `void` em C?</pergunta>
+        <alternativas>
+            <alternativa>Um tipo de dado que armazena valores inteiros</alternativa>
+            <alternativa>Um tipo de dado que armazena valores flutuantes</alternativa>
+            <alternativa>Um tipo de dado que não armazena nenhum valor</alternativa>
+            <alternativa>Um tipo de dado que armazena ponteiros</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é a diferença entre os operadores `==` e `=` em C?</pergunta>
+        <alternativas>
+            <alternativa>`==` é para comparação e `=` é para atribuição</alternativa>
+            <alternativa>`==` é para atribuição e `=` é para comparação</alternativa>
+            <alternativa>Ambos fazem a mesma coisa, mas de formas diferentes</alternativa>
+            <alternativa>Não há diferença entre eles</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é a principal diferença entre os tipos de dados `float` e `double` em C?</pergunta>
+        <alternativas>
+            <alternativa>O `float` é usado para números inteiros, enquanto o `double` é para números decimais</alternativa>
+            <alternativa>O `float` tem maior precisão do que o `double`</alternativa>
+            <alternativa>O `float` ocupa 4 bytes, enquanto o `double` ocupa 8 bytes</alternativa>
+            <alternativa>O `double` é utilizado apenas para números negativos</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Como um ponteiro para uma função pode ser utilizado em C?</pergunta>
+        <alternativas>
+            <alternativa>Para armazenar o valor retornado pela função</alternativa>
+            <alternativa>Para acessar variáveis locais de uma função</alternativa>
+            <alternativa>Para chamar a função diretamente sem passar o nome dela</alternativa>
+            <alternativa>Para armazenar o endereço de memória de uma variável de função</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é o propósito da diretiva `#define` em C?</pergunta>
+        <alternativas>
+            <alternativa>Definir uma constante de valor fixo</alternativa>
+            <alternativa>Declarar uma nova função</alternativa>
+            <alternativa>Definir o tamanho de um array</alternativa>
+            <alternativa>Incluir uma biblioteca externa</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que faz a função `free()` em C?</pergunta>
+        <alternativas>
+            <alternativa>Aloca memória dinamicamente</alternativa>
+            <alternativa>Libera a memória alocada dinamicamente</alternativa>
+            <alternativa>Exibe um valor de memória</alternativa>
+            <alternativa>Reserva memória para um ponteiro</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece se você tentar acessar um ponteiro para memória liberada usando `free()` em C?</pergunta>
+        <alternativas>
+            <alternativa>O programa continuará funcionando normalmente</alternativa>
+            <alternativa>O programa exibirá um erro de compilação</alternativa>
+            <alternativa>O comportamento do programa será indefinido, podendo causar falhas ou corrupção de dados</alternativa>
+            <alternativa>O programa automaticamente realoca a memória de forma segura</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é o efeito de utilizar um ponteiro `NULL` em uma operação de desreferenciamento em C?</pergunta>
+        <alternativas>
+            <alternativa>O programa retorna o valor 0 automaticamente</alternativa>
+            <alternativa>O programa gera um erro de compilação</alternativa>
+            <alternativa>O programa acessa um valor aleatório da memória, o que pode causar corrupção de dados ou falha</alternativa>
+            <alternativa>O programa imprime um aviso de erro, mas continua a execução</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que ocorre se você usar o operador `sizeof` em um ponteiro em C?</pergunta>
+        <alternativas>
+            <alternativa>Retorna o tamanho da memória apontada pelo ponteiro</alternativa>
+            <alternativa>Retorna o número de bytes de dados armazenados na variável apontada</alternativa>
+            <alternativa>Retorna o tamanho do tipo de dado apontado pelo ponteiro</alternativa>
+            <alternativa>Retorna o número de elementos do tipo apontado pelo ponteiro</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é o efeito de uma variável `static` dentro de uma função em C?</pergunta>
+        <alternativas>
+            <alternativa>A variável é inicializada apenas uma vez e mantém seu valor entre chamadas da função</alternativa>
+            <alternativa>A variável é criada a cada chamada da função, mas não pode ser acessada fora dela</alternativa>
+            <alternativa>A variável é compartilhada entre todas as instâncias da função no programa</alternativa>
+            <alternativa>A variável é automaticamente destruída após a execução da função</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Em C, qual é a diferença entre `++i` e `i++`?</pergunta>
+        <alternativas>
+            <alternativa>Não há diferença, ambos incrementam o valor de `i`</alternativa>
+            <alternativa>O `++i` incrementa `i` antes de usá-lo, e o `i++` incrementa depois de usá-lo</alternativa>
+            <alternativa>O `++i` é usado para tipos inteiros, enquanto o `i++` é usado para tipos de ponto flutuante</alternativa>
+            <alternativa>O `i++` é mais eficiente que `++i` em termos de desempenho</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que ocorre quando uma função em C retorna um ponteiro para uma variável local?</pergunta>
+        <alternativas>
+            <alternativa>A função retorna corretamente o ponteiro, pois a variável local será mantida na memória</alternativa>
+            <alternativa>A função gera um erro de compilação, pois o ponteiro não pode apontar para uma variável local</alternativa>
+            <alternativa>O ponteiro se torna inválido após o fim da função, levando a um comportamento indefinido</alternativa>
+            <alternativa>O ponteiro é copiado para a memória estática e permanece válido após a execução da função</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é a principal diferença entre os operadores `&` e `&&` em C?</pergunta>
+        <alternativas>
+            <alternativa>O operador `&` realiza uma operação AND bit a bit, enquanto `&&` é uma operação lógica AND</alternativa>
+            <alternativa>O operador `&` é usado para ponteiros, enquanto `&&` é usado para aritmética de ponteiros</alternativa>
+            <alternativa>O operador `&` é usado apenas em expressões matemáticas, e `&&` em operações lógicas</alternativa>
+            <alternativa>Ambos são operadores lógicos e funcionam de forma idêntica em C</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece quando uma variável do tipo `int` é atribuída a uma variável do tipo `float` em C?</pergunta>
+        <alternativas>
+            <alternativa>A conversão é feita automaticamente sem perda de dados</alternativa>
+            <alternativa>A conversão pode resultar em perda de precisão, mas o valor é convertido para ponto flutuante</alternativa>
+            <alternativa>A variável do tipo `int` causa um erro de compilação quando atribuída a uma variável `float`</alternativa>
+            <alternativa>A conversão resulta em uma operação aritmética entre os dois tipos</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Em C, qual é o impacto de declarar uma variável como `const`?</pergunta>
+        <alternativas>
+            <alternativa>A variável pode ser alterada durante a execução do programa, mas o compilador garante que ela tenha um valor fixo</alternativa>
+            <alternativa>A variável não pode ser alterada após ser inicializada, e qualquer tentativa de modificação resulta em erro de compilação</alternativa>
+            <alternativa>A variável será otimizada pelo compilador e pode ter seu valor modificado automaticamente</alternativa>
+            <alternativa>A variável se torna um ponteiro para o endereço de memória da constante definida pelo sistema</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>C</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece quando a função `exit()` é chamada em um programa C?</pergunta>
+        <alternativas>
+            <alternativa>A função termina a execução do programa imediatamente e libera todos os recursos alocados</alternativa>
+            <alternativa>A função encerra o programa e retorna um valor de erro para o sistema operacional</alternativa>
+            <alternativa>A função pausa a execução do programa até que o usuário forneça uma entrada</alternativa>
+            <alternativa>A função imprime uma mensagem de erro e continua a execução normalmente</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que é a Máquina Virtual Java (JVM)?</pergunta>
+        <alternativas>
+            <alternativa>Um software que converte código Java para código de máquina</alternativa>
+            <alternativa>Um ambiente gráfico para desenvolvimento Java</alternativa>
+            <alternativa>Um banco de dados embutido no Java</alternativa>
+            <alternativa>Um compilador que transforma código Java em código C</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual palavra-chave é usada para definir uma classe em Java?</pergunta>
+        <alternativas>
+            <alternativa>define</alternativa>
+            <alternativa>class</alternativa>
+            <alternativa>struct</alternativa>
+            <alternativa>object</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual dessas estruturas é usada para armazenar múltiplos valores do mesmo tipo em Java?</pergunta>
+        <alternativas>
+            <alternativa>Array</alternativa>
+            <alternativa>Set</alternativa>
+            <alternativa>Map</alternativa>
+            <alternativa>HashTable</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que o comando `System.out.println("Olá, Mundo!");` faz?</pergunta>
+        <alternativas>
+            <alternativa>Exibe "Olá, Mundo!" na tela</alternativa>
+            <alternativa>Grava "Olá, Mundo!" em um arquivo</alternativa>
+            <alternativa>Envia "Olá, Mundo!" para a internet</alternativa>
+            <alternativa>Salva "Olá, Mundo!" em uma variável</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual tipo de dado é usado para armazenar um único caractere em Java?</pergunta>
+        <alternativas>
+            <alternativa>char</alternativa>
+            <alternativa>string</alternativa>
+            <alternativa>Character</alternativa>
+            <alternativa>text</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que é o método `main` em um programa Java?</pergunta>
+        <alternativas>
+            <alternativa>O ponto de entrada da execução do programa</alternativa>
+            <alternativa>Um método especial usado para criar variáveis</alternativa>
+            <alternativa>Um método opcional para iniciar a interface gráfica</alternativa>
+            <alternativa>Uma função que executa automaticamente em loops</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual dessas palavras-chave é usada para definir uma constante em Java?</pergunta>
+        <alternativas>
+            <alternativa>constant</alternativa>
+            <alternativa>final</alternativa>
+            <alternativa>static</alternativa>
+            <alternativa>const</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual estrutura de controle é usada para repetir um bloco de código enquanto uma condição for verdadeira?</pergunta>
+        <alternativas>
+            <alternativa>if</alternativa>
+            <alternativa>switch</alternativa>
+            <alternativa>while</alternativa>
+            <alternativa>case</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual das opções abaixo é usada para armazenar múltiplos valores que podem crescer dinamicamente?</pergunta>
+        <alternativas>
+            <alternativa>ArrayList</alternativa>
+            <alternativa>Array</alternativa>
+            <alternativa>HashMap</alternativa>
+            <alternativa>Tree</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual operador é usado para comparar dois valores em Java?</pergunta>
+        <alternativas>
+            <alternativa>=</alternativa>
+            <alternativa>==</alternativa>
+            <alternativa>!=</alternativa>
+            <alternativa><></alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que acontece se um método em Java não especificar um modificador de acesso?</pergunta>
+        <alternativas>
+            <alternativa>O método será privado</alternativa>
+            <alternativa>O método será protegido</alternativa>
+            <alternativa>O método terá acesso padrão (package-private)</alternativa>
+            <alternativa>O método será público</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que acontece quando um objeto não tem mais referências apontando para ele?</pergunta>
+        <alternativas>
+            <alternativa>Ele é imediatamente deletado da memória</alternativa>
+            <alternativa>Ele causa um erro de compilação</alternativa>
+            <alternativa>Ele pode ser coletado pelo garbage collector</alternativa>
+            <alternativa>Ele fica inacessível, mas continua ocupando memória para sempre</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é a principal diferença entre `HashMap` e `TreeMap` em Java?</pergunta>
+        <alternativas>
+            <alternativa>`HashMap` mantém a ordem dos elementos, enquanto `TreeMap` não</alternativa>
+            <alternativa>`TreeMap` ordena os elementos de forma natural, enquanto `HashMap` não</alternativa>
+            <alternativa>`HashMap` permite chaves duplicadas, enquanto `TreeMap` não</alternativa>
+            <alternativa>`TreeMap` é mais rápido do que `HashMap` para buscas</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual das opções abaixo descreve corretamente a funcionalidade do operador `instanceof` em Java?</pergunta>
+        <alternativas>
+            <alternativa>Verifica se dois objetos são iguais</alternativa>
+            <alternativa>Verifica se um objeto pertence a uma determinada classe ou interface</alternativa>
+            <alternativa>Converte um objeto de uma classe para outra</alternativa>
+            <alternativa>Cria uma nova instância de uma classe</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que acontece se uma exceção não for tratada em Java?</pergunta>
+        <alternativas>
+            <alternativa>O programa continua rodando normalmente</alternativa>
+            <alternativa>O programa para imediatamente e exibe um erro</alternativa>
+            <alternativa>A JVM captura a exceção e tenta corrigi-la automaticamente</alternativa>
+            <alternativa>A exceção é ignorada e o programa segue sua execução</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é a principal diferença entre `==` e `equals()` ao comparar Strings em Java?</pergunta>
+        <alternativas>
+            <alternativa>`==` compara o conteúdo das Strings, enquanto `equals()` compara as referências</alternativa>
+            <alternativa>`==` compara as referências, enquanto `equals()` compara o conteúdo das Strings</alternativa>
+            <alternativa>Ambos fazem a mesma comparação</alternativa>
+            <alternativa>`equals()` só pode ser usado com Strings, enquanto `==` funciona para qualquer tipo de dado</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é a função do modificador `static` em Java?</pergunta>
+        <alternativas>
+            <alternativa>Define um método que pode ser sobrescrito</alternativa>
+            <alternativa>Permite que um método ou variável pertença à classe, e não a instâncias específicas</alternativa>
+            <alternativa>Indica que a variável não pode ser modificada</alternativa>
+            <alternativa>Define um método que só pode ser chamado dentro da mesma classe</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Como é possível evitar que uma classe seja instanciada em Java?</pergunta>
+        <alternativas>
+            <alternativa>Declarando a classe como `private`</alternativa>
+            <alternativa>Utilizando o modificador `final`</alternativa>
+            <alternativa>Declarando o construtor como `private`</alternativa>
+            <alternativa>Utilizando a palavra-chave `static`</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que acontece se uma classe implementar uma interface, mas não fornecer implementação para todos os seus métodos?</pergunta>
+        <alternativas>
+            <alternativa>O código compila normalmente</alternativa>
+            <alternativa>O compilador gera um erro</alternativa>
+            <alternativa>Os métodos da interface são ignorados</alternativa>
+            <alternativa>A JVM fornece implementações padrão</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que diferencia um `Set` de uma `List` em Java?</pergunta>
+        <alternativas>
+            <alternativa>Um `Set` mantém a ordem dos elementos, enquanto uma `List` não</alternativa>
+            <alternativa>Uma `List` não permite elementos duplicados, enquanto um `Set` permite</alternativa>
+            <alternativa>Um `Set` não permite elementos duplicados, enquanto uma `List` permite</alternativa>
+            <alternativa>Não há diferença, ambos armazenam elementos de forma idêntica</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Considerando o funcionamento do Garbage Collector (GC) em Java, o que significa um objeto estar na "tenured generation" dentro do heap?</pergunta>
+        <alternativas>
+            <alternativa>O objeto foi recentemente alocado e está na área Young Generation</alternativa>
+            <alternativa>O objeto sobreviveu a várias coletas na Young Generation e foi promovido para a Old Generation</alternativa>
+            <alternativa>O objeto está marcado para remoção imediata pelo GC</alternativa>
+            <alternativa>O objeto está protegido contra coleta de lixo até o encerramento do programa</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece quando um objeto é utilizado como chave em um `HashMap`, mas seu método `hashCode()` não é consistente com `equals()`?</pergunta>
+        <alternativas>
+            <alternativa>O `HashMap` funcionará corretamente, pois `equals()` não é necessário</alternativa>
+            <alternativa>O comportamento do `HashMap` pode ser imprevisível, levando a falhas ao recuperar elementos</alternativa>
+            <alternativa>O `HashMap` lançará uma exceção em tempo de execução</alternativa>
+            <alternativa>O `HashMap` criará um bucket separado para cada instância</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é a principal diferença entre `TreeSet` e `HashSet` em Java?</pergunta>
+        <alternativas>
+            <alternativa>`TreeSet` ordena os elementos automaticamente, enquanto `HashSet` não garante ordem</alternativa>
+            <alternativa>`HashSet` é mais eficiente para buscas do que `TreeSet`</alternativa>
+            <alternativa>`TreeSet` permite elementos duplicados, enquanto `HashSet` não</alternativa>
+            <alternativa>`HashSet` armazena elementos ordenados, enquanto `TreeSet` não</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é a vantagem do uso de `Optional` em Java?</pergunta>
+        <alternativas>
+            <alternativa>Evita `NullPointerException` ao fornecer uma maneira segura de lidar com valores ausentes</alternativa>
+            <alternativa>Melhora o desempenho do código, tornando a execução mais rápida</alternativa>
+            <alternativa>Garante que o valor sempre estará presente</alternativa>
+            <alternativa>Reduz o uso de memória na JVM</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece se uma classe aninhada estática acessar um membro não estático da classe externa?</pergunta>
+        <alternativas>
+            <alternativa>O código não compila, pois uma classe aninhada estática não pode acessar membros não estáticos</alternativa>
+            <alternativa>A classe aninhada estática pode acessar livremente qualquer membro da classe externa</alternativa>
+            <alternativa>O código compila, mas lança uma exceção `NullPointerException` em tempo de execução</alternativa>
+            <alternativa>A classe aninhada estática pode acessar membros não estáticos somente se forem `public`</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece se tentarmos modificar um `List` obtido a partir de `Arrays.asList()`?</pergunta>
+        <alternativas>
+            <alternativa>A lista pode ser modificada normalmente</alternativa>
+            <alternativa>Uma exceção será lançada ao tentar modificar a estrutura da lista</alternativa>
+            <alternativa>A lista será convertida automaticamente em um `ArrayList` mutável</alternativa>
+            <alternativa>Apenas elementos existentes podem ser alterados, mas não adicionados ou removidos</alternativa>
+        </alternativas>
+        <correta>4</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece se uma classe abstrata não implementar todos os métodos de uma interface?</pergunta>
+        <alternativas>
+            <alternativa>A classe não poderá ser compilada</alternativa>
+            <alternativa>A classe pode ser instanciada diretamente</alternativa>
+            <alternativa>A classe deve ser declarada como abstrata</alternativa>
+            <alternativa>A classe automaticamente implementa métodos vazios</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que acontece se um método `static` tentar acessar um atributo de instância?</pergunta>
+        <alternativas>
+            <alternativa>O código compila, mas lança `NullPointerException`</alternativa>
+            <alternativa>O código compila e executa normalmente</alternativa>
+            <alternativa>O código não compila</alternativa>
+            <alternativa>O código compila, mas ignora o acesso ao atributo</alternativa>
+        </alternativas>
+        <correta>3</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual das opções abaixo NÃO é uma característica válida da herança em Java?</pergunta>
+        <alternativas>
+            <alternativa>Uma classe pode herdar de apenas uma classe</alternativa>
+            <alternativa>Uma classe pode implementar múltiplas interfaces</alternativa>
+            <alternativa>Uma classe pode sobrescrever métodos de sua superclasse</alternativa>
+            <alternativa>Uma classe pode herdar de múltiplas classes</alternativa>
+        </alternativas>
+        <correta>4</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>Java</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Em qual situação é mais apropriado usar uma interface em vez de uma classe abstrata?</pergunta>
+        <alternativas>
+            <alternativa>Quando se deseja definir comportamento comum entre classes sem impor hierarquia</alternativa>
+            <alternativa>Quando se deseja compartilhar código entre classes</alternativa>
+            <alternativa>Quando se deseja garantir a implementação de métodos concretos</alternativa>
+            <alternativa>Quando se deseja permitir herança múltipla</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que é uma classe em Java?</pergunta>
+        <alternativas>
+            <alternativa>Uma função que executa um código</alternativa>
+            <alternativa>Um modelo para criar objetos</alternativa>
+            <alternativa>Uma estrutura de controle de fluxo</alternativa>
+            <alternativa>Uma variável para armazenar dados</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que é um objeto em Java?</pergunta>
+        <alternativas>
+            <alternativa>Uma variável que armazena dados</alternativa>
+            <alternativa>Uma instância de uma classe</alternativa>
+            <alternativa>Uma função que executa ações</alternativa>
+            <alternativa>Uma estrutura de dados em Java</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que significa a palavra-chave `new` em Java?</pergunta>
+        <alternativas>
+            <alternativa>Criar uma nova variável</alternativa>
+            <alternativa>Instanciar um objeto a partir de uma classe</alternativa>
+            <alternativa>Modificar o valor de uma variável</alternativa>
+            <alternativa>Alterar o comportamento de um método</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que é herança em Java?</pergunta>
+        <alternativas>
+            <alternativa>Quando uma classe herda os métodos de uma interface</alternativa>
+            <alternativa>Quando uma classe herda características de outra classe</alternativa>
+            <alternativa>Quando um objeto herda atributos de outra classe</alternativa>
+            <alternativa>Quando um método é sobrescrito por outro método</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que significa polimorfismo em Java?</pergunta>
+        <alternativas>
+            <alternativa>Uma classe que possui múltiplos métodos com o mesmo nome</alternativa>
+            <alternativa>Um objeto que pode assumir diferentes formas</alternativa>
+            <alternativa>Quando uma classe herda características de várias classes</alternativa>
+            <alternativa>Um método que pode ser chamado de diferentes formas</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que é encapsulamento em Java?</pergunta>
+        <alternativas>
+            <alternativa>Proteger os dados de uma classe, tornando-os privados</alternativa>
+            <alternativa>Adicionar funcionalidades extras a uma classe</alternativa>
+            <alternativa>Criar métodos para acessar e modificar atributos privados</alternativa>
+            <alternativa>Quando uma classe herda os métodos de outra</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que é um método em Java?</pergunta>
+        <alternativas>
+            <alternativa>Uma variável que armazena dados</alternativa>
+            <alternativa>Uma função que realiza uma ação específica</alternativa>
+            <alternativa>Uma estrutura de controle de fluxo</alternativa>
+            <alternativa>Uma classe que define objetos</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que significa a palavra-chave `super` em Java?</pergunta>
+        <alternativas>
+            <alternativa>Chamar o método de uma superclasse</alternativa>
+            <alternativa>Chamar o método de uma subclasse</alternativa>
+            <alternativa>Referenciar um objeto da classe pai</alternativa>
+            <alternativa>Modificadores de visibilidade</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>O que é um construtor em Java?</pergunta>
+        <alternativas>
+            <alternativa>Um método usado para inicializar objetos</alternativa>
+            <alternativa>Uma variável que armazena dados de um objeto</alternativa>
+            <alternativa>Uma classe que gerencia objetos</alternativa>
+            <alternativa>Um método que modifica os atributos de um objeto</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Fácil</dificuldade>
+        <pergunta>Qual é a função do modificador `private` em Java?</pergunta>
+        <alternativas>
+            <alternativa>Permitir acesso aos métodos somente dentro da própria classe</alternativa>
+            <alternativa>Permitir que um atributo seja acessado fora da classe</alternativa>
+            <alternativa>Definir que o método pode ser acessado em qualquer parte do código</alternativa>
+            <alternativa>Indicar que o método ou variável não pode ser sobrescrito</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que acontece se uma classe filha não implementar um método abstrato de sua classe mãe?</pergunta>
+        <alternativas>
+            <alternativa>A classe filha se torna abstrata</alternativa>
+            <alternativa>A classe filha é compilada sem problemas</alternativa>
+            <alternativa>A classe filha gera um erro de compilação</alternativa>
+            <alternativa>O método abstrato é automaticamente implementado</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual a diferença entre uma classe abstrata e uma interface em Java?</pergunta>
+        <alternativas>
+            <alternativa>Uma classe abstrata pode ter métodos implementados, enquanto uma interface não</alternativa>
+            <alternativa>Uma classe abstrata pode ter atributos, mas uma interface não pode</alternativa>
+            <alternativa>Ambas podem ser usadas para implementar múltiplas heranças</alternativa>
+            <alternativa>Uma interface pode ter construtores, enquanto uma classe abstrata não pode</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que é uma classe anônima em Java?</pergunta>
+        <alternativas>
+            <alternativa>Uma classe que não tem nome e é criada no momento da instância</alternativa>
+            <alternativa>Uma classe que não pode ser instanciada diretamente</alternativa>
+            <alternativa>Uma classe com métodos de retorno nulo</alternativa>
+            <alternativa>Uma classe que não possui atributos</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Em Java, é possível que uma classe implemente múltiplas interfaces?</pergunta>
+        <alternativas>
+            <alternativa>Sim, uma classe pode implementar várias interfaces</alternativa>
+            <alternativa>Não, uma classe pode implementar apenas uma interface</alternativa>
+            <alternativa>Sim, mas somente se as interfaces forem de tipos diferentes</alternativa>
+            <alternativa>Não, uma classe pode implementar apenas interfaces com o mesmo nome</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é o propósito do modificador `protected` em Java?</pergunta>
+        <alternativas>
+            <alternativa>Permitir acesso apenas dentro do pacote</alternativa>
+            <alternativa>Permitir acesso apenas dentro da própria classe</alternativa>
+            <alternativa>Permitir acesso por subclasses e dentro do pacote</alternativa>
+            <alternativa>Permitir acesso global ao método ou variável</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Qual é a principal diferença entre composição e agregação em Java?</pergunta>
+        <alternativas>
+            <alternativa>Na agregação, a vida útil dos objetos dependem um do outro, na composição não</alternativa>
+            <alternativa>Na composição, um objeto pode ser parte de outro, na agregação, não</alternativa>
+            <alternativa>Na composição, o objeto "parte" não pode existir independentemente</alternativa>
+            <alternativa>Na agregação, os objetos devem ser do mesmo tipo</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que o operador `instanceof` em Java verifica?</pergunta>
+        <alternativas>
+            <alternativa>Se uma variável é uma instância de um determinado tipo de dado</alternativa>
+            <alternativa>Se uma variável é nula</alternativa>
+            <alternativa>Se um objeto é de um tipo compatível com a classe</alternativa>
+            <alternativa>Se uma classe foi instanciada corretamente</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>Quando é utilizado o modificador `static` em um método ou variável?</pergunta>
+        <alternativas>
+            <alternativa>Quando a variável ou método pertence à classe e não à instância do objeto</alternativa>
+            <alternativa>Quando se deseja que a variável ou método seja visível apenas na classe</alternativa>
+            <alternativa>Quando se deseja que o método seja utilizado apenas uma vez</alternativa>
+            <alternativa>Quando o método ou variável precisa ser protegido</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que é um método `final` em Java?</pergunta>
+        <alternativas>
+            <alternativa>Um método que não pode ser sobrescrito</alternativa>
+            <alternativa>Um método que deve ser implementado em subclasses</alternativa>
+            <alternativa>Um método que não pode ser chamado diretamente</alternativa>
+            <alternativa>Um método que pode ser utilizado apenas uma vez</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Médio</dificuldade>
+        <pergunta>O que é o conceito de "sobrecarga de métodos" em Java?</pergunta>
+        <alternativas>
+            <alternativa>Quando um método é substituído por outro na subclasse</alternativa>
+            <alternativa>Quando um método possui parâmetros diferentes na mesma classe</alternativa>
+            <alternativa>Quando um método retorna tipos diferentes</alternativa>
+            <alternativa>Quando o método altera seu comportamento baseado na classe de origem</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Em Java, qual é o resultado quando uma classe implementa uma interface e, ao mesmo tempo, herda uma classe abstrata com métodos concretos e abstratos?</pergunta>
+        <alternativas>
+            <alternativa>A classe deve implementar todos os métodos da interface e pode herdar os métodos concretos da classe abstrata</alternativa>
+            <alternativa>A classe deve implementar todos os métodos da interface e os métodos abstratos da classe abstrata</alternativa>
+            <alternativa>A classe deve implementar todos os métodos da classe abstrata e pode optar por não implementar os métodos da interface</alternativa>
+            <alternativa>A classe deve implementar todos os métodos da interface e os métodos concretos da classe abstrata</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que é o conceito de "invocação de método dinâmico" em Java?</pergunta>
+        <alternativas>
+            <alternativa>É quando o Java decide em tempo de compilação qual método deve ser invocado, com base no tipo da referência</alternativa>
+            <alternativa>É quando o método a ser invocado é escolhido em tempo de execução, com base no tipo do objeto real</alternativa>
+            <alternativa>É quando o método a ser invocado é determinado pelo compilador, sem verificar o tipo do objeto</alternativa>
+            <alternativa>É quando os métodos são invocados apenas para testes unitários</alternativa>
+        </alternativas>
+        <correta>1</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Em Java, qual é a implicação da utilização do modificador de acesso "protected" em um atributo ou método?</pergunta>
+        <alternativas>
+            <alternativa>O atributo ou método é acessível apenas dentro da classe em que é declarado</alternativa>
+            <alternativa>O atributo ou método é acessível apenas dentro do pacote em que é declarado</alternativa>
+            <alternativa>O atributo ou método é acessível dentro do pacote e por subclasses, mesmo que estejam em pacotes diferentes</alternativa>
+            <alternativa>O atributo ou método é acessível apenas por classes que herdam diretamente da classe em questão</alternativa>
+        </alternativas>
+        <correta>2</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Em Java, o que ocorre quando se chama o método super() dentro de um construtor de uma subclasse?</pergunta>
+        <alternativas>
+            <alternativa>O método super() chama o construtor da superclasse sem inicializar os atributos da subclasse</alternativa>
+            <alternativa>O método super() chama o construtor da superclasse, inicializando os atributos da subclasse</alternativa>
+            <alternativa>O método super() é usado para acessar métodos privados da superclasse</alternativa>
+            <alternativa>O método super() é necessário apenas para acessar variáveis da superclasse</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que é uma classe interna estática em Java?</pergunta>
+        <alternativas>
+            <alternativa>É uma classe que pode acessar diretamente os membros estáticos da classe externa, sem precisar de uma instância da classe externa</alternativa>
+            <alternativa>É uma classe que pode acessar apenas membros privados da classe externa</alternativa>
+            <alternativa>É uma classe que deve ser instanciada apenas dentro da classe externa</alternativa>
+            <alternativa>É uma classe que herda da classe externa e tem um comportamento independente</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Qual é a diferença entre os modificadores de acesso "private" e "default" em Java?</pergunta>
+        <alternativas>
+            <alternativa>Private significa acesso somente na classe, e default significa acesso somente no pacote</alternativa>
+            <alternativa>Private permite acesso de qualquer lugar no código, enquanto default restringe o acesso apenas ao pacote</alternativa>
+            <alternativa>Private permite acesso somente pela classe e subclasses, enquanto default permite acesso apenas à classe externa</alternativa>
+            <alternativa>Private permite acesso a todas as classes do programa, enquanto default permite acesso apenas dentro do mesmo pacote</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que ocorre se uma classe tentar instanciar um objeto de uma classe abstrata em Java?</pergunta>
+        <alternativas>
+            <alternativa>Será gerado um erro de compilação, pois uma classe abstrata não pode ser instanciada</alternativa>
+            <alternativa>A classe abstrata é automaticamente instanciada por uma subclasse concreta</alternativa>
+            <alternativa>O compilador permite a instância, mas o objeto será nulo</alternativa>
+            <alternativa>O método construtor da classe abstrata é chamado, mas não é possível acessar seus métodos concretos</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Em Java, qual é a principal diferença entre "this" e "super" quando usados em um construtor?</pergunta>
+        <alternativas>
+            <alternativa>"this" chama o construtor da própria classe, enquanto "super" chama o construtor da classe pai</alternativa>
+            <alternativa>"this" é usado para acessar métodos estáticos, enquanto "super" é usado para acessar métodos de instância</alternativa>
+            <alternativa>"this" refere-se à classe atual e "super" à classe atual, mas apenas dentro de um método de instância</alternativa>
+            <alternativa>"this" e "super" têm a mesma função, mas "super" chama métodos privados da classe pai</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>O que ocorre se você tentar sobrescrever um método privado em Java?</pergunta>
+        <alternativas>
+            <alternativa>O compilador gera um erro, pois métodos privados não podem ser sobrescritos</alternativa>
+            <alternativa>O método privado será sobrescrito, mas o comportamento da classe pai será mantido</alternativa>
+            <alternativa>O método privado será sobrescrito, mas o acesso a ele será restrito</alternativa>
+            <alternativa>O método privado poderá ser sobrescrito, mas o compilador mostrará um aviso</alternativa>
+        </alternativas>
+        <correta>0</correta>
+    </quiz>
+
+    <quiz>
+        <categoria>POO</categoria>
+        <dificuldade>Difícil</dificuldade>
+        <pergunta>Em Java, qual é a diferença entre "final", "finally" e "finalize"?</pergunta>
+        <alternativas>
+            <alternativa>"final" é para declarar constantes, "finally" é um bloco de código após o try-catch, e "finalize" é um método chamado antes de um objeto ser coletado pelo garbage collector</alternativa>
+            <alternativa>"final" define o final de um método, "finally" é para exceções e "finalize" é para métodos privados</alternativa>
+            <alternativa>"final" é usado para métodos que não podem ser sobrescritos, "finally" para iniciar um bloco de código, e "finalize" para definir variáveis de instância</alternativa>
+            <alternativa>"final" é usado apenas para classes, "finally" para tratamento de exceções e "finalize" para inicialização de objetos</alternativa>
+        </alternativas>
+        <correta>0</correta>
     </quiz>
 
 </quizzes>
