@@ -66,6 +66,12 @@ public class GerenciadorBanco {
         bancoQuestoes.get(questao.getAssunto()).add(questao);
     }
 
+    // tem que fazer o metodo para caçar as questoes
+
+
+
+
+
     public static void imprimirQuestoes() {
         for (Map.Entry<String, List<Questao>> entry : bancoQuestoes.entrySet()) {
             System.out.println("Categoria: " + entry.getKey());
@@ -79,11 +85,17 @@ public class GerenciadorBanco {
         }
     }
 
+
+
+
+    /*
     public static void main(String args[]){
         GerenciadorBanco banco = new GerenciadorBanco();
         banco.carregarQuestoes();
         banco.imprimirQuestoes();
     }
+
+     */
 
 
 }
