@@ -86,7 +86,7 @@
             <alternativa>Heap</alternativa>
             <alternativa>Pilha</alternativa>
             <alternativa>Deque</alternativa>
-        </alternativas>
+        </alternativas>s
         <correta>2</correta>
     </quiz>
 
@@ -131,7 +131,7 @@
 
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>O que acontece se um nó for removido de uma árvore binária de busca e possuir dois filhos?</pergunta>
         <alternativas>
             <alternativa>O nó é simplesmente removido, sem substituição</alternativa>
@@ -144,7 +144,7 @@
 
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>Qual é a complexidade de tempo do pior caso para busca em uma árvore binária de busca desbalanceada?</pergunta>
         <alternativas>
             <alternativa>O(1)</alternativa>
@@ -157,7 +157,7 @@
 
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>O que caracteriza uma árvore B em relação a outras árvores balanceadas?</pergunta>
         <alternativas>
             <alternativa>Possui apenas dois filhos por nó</alternativa>
@@ -170,7 +170,7 @@
 
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>Qual estrutura de dados é mais adequada para realizar uma busca eficiente em grandes conjuntos de dados ordenados?</pergunta>
         <alternativas>
             <alternativa>Lista encadeada</alternativa>
@@ -183,7 +183,7 @@
 
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>Qual das seguintes operações pode causar o desbalanceamento de uma árvore AVL?</pergunta>
         <alternativas>
             <alternativa>Busca</alternativa>
@@ -196,7 +196,7 @@
 
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>Em uma estrutura de lista encadeada simples em C, qual é a forma correta de alocar um novo nó dinamicamente?</pergunta>
         <alternativas>
             <alternativa>node *novo = malloc(sizeof(node));</alternativa>
@@ -209,7 +209,7 @@
 
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>Qual é o principal benefício de usar uma lista duplamente encadeada em vez de uma lista encadeada simples?</pergunta>
         <alternativas>
             <alternativa>Menor uso de memória</alternativa>
@@ -221,7 +221,7 @@
     </quiz>
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>O que acontece se um nó de uma lista encadeada for desalocado sem atualizar os ponteiros dos nós adjacentes?</pergunta>
         <alternativas>
             <alternativa>O nó é removido corretamente</alternativa>
@@ -234,7 +234,7 @@
 
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>Qual é a forma correta de liberar toda a memória alocada dinamicamente em uma lista encadeada simples?</pergunta>
         <alternativas>
             <alternativa>free(head);</alternativa>
@@ -247,7 +247,7 @@
 
     <quiz>
         <categoria>Estruturas de Dados</categoria>
-        <dificuldade>Média</dificuldade>
+        <dificuldade>Médio</dificuldade>
         <pergunta>Qual é a principal vantagem de usar uma fila implementada com lista encadeada ao invés de um array?</pergunta>
         <alternativas>
             <alternativa>O tempo de acesso é constante para qualquer elemento</alternativa>
@@ -813,7 +813,7 @@
             <alternativa>int 1var;</alternativa>
             <alternativa>float var_1;</alternativa>
             <alternativa>double @var;</alternativa>
-            <alternativa>char &var;</alternativa>
+            <alternativa>char &amp;var;</alternativa>
         </alternativas>
         <correta>2</correta>
     </quiz>
@@ -860,7 +860,7 @@
     <quiz>
         <categoria>C</categoria>
         <dificuldade>Fácil</dificuldade>
-        <pergunta>O que o operador `&` faz em C?</pergunta>
+        <pergunta>O que o operador `&amp;` faz em C?</pergunta>
         <alternativas>
             <alternativa>Atribui um valor à variável</alternativa>
             <alternativa>Realiza uma operação lógica E</alternativa>
@@ -888,10 +888,10 @@
         <dificuldade>Fácil</dificuldade>
         <pergunta>Qual é o comando usado para incluir uma biblioteca padrão em um programa C?</pergunta>
         <alternativas>
-            <alternativa>#include <stdio.h></alternativa>
-            <alternativa>#import <stdio.h></alternativa>
-            <alternativa>#library <stdio.h></alternativa>
-            <alternativa>#open <stdio.h></alternativa>
+            <alternativa>#include  &lt;stdio.h&gt; </alternativa>
+            <alternativa>#import &lt;stdio.h&gt; </alternativa>
+            <alternativa>#library &lt;stdio.h&gt; </alternativa>
+            <alternativa>#open &lt;stdio.h&gt;</alternativa>
         </alternativas>
         <correta>1</correta>
     </quiz>
@@ -1120,11 +1120,11 @@
     <quiz>
         <categoria>C</categoria>
         <dificuldade>Difícil</dificuldade>
-        <pergunta>Qual é a principal diferença entre os operadores `&` e `&&` em C?</pergunta>
+        <pergunta>Qual é a principal diferença entre os operadores `&amp;` e `&amp;&amp;` em C?</pergunta>
         <alternativas>
-            <alternativa>O operador `&` realiza uma operação AND bit a bit, enquanto `&&` é uma operação lógica AND</alternativa>
-            <alternativa>O operador `&` é usado para ponteiros, enquanto `&&` é usado para aritmética de ponteiros</alternativa>
-            <alternativa>O operador `&` é usado apenas em expressões matemáticas, e `&&` em operações lógicas</alternativa>
+            <alternativa>O operador `&amp;` realiza uma operação AND bit a bit, enquanto `&amp;&amp;` é uma operação lógica AND</alternativa>
+            <alternativa>O operador `&amp;` é usado para ponteiros, enquanto "`&amp;&amp;`" é usado para aritmética de ponteiros</alternativa>
+            <alternativa>O operador `&amp;` é usado apenas em expressões matemáticas, e `&amp;&amp;` em operações lógicas</alternativa>
             <alternativa>Ambos são operadores lógicos e funcionam de forma idêntica em C</alternativa>
         </alternativas>
         <correta>1</correta>
@@ -1296,7 +1296,7 @@
             <alternativa>=</alternativa>
             <alternativa>==</alternativa>
             <alternativa>!=</alternativa>
-            <alternativa><></alternativa>
+            <alternativa>&lt;&gt; </alternativa>
         </alternativas>
         <correta>2</correta>
     </quiz>

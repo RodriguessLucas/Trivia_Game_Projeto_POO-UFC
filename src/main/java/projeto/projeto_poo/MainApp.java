@@ -10,6 +10,7 @@ public class MainApp extends javafx.application.Application {
 
         TelaInicialView telaInicial = new TelaInicialView();
         telaInicial.handleEvent(primaryStage, new Jogador());
+
     }
 
     public static void main(String[] args) {

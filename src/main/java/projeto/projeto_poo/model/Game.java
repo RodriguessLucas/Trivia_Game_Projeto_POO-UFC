@@ -5,6 +5,7 @@ import projeto.projeto_poo.view.Observer;
 import java.util.ArrayList;
 
 
+
 public class Game {
     private Jogador jogador;
     private GerenciadorBanco gerenciadorBanco;

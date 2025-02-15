@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 
 public class GerenciadorBanco {
-    private static final String XML_PATH = "projeto/projeto_poo/data/question.xml";
+    private static final String XML_PATH = "src/main/resources/projeto/projeto_poo/data/questions.xml";
     private static Map<String, List<Questao>> bancoQuestoes = new HashMap<>();
 
     public static Map<String, List<Questao>> carregarQuestoes(){
@@ -39,7 +39,7 @@ public class GerenciadorBanco {
                     String pergunta = element.getElementsByTagName("pergunta").item(0).getTextContent();
                     int correta = Integer.parseInt(element.getElementsByTagName("correta").item(0).getTextContent());
 
-                    Dificuldade dificuldade = Dificuldade.valueOf(dificuldadeStr.toUpperCase());
+                    Dificuldade dificuldade = Dificuldade.fromDescricao(dificuldadeStr);
 
                     NodeList alternativaNodes = element.getElementsByTagName("alternativa");
                     List<String> alternativas = new ArrayList<>();
@@ -71,12 +71,18 @@ public class GerenciadorBanco {
             System.out.println("Categoria: " + entry.getKey());
             for (Questao questao : entry.getValue()) {
                 System.out.println("  Pergunta: " + questao.getPergunta());
-                System.out.println("  Dificuldade: " + questao.getDificuldade());
+                System.out.println("  Dificuldade: " + questao.getDificuldade().getDescricao());
                 System.out.println("  Alternativas: " + questao.getAlternativas());
                 System.out.println("  Resposta Correta: " + questao.getCorreta());
                 System.out.println();
             }
         }
+    }
+
+    public static void main(String args[]){
+        GerenciadorBanco banco = new GerenciadorBanco();
+        banco.carregarQuestoes();
+        banco.imprimirQuestoes();
     }
 
 
