@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Questao {
     private int id;
-    private String assunto;
+    private Assunto assunto;
     private String pergunta;
     private List<String> alternativas;
     private Dificuldade dificuldade;
@@ -15,35 +15,31 @@ public class Questao {
 
     public Questao() {}
 
-    // Construtor completo para criação manual de questões
     public Questao(String enunciado, List<String> alternativas, int correta, Dificuldade dificuldade, String assunto) {
         this.pergunta = enunciado;
         this.alternativas = alternativas;
         this.correta = correta;
         this.dificuldade = dificuldade;
-        this.assunto = assunto;
+        this.assunto = Assunto.valueOf(assunto);
 
-        notificarObservers(); // Notifica todas as Views quando uma nova questão é criada
+        notificarObservers();
     }
-
-    // Construtor atualizado para receber dificuldade como String e converter para Enum
     public Questao(String enunciado, List<String> alternativas, int correta, String dificuldade, String assunto) {
         this.pergunta = enunciado;
         this.alternativas = alternativas;
         this.correta = correta;
-        this.dificuldade = Dificuldade.valueOf(dificuldade.toUpperCase()); // Converte String para Enum
-        this.assunto = assunto;
+        this.dificuldade = Dificuldade.fromDescricao(dificuldade);
+        this.assunto = Assunto.fromDescricao(assunto);
 
-        notificarObservers(); // Notifica todas as Views quando uma nova questão é criada
+        notificarObservers();
     }
 
-    // Métodos Getters
     public int getId() {
         return id;
     }
 
     public String getAssunto() {
-        return assunto;
+        return assunto.getDescricao();
     }
 
     public Dificuldade getDificuldade() {
@@ -66,7 +62,6 @@ public class Questao {
         return resposta == correta;
     }
 
-    // Métodos do Observer
     public static void attachObserver(Observer observer) {
         observers.add(observer);
     }
@@ -85,10 +80,10 @@ public class Questao {
     public String toString() {
         return "Questao{" +
                 "id=" + id +
-                ", assunto='" + assunto + '\'' +
+                ", assunto='" + assunto.getDescricao() + '\'' +
                 ", pergunta='" + pergunta + '\'' +
                 ", alternativas=" + alternativas +
-                ", dificuldade=" + dificuldade +
+                ", dificuldade=" + dificuldade.getDescricao() +
                 ", correta=" + correta +
                 '}';
     }

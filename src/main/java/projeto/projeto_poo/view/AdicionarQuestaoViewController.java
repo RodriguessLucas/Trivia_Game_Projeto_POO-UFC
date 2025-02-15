@@ -13,11 +13,11 @@ import java.util.List;
 public class AdicionarQuestaoViewController implements Observer {
     @FXML private TextField txtEnunciado;
     @FXML private ChoiceBox<String> choiceDificuldade;
+    @FXML private ChoiceBox<String> choiceAssunto;
     @FXML private TextField txtAlternativaA;
     @FXML private TextField txtAlternativaB;
     @FXML private TextField txtAlternativaC;
     @FXML private TextField txtAlternativaD;
-    @FXML private ToggleGroup toggleCorreta;
     @FXML private RadioButton radioAlternativaA;
     @FXML private RadioButton radioAlternativaB;
     @FXML private RadioButton radioAlternativaC;
@@ -27,27 +27,47 @@ public class AdicionarQuestaoViewController implements Observer {
 
     private Jogador jogador;
     private AdicionarQuestaoView view;
+    private ToggleGroup toggleCorreta;
 
     public void initAdicionarQuestaoViewController(Jogador jogador, AdicionarQuestaoView view) {
         this.jogador = jogador;
         this.view = view;
 
         choiceDificuldade.getItems().addAll("Fácil", "Médio", "Difícil");
-        choiceDificuldade.setValue("Fácil"); // Valor padrão
+        choiceDificuldade.setValue("Nenhum");
+
+        choiceAssunto.getItems().addAll("POO", "Estruturas de dados", "Python", "C","Java");
+        choiceAssunto.setValue("Nenhum");
+
+        toggleCorreta = new ToggleGroup();
+        radioAlternativaA.setToggleGroup(toggleCorreta);
+        radioAlternativaB.setToggleGroup(toggleCorreta);
+        radioAlternativaC.setToggleGroup(toggleCorreta);
+        radioAlternativaD.setToggleGroup(toggleCorreta);
 
         Questao.attachObserver(this);
     }
 
     @FXML
-    public void salvarQuestao() {
+    public void salvarQuestao() {  // tem q por aqui o retorno q será um alerta na tela
         String enunciado = txtEnunciado.getText().trim();
         String dificuldade = choiceDificuldade.getValue();
+        String assunto = choiceAssunto.getValue();
         String alternativaA = txtAlternativaA.getText().trim();
         String alternativaB = txtAlternativaB.getText().trim();
         String alternativaC = txtAlternativaC.getText().trim();
         String alternativaD = txtAlternativaD.getText().trim();
 
-        // Captura qual alternativa foi selecionada como correta
+        if(dificuldade.equals("Nenhum")) {
+            System.out.println("Selecione uma dificuldade!");
+            return;
+        }
+
+        if(assunto.equals("Nenhum")) {
+            System.out.println("Selecione um assunto!");
+            return;
+        }
+
         int correta;
         if (radioAlternativaA.isSelected()) {
             correta = 0;
@@ -62,7 +82,6 @@ public class AdicionarQuestaoViewController implements Observer {
             return;
         }
 
-        // Verificação para evitar questões inválidas
         if (enunciado.isEmpty() || alternativaA.isEmpty() || alternativaB.isEmpty() ||
                 alternativaC.isEmpty() || alternativaD.isEmpty()) {
             System.out.println("Erro: Todos os campos devem ser preenchidos!");
@@ -70,12 +89,11 @@ public class AdicionarQuestaoViewController implements Observer {
         }
 
         List<String> alternativas = Arrays.asList(alternativaA, alternativaB, alternativaC, alternativaD);
-        Questao novaQuestao = new Questao(enunciado, alternativas, correta, dificuldade, "Assunto Padrão");
+        Questao novaQuestao = new Questao(enunciado, alternativas, correta, dificuldade, assunto);
 
-        GerenciadorBanco.adicionarQuestao(novaQuestao);
-
-        // Notifica todas as Views sobre a nova questão
+        GerenciadorBanco.adicionarQuestao(novaQuestao); // tem que verificar aqui
         Questao.notificarObservers();
+        GerenciadorBanco.imprimirQuestoes();
 
         System.out.println("Questão adicionada com sucesso!");
         voltarConfiguracoes();

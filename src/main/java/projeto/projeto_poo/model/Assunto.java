@@ -1,11 +1,11 @@
 package projeto.projeto_poo.model;
 
 public enum Assunto {
-    POO(1,"Programacao orientada a objetos"),
-    ED(2, "Estruturas de dados"),
-    GRAFOS(3,"Grafos"),
-    MATDISC(4, "Matematica Discreta"),
-    ARQCOMP(5, "Arquitetura de Computadores");
+    POO(1,"POO"),
+    ESTRUTURADADOS(2, "Estruturas de dados"),
+    PYTHON(3,"Python"),
+    C(4, "C"),
+    JAVA(5, "Java");
 
     private int id;
     private String descricao;
@@ -29,5 +29,15 @@ public enum Assunto {
         }
         throw new IllegalArgumentException("Valor invalido para assunto " + valor);
     }
+
+    public static Assunto fromDescricao(String descricao) {
+        for (Assunto d : Assunto.values()) {
+            if (d.getDescricao().equalsIgnoreCase(descricao)) {
+                return d;
+            }
+        }
+        throw new IllegalArgumentException("Descrição inválida para assunto: " + descricao);
+    }
+
 
 }

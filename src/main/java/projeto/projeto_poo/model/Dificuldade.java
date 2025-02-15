@@ -1,9 +1,9 @@
 package projeto.projeto_poo.model;
 
 public enum Dificuldade {
-    FACIL(1,"Facil"),
-    MEDIO(2, "Medio"),
-    DIFICIL(3, "Dificil"),;
+    FACIL(1, "Fácil"),
+    MEDIO(2, "Médio"),
+    DIFICIL(3, "Difícil");
 
     private final int valor;
     private final String descricao;
@@ -27,7 +27,15 @@ public enum Dificuldade {
                 return d;
             }
         }
-        throw new IllegalArgumentException("Valor invalido para dificuldade: " + valor);
+        throw new IllegalArgumentException("Valor inválido para dificuldade: " + valor);
     }
 
+    public static Dificuldade fromDescricao(String descricao) {
+        for (Dificuldade d : Dificuldade.values()) {
+            if (d.getDescricao().equalsIgnoreCase(descricao)) {
+                return d;
+            }
+        }
+        throw new IllegalArgumentException("Descrição inválida para dificuldade: " + descricao);
+    }
 }

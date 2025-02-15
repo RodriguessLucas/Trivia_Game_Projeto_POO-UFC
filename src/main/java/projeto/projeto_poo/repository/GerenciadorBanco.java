@@ -66,5 +66,19 @@ public class GerenciadorBanco {
         bancoQuestoes.get(questao.getAssunto()).add(questao);
     }
 
+    public static void imprimirQuestoes() {
+        for (Map.Entry<String, List<Questao>> entry : bancoQuestoes.entrySet()) {
+            System.out.println("Categoria: " + entry.getKey());
+            for (Questao questao : entry.getValue()) {
+                System.out.println("  Pergunta: " + questao.getPergunta());
+                System.out.println("  Dificuldade: " + questao.getDificuldade());
+                System.out.println("  Alternativas: " + questao.getAlternativas());
+                System.out.println("  Resposta Correta: " + questao.getCorreta());
+                System.out.println();
+            }
+        }
+    }
+
+
 }
 

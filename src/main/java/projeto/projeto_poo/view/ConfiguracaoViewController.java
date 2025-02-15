@@ -80,6 +80,7 @@ public class ConfiguracaoViewController implements Observer {
             configuracoes.notificarObservers(); // Notifica mudanças para todas as Views
 
             System.out.println("Configurações salvas: " + configuracoes);
+            voltarMenu();
         } catch (NumberFormatException e) {
             System.out.println("Erro: Certifique-se de inserir apenas números.");
         }
