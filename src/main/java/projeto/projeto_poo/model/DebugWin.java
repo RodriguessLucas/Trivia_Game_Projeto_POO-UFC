@@ -12,17 +12,23 @@ public class DebugWin {
     private int pontuacao;
     private int questaoAtual;
     private Dificuldade dificuldade;
-    private boolean ehAleatorio;
+    private Assunto assunto;
     private Configuracoes configuracoes;
     private ArrayList<Observer> observers = new ArrayList<>();
 
     public DebugWin() {}
 
-    public DebugWin(Configuracoes configuracoes, Dificuldade dificuldade, boolean ehAleatorio) {
+    public DebugWin(Configuracoes configuracoes) {
         this.configuracoes = configuracoes;
-        questoes = GerenciadorBanco.obterQuestoes(dificuldade, configuracoes.getQntdQuestoesPorJogo(), ehAleatorio);
+        questoes = GerenciadorBanco.obterQuestoesAleatoria(configuracoes.getQntdQuestoesPorJogo());
+        pontuacao = 0;
+    }
+
+    public DebugWin(Configuracoes configuracoes, Dificuldade dificuldade, Assunto assunto) {
+        this.configuracoes = configuracoes;
+        questoes = GerenciadorBanco.obterQuestoesPersonalizada(configuracoes.getQntdQuestoesPorJogo(), dificuldade, assunto);
         this.dificuldade = dificuldade;
-        this.ehAleatorio = ehAleatorio;
+        this.assunto = assunto;
         pontuacao = 0;
     }
 
@@ -35,11 +41,6 @@ public class DebugWin {
     public Dificuldade getDificuldade() { return this.dificuldade; }
     public void setDificuldade(Dificuldade dificuldade) {}
 
-    public boolean isEhAleatorio() { return this.ehAleatorio; }
-    public void setEhAleatorio(boolean ehAleatorio) {}
-
-    public void proximaQuestao(){
-    }
 
     public void iniciarJogo(){
         this.questaoAtual = 0;

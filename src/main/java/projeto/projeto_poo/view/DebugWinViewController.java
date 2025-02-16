@@ -3,11 +3,7 @@ package projeto.projeto_poo.view;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
-import projeto.projeto_poo.model.Configuracoes;
-import projeto.projeto_poo.model.DebugWin;
-import projeto.projeto_poo.model.Dificuldade;
-import projeto.projeto_poo.model.Questao;
-
+import projeto.projeto_poo.model.*;
 
 
 public class DebugWinViewController implements Observer {
@@ -43,8 +39,12 @@ public class DebugWinViewController implements Observer {
     private DebugWin debugWinJogo;
     private DebugWinView debugWinView;
 
-    public void initDebugWinViewController(Dificuldade dificuldade, Configuracoes config, boolean ehAleatorio){
-        this.debugWinJogo = new DebugWin(config, dificuldade, ehAleatorio);
+    public void initDebugWinViewController(Configuracoes config){
+        this.debugWinJogo = new DebugWin(config);
+    }
+
+    public void initDebugWinViewController(Dificuldade dificuldade, Assunto assunto, Configuracoes config){
+        this.debugWinJogo = new DebugWin(config, dificuldade, assunto);
     }
 
     private void carregarQuestao(){

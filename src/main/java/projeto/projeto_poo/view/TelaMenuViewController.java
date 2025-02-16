@@ -38,14 +38,19 @@ public class TelaMenuViewController {
      */
 
     @FXML
-    public  void iniciarMenuDificuldade() {
+    public  void iniciarJogoAleatorio() {
         ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/menuDificuldade-view.fxml",600,800);
-        System.out.println("Indo para tela de menu dificuldade");
+        System.out.println("Iniciando Debug & Win aleatorio");
         // aqui é do botao iniciar jogo aleatorio
     }
 
 
+    @FXML
+    public void iniciarJogoPersonalizado(){
+        // aqui chamará nos quizz predefinidos
+        System.out.println("Iniciando Debug & Win  predefinido!");
 
+    }
 
     @FXML
     public void estatisticas() {

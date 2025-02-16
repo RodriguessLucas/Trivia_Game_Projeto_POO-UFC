@@ -1,6 +1,7 @@
 package projeto.projeto_poo.repository;
 
-import projeto.projeto_poo.model.Configuracoes;
+
+import projeto.projeto_poo.model.Assunto;
 import projeto.projeto_poo.model.Dificuldade;
 import projeto.projeto_poo.model.Questao;
 
@@ -8,10 +9,8 @@ import org.w3c.dom.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
+import java.util.*;
+
 
 
 public class GerenciadorBanco {
@@ -67,21 +66,49 @@ public class GerenciadorBanco {
         bancoQuestoes.get(questao.getAssunto()).add(questao);
     }
 
-    // tem que fazer o metodo para caçar as questoes
-    public static List<Questao> obterQuestoes(Dificuldade dificuldade, int quantidade, boolean ehAleatorio) {
-        /*
-        aqui tem q fzer uma verificação
-        se for alatorio, ignorar o Dificuldade dificuldade
-        se não considerar apenas Dificuldade dificuldade
-        e usar para as duas situacoes o random para gerar as questoes pela quantidade de questoes vindas(se for aleatorio)
-        caso nao seja aleatorio, seja definida sempre 10 questoes a ser buscadas
-         */
-        return null ;
+    private  static String escolherChaveAleatorio() {
+        Random rand = new Random();
+        ArrayList<String> chaves = new ArrayList<>(bancoQuestoes.keySet());
+        return chaves.get(rand.nextInt(chaves.size()));
+
     }
 
+    public static List<Questao> obterQuestoesAleatoria(int quantidade) {
+        ArrayList<Questao> questoesEscolhidas = new ArrayList<>();
+        Random rand = new Random();
+        for(int i = 0; i < quantidade; i++) {
+            boolean questaoNaoRepetida = true;
+            do {
+                String assuntoAux = escolherChaveAleatorio();
+                Questao questaoAux = bancoQuestoes.get(assuntoAux).get(rand.nextInt(bancoQuestoes.size()));
 
+                if (!questoesEscolhidas.contains(questaoAux)) {
+                    questoesEscolhidas.add(questaoAux);
+                    questaoNaoRepetida = false;
+                }
 
+            } while (questaoNaoRepetida);
+        }
+        return questoesEscolhidas;
+    }
 
+    public static List<Questao> obterQuestoesPersonalizada(int quantidade, Dificuldade dificuldade, Assunto assunto) {
+        ArrayList<Questao> auxListaQuestaoPorDificuldade = new ArrayList<>();
+        ArrayList<Questao> questoesPersonalizada = new ArrayList<>();
+
+        int auxTam = bancoQuestoes.get(assunto.getDescricao()).size();
+        for(int i = 0; i<auxTam; i++) {
+            Questao aux = bancoQuestoes.get(assunto.getDescricao()).get(i);
+            if(aux.getDificuldade().equals(dificuldade)) {
+                auxListaQuestaoPorDificuldade.add(aux);
+            }
+        }
+        Collections.shuffle(auxListaQuestaoPorDificuldade);
+        for(int i = 0; i < quantidade; i++) {
+            questoesPersonalizada.add(auxListaQuestaoPorDificuldade.get(i));
+        }
+        return questoesPersonalizada;
+    }
     public static void imprimirQuestoes() {
         for (Map.Entry<String, List<Questao>> entry : bancoQuestoes.entrySet()) {
             System.out.println("Categoria: " + entry.getKey());
@@ -98,7 +125,7 @@ public class GerenciadorBanco {
 
 
 
-    /*
+     /*
     public static void main(String args[]){
         GerenciadorBanco banco = new GerenciadorBanco();
         banco.carregarQuestoes();
