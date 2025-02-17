@@ -1,14 +1,13 @@
 package projeto.projeto_poo.view;
 
 import projeto.projeto_poo.model.Jogador;
-import projeto.projeto_poo.model.Questao;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-public class AdicionarQuestaoView implements Observer {
+public class AdicionarQuestaoView  {
     private Stage stage;
     private AdicionarQuestaoViewController controller;
 
@@ -39,8 +38,4 @@ public class AdicionarQuestaoView implements Observer {
         }
     }
 
-    @Override
-    public void update() {
-        System.out.println("AdicionarQuestaoView: Uma nova questão foi adicionada!");
-    }
 }

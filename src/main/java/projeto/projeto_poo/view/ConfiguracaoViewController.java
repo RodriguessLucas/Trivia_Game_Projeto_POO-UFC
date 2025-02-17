@@ -1,9 +1,13 @@
 package projeto.projeto_poo.view;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import projeto.projeto_poo.model.Configuracoes;
 import projeto.projeto_poo.model.Dificuldade;
 import projeto.projeto_poo.model.Jogador;
@@ -38,7 +42,6 @@ public class ConfiguracaoViewController implements Observer {
 
     @Override
     public void update() {
-        //System.out.println("ConfiguracaoViewController: Configurações foram alteradas!"); notificar tela
         atualizarValores();
     }
 
@@ -77,11 +80,11 @@ public class ConfiguracaoViewController implements Observer {
             configuracoes.setPontuacaoPorDificuldade(Dificuldade.DIFICIL.getDescricao(), pontuacaoDificil);
 
             configuracoes.notificarObservers();
-
-            //System.out.println("Configurações salvas: " + configuracoes); notificar tela
+            mostrarAlertaTemporario("Aviso", "Configurações salvas", Alert.AlertType.INFORMATION, 1);
             voltarMenu();
         } catch (NumberFormatException e) {
-            //System.out.println("Erro: Certifique-se de inserir apenas números."); notificar tela
+            mostrarAlertaTemporario("Aviso", "Erro: Certifique-se de inserir apenas números.", Alert.AlertType.INFORMATION, 1);
+
         }
     }
 
@@ -90,13 +93,26 @@ public class ConfiguracaoViewController implements Observer {
         Stage stageAtual = (Stage) btnAdicionarQuestao.getScene().getWindow();
 
         if (stageAtual == null) {
-            //System.out.println("Erro: Stage está NULL ao abrir AdicionarQuestaoView.");
             return;
         }
 
         AdicionarQuestaoView adicionarQuestao = new AdicionarQuestaoView();
         adicionarQuestao.initAdicionarQuestaoView(stageAtual, jogador);
-        //System.out.println("Indo para a tela de adicionar questão...");
+
+    }
+
+    public static void mostrarAlertaTemporario(String titulo, String mensagem, Alert.AlertType tipo, int segundos) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensagem);
+
+        alerta.show(); // 🔥 Exibe o alerta
+
+        // ✅ Criando um contador para fechar automaticamente
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(segundos), event -> alerta.close()));
+        timeline.setCycleCount(1);
+        timeline.play();
     }
 
 

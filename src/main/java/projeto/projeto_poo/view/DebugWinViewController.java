@@ -47,11 +47,11 @@ public class DebugWinViewController implements Observer {
     private Button btnFinalizarJogo;
 
     private DebugWin debugWinJogo;
-    private DebugWinView debugWinView;
     private Dificuldade dificuldade;
     private Assunto assunto;
     private Timeline timer;
     private int tempoRestante;
+    private int qntdPulos = 2;
     private boolean observadorRegistrado = false; // ✅ Variável para evitar múltiplos observadores
 
     public void initDebugWinViewController(Configuracoes config){
@@ -151,8 +151,15 @@ public class DebugWinViewController implements Observer {
             timer.stop();
         }
 
-        debugWinJogo.responderQuestao(-1);
-        carregarQuestao();
+        if(qntdPulos >0){
+            debugWinJogo.responderQuestao(-1);
+            carregarQuestao();
+            qntdPulos--;
+        }
+        else{
+            btnPularQuestao.setDisable(true);
+        }
+
     }
 
     private void encerrarDebugWin(){
@@ -187,7 +194,6 @@ public class DebugWinViewController implements Observer {
         debugWinJogo.detachObserver(this);
         TelaMenuView menuView = new TelaMenuView();
         menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWinJogo.getConfiguracoes().getJogador());
-        // arruma esse new jogador
     }
 
     @FXML

@@ -121,6 +121,7 @@ public class GerenciadorBanco {
         for(int i = 0; i < quantidade; i++) {
             questoesPersonalizada.add(auxListaQuestaoPorDificuldade.get(i));
         }
+        Collections.shuffle(questoesPersonalizada);
         return questoesPersonalizada;
     }
 

@@ -1,8 +1,11 @@
 package projeto.projeto_poo.view;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import projeto.projeto_poo.model.Jogador;
 import projeto.projeto_poo.model.Questao;
 import projeto.projeto_poo.repository.GerenciadorBanco;
@@ -59,12 +62,12 @@ public class AdicionarQuestaoViewController implements Observer {
         String alternativaD = txtAlternativaD.getText().trim();
 
         if(dificuldade.equals("Nenhum")) {
-            System.out.println("Selecione uma dificuldade!");
+            mostrarAlertaTemporario("Aviso","Selecione uma dificuldade!", Alert.AlertType.INFORMATION, 2);
             return;
         }
 
         if(assunto.equals("Nenhum")) {
-            System.out.println("Selecione um assunto!");
+            mostrarAlertaTemporario("Aviso","Selecione um assunto!", Alert.AlertType.INFORMATION, 2);
             return;
         }
 
@@ -78,13 +81,13 @@ public class AdicionarQuestaoViewController implements Observer {
         } else if (radioAlternativaD.isSelected()) {
             correta = 3;
         } else {
-            System.out.println("Erro: Selecione uma alternativa correta!");
+            mostrarAlertaTemporario("Aviso","Erro: Selecione uma alternativa correta!", Alert.AlertType.INFORMATION, 2);
             return;
         }
 
         if (enunciado.isEmpty() || alternativaA.isEmpty() || alternativaB.isEmpty() ||
                 alternativaC.isEmpty() || alternativaD.isEmpty()) {
-            System.out.println("Erro: Todos os campos devem ser preenchidos!");
+            mostrarAlertaTemporario("Aviso","Erro: Todos os campos devem ser preenchidos!", Alert.AlertType.INFORMATION, 2);
             return;
         }
 
@@ -95,8 +98,7 @@ public class AdicionarQuestaoViewController implements Observer {
         GerenciadorBanco.adicionarQuestao(novaQuestao); // tem que verificar aqui
         novaQuestao.notificarObservers();
         GerenciadorBanco.imprimirQuestoes();
-
-        System.out.println("Questão adicionada com sucesso!");
+        mostrarAlertaTemporario("Aviso", "Questão salva com sucesso! Voltando para configurações...", Alert.AlertType.INFORMATION, 2);
         voltarConfiguracoes();
     }
 
@@ -105,7 +107,6 @@ public class AdicionarQuestaoViewController implements Observer {
 
         ConfiguracaoView configuracaoView = new ConfiguracaoView();
         configuracaoView.initConfiguracaoView((Stage) btnCancelar.getScene().getWindow(), jogador);
-        System.out.println("Voltando para a tela de configurações...");
     }
 
     @Override
@@ -113,4 +114,19 @@ public class AdicionarQuestaoViewController implements Observer {
 
         System.out.println("AdicionarQuestaoViewController: Uma nova questão foi adicionada!");
     }
+
+    private void mostrarAlertaTemporario(String titulo, String mensagem, Alert.AlertType tipo, int segundos) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle(titulo);
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensagem);
+
+        alerta.show();
+
+        // ✅ Criando um contador para fechar automaticamente
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(segundos), event -> alerta.close()));
+        timeline.setCycleCount(1);
+        timeline.play();
+    }
+
 }
