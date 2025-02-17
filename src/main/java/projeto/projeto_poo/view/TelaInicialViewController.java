@@ -16,6 +16,7 @@ public class TelaInicialViewController {
     private Jogador jogador;
     private TelaInicialView view;
 
+
     public void initTelaInicialViewController(Jogador jogador, TelaInicialView view) {
         this.jogador = jogador;
         this.view = view;

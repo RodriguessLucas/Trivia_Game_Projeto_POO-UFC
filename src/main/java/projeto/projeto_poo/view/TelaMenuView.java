@@ -21,7 +21,6 @@ public class TelaMenuView implements Observer {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaMenu-view.fxml"));
             Parent root = loader.load();
 
-            controller = loader.getController();
             if (controller != null) {
                 controller.initTelaMenuViewController(jogador, this);
             } else {

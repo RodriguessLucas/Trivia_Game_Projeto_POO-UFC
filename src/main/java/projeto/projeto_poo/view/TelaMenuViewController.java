@@ -42,6 +42,8 @@ public class TelaMenuViewController {
     private Jogador jogador;
     private TelaMenuView view;
 
+
+
     public void initTelaMenuViewController(Jogador jogador, TelaMenuView view) {
         this.jogador = jogador;
         this.view = view;
