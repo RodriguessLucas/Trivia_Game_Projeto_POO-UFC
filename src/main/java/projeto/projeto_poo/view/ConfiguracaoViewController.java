@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import projeto.projeto_poo.model.Configuracoes;
+import projeto.projeto_poo.model.Dificuldade;
 import projeto.projeto_poo.model.Jogador;
 
 public class ConfiguracaoViewController implements Observer {
@@ -31,9 +32,7 @@ public class ConfiguracaoViewController implements Observer {
         this.view = view;
         this.jogador = jogador;
 
-        // Registra a controller como observador da configuração
         configuracoes.attachObserver(this);
-
         atualizarValores();
     }
 
@@ -46,14 +45,14 @@ public class ConfiguracaoViewController implements Observer {
     public void atualizarValores() {
         txtQntQuestoes.setText(String.valueOf(configuracoes.getQntdQuestoesPorJogo()));
 
-        txtTempoFacil.setText(String.valueOf(configuracoes.getTempoPorDificuldade("Fácil")));
-        txtTempoMedio.setText(String.valueOf(configuracoes.getTempoPorDificuldade("Médio")));
-        txtTempoDificil.setText(String.valueOf(configuracoes.getTempoPorDificuldade("Difícil")));
+        txtTempoFacil.setText(String.valueOf(configuracoes.getTempoPorDificuldade(Dificuldade.FACIL.getDescricao())));
+        txtTempoMedio.setText(String.valueOf(configuracoes.getTempoPorDificuldade(Dificuldade.MEDIO.getDescricao())));
+        txtTempoDificil.setText(String.valueOf(configuracoes.getTempoPorDificuldade(Dificuldade.DIFICIL.getDescricao())));
         txtTempoAleatorio.setText(String.valueOf(configuracoes.getTempoPorDificuldade("Aleatória")));
 
-        txtPontuacaoFacil.setText(String.valueOf(configuracoes.getPontuacaoPorDificuldade("Fácil")));
-        txtPontuacaoMedio.setText(String.valueOf(configuracoes.getPontuacaoPorDificuldade("Médio")));
-        txtPontuacaoDificil.setText(String.valueOf(configuracoes.getPontuacaoPorDificuldade("Difícil")));
+        txtPontuacaoFacil.setText(String.valueOf(configuracoes.getPontuacaoPorDificuldade(Dificuldade.FACIL.getDescricao())));
+        txtPontuacaoMedio.setText(String.valueOf(configuracoes.getPontuacaoPorDificuldade(Dificuldade.MEDIO.getDescricao())));
+        txtPontuacaoDificil.setText(String.valueOf(configuracoes.getPontuacaoPorDificuldade(Dificuldade.DIFICIL.getDescricao())));
     }
 
     @FXML
@@ -69,15 +68,15 @@ public class ConfiguracaoViewController implements Observer {
             int pontuacaoDificil = Integer.parseInt(txtPontuacaoDificil.getText());
 
             configuracoes.setQntdQuestoesPorJogo(qntQuestoes);
-            configuracoes.setTempoPorDificuldade("Fácil", tempoFacil);
-            configuracoes.setTempoPorDificuldade("Médio", tempoMedio);
-            configuracoes.setTempoPorDificuldade("Difícil", tempoDificil);
+            configuracoes.setTempoPorDificuldade(Dificuldade.FACIL.getDescricao(), tempoFacil);
+            configuracoes.setTempoPorDificuldade(Dificuldade.MEDIO.getDescricao(), tempoMedio);
+            configuracoes.setTempoPorDificuldade(Dificuldade.DIFICIL.getDescricao(), tempoDificil);
             configuracoes.setTempoPorDificuldade("Aleatória", tempoAleatorio);
-            configuracoes.setPontuacaoPorDificuldade("Fácil", pontuacaoFacil);
-            configuracoes.setPontuacaoPorDificuldade("Médio", pontuacaoMedio);
-            configuracoes.setPontuacaoPorDificuldade("Difícil", pontuacaoDificil);
+            configuracoes.setPontuacaoPorDificuldade(Dificuldade.FACIL.getDescricao(), pontuacaoFacil);
+            configuracoes.setPontuacaoPorDificuldade(Dificuldade.MEDIO.getDescricao(), pontuacaoMedio);
+            configuracoes.setPontuacaoPorDificuldade(Dificuldade.DIFICIL.getDescricao(), pontuacaoDificil);
 
-            configuracoes.notificarObservers(); // Notifica mudanças para todas as Views
+            configuracoes.notificarObservers();
 
             System.out.println("Configurações salvas: " + configuracoes);
             voltarMenu();

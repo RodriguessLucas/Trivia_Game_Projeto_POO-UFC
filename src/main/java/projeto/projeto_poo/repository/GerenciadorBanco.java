@@ -17,6 +17,7 @@ public class GerenciadorBanco {
     private static final String XML_PATH = "src/main/resources/projeto/projeto_poo/data/questions.xml";
     private static Map<String, List<Questao>> bancoQuestoes = new HashMap<>();
 
+
     public static Map<String, List<Questao>> carregarQuestoes(){
         bancoQuestoes.clear();
 
@@ -58,7 +59,19 @@ public class GerenciadorBanco {
             e.printStackTrace();
         }
 
+        embaralharQuestoes(5);
         return bancoQuestoes;
+    }
+
+    public static void embaralharQuestoes(int quantidade) {
+        Random rand = new Random();
+        while(quantidade != 0) {
+            for (List<Questao> listaQuestoes : bancoQuestoes.values()) {
+                Collections.shuffle(listaQuestoes, rand);
+            }
+            quantidade--;
+        }
+
     }
 
     public static void adicionarQuestao(Questao questao) {
@@ -66,27 +79,29 @@ public class GerenciadorBanco {
         bancoQuestoes.get(questao.getAssunto()).add(questao);
     }
 
-    private  static String escolherChaveAleatorio() {
-        Random rand = new Random();
-        ArrayList<String> chaves = new ArrayList<>(bancoQuestoes.keySet());
-        return chaves.get(rand.nextInt(chaves.size()));
-
-    }
-
     public static List<Questao> obterQuestoesAleatoria(int quantidade) {
-        ArrayList<Questao> questoesEscolhidas = new ArrayList<>();
         Random rand = new Random();
+        ArrayList<Questao> questoesEscolhidas = new ArrayList<>();
+
         for(int i = 0; i < quantidade; i++) {
             boolean questaoNaoRepetida = true;
             do {
-                String assuntoAux = escolherChaveAleatorio();
+                String assuntoAux = Assunto.getAssuntoAleatorio().getDescricao();
+                Dificuldade dificuldadeAux = Dificuldade.getDificuldadeAleatoria();
                 Questao questaoAux = bancoQuestoes.get(assuntoAux).get(rand.nextInt(bancoQuestoes.size()));
+                System.out.println("Verificando dentro do questoes geradas antes de verificacao \n" + questaoAux.getDificuldade().getDescricao() + " " + questaoAux.getPergunta());
 
-                if (!questoesEscolhidas.contains(questaoAux)) {
-                    questoesEscolhidas.add(questaoAux);
-                    questaoNaoRepetida = false;
+
+                if(questaoAux.getDificuldade().equals(dificuldadeAux)) {
+                    if (!questoesEscolhidas.contains(questaoAux)) {
+                        questoesEscolhidas.add(questaoAux);
+                        System.out.println("Analisando a entrada das questoes");
+                        System.out.println(questaoAux.getDificuldade().getDescricao() + " " + questaoAux.getPergunta());
+                        System.out.println( dificuldadeAux.getDescricao());
+
+                        questaoNaoRepetida = false;
+                    }
                 }
-
             } while (questaoNaoRepetida);
         }
         return questoesEscolhidas;
@@ -109,6 +124,7 @@ public class GerenciadorBanco {
         }
         return questoesPersonalizada;
     }
+
     public static void imprimirQuestoes() {
         for (Map.Entry<String, List<Questao>> entry : bancoQuestoes.entrySet()) {
             System.out.println("Categoria: " + entry.getKey());
@@ -122,18 +138,9 @@ public class GerenciadorBanco {
         }
     }
 
-
-
-
-     /*
-    public static void main(String args[]){
-        GerenciadorBanco banco = new GerenciadorBanco();
-        banco.carregarQuestoes();
-        banco.imprimirQuestoes();
-    }
-
-     */
-
-
 }
+
+/*
+depois arumar uma forma de melhorar a escoha das questoes pseudoaleatoria, pois desta forma é mt ineficiente
+ */
 

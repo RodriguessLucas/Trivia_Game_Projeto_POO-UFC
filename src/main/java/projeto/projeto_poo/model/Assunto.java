@@ -1,8 +1,10 @@
 package projeto.projeto_poo.model;
 
+import java.util.Random;
+
 public enum Assunto {
     POO(1,"POO"),
-    ESTRUTURADADOS(2, "Estruturas de dados"),
+    ESTRUTURADADOS(2, "Estruturas de Dados"),
     PYTHON(3,"Python"),
     C(4, "C"),
     JAVA(5, "Java");
@@ -37,6 +39,12 @@ public enum Assunto {
             }
         }
         throw new IllegalArgumentException("Descrição inválida para assunto: " + descricao);
+    }
+
+    public static Assunto getAssuntoAleatorio() {
+        Random random = new Random();
+        Assunto[] assuntos = Assunto.values();
+        return assuntos[random.nextInt(assuntos.length)];
     }
 
 

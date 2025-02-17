@@ -20,12 +20,15 @@ public class DebugWin {
 
     public DebugWin(Configuracoes configuracoes) {
         this.configuracoes = configuracoes;
+        GerenciadorBanco.carregarQuestoes();
         questoes = GerenciadorBanco.obterQuestoesAleatoria(configuracoes.getQntdQuestoesPorJogo());
         pontuacao = 0;
+        imprimir();
     }
 
     public DebugWin(Configuracoes configuracoes, Dificuldade dificuldade, Assunto assunto) {
         this.configuracoes = configuracoes;
+        GerenciadorBanco.carregarQuestoes();
         questoes = GerenciadorBanco.obterQuestoesPersonalizada(configuracoes.getQntdQuestoesPorJogo(), dificuldade, assunto);
         this.dificuldade = dificuldade;
         this.assunto = assunto;
@@ -41,10 +44,9 @@ public class DebugWin {
     public Dificuldade getDificuldade() { return this.dificuldade; }
     public void setDificuldade(Dificuldade dificuldade) {}
 
+    public Assunto getAssunto() { return this.assunto; }
+    public void setAssunto(Assunto assunto) { this.assunto = assunto;}
 
-    public void iniciarJogo(){
-        this.questaoAtual = 0;
-    }
 
     public boolean temMaisQuestao(){
         return questaoAtual < questoes.size();
@@ -57,22 +59,26 @@ public class DebugWin {
     public void responderQuestao(int resposta){
         if(!temMaisQuestao()){ return; }
 
-        // quando for fazer o teste, verifica se as reposta batem
-        // pois o guilherme fez o xml com os indices de 1 a 4 e não de 0 a 3;
-
         Questao questao = questoes.get(questaoAtual);
         if(questao.verificarResposta(resposta) ){
-            pontuacao+= configuracoes.getTempoPorDificuldade(questao.getDificuldade().getDescricao());
+            pontuacao+= configuracoes.getPontuacaoPorDificuldade(questao.getDificuldade().getDescricao());
             EstatisticaJogador.contabilizarAcertosAssunto(questao.getAssunto(),1 );
         }
         else{
             EstatisticaJogador.contabilizarErrosAssunto(questao.getAssunto(),1);
         }
         questaoAtual++;
+        notificarObservers();
+
+        // tem que da uma arrumada, pois está adicionando direto nas estatisticas
     }
 
     public void encerrarJogo(){
         EstatisticaJogador.atualizarEstatisticaJogador();
+        if(pontuacao > EstatisticaJogador.getMaiorPontuacao()){
+            EstatisticaJogador.setMaiorPontuacao(pontuacao);
+        }
+        //tem mais coisas, como maior sequencia de acerto
         System.out.println("Encerrando Jogo");
     }
 
@@ -84,10 +90,19 @@ public class DebugWin {
         observers.remove(observer);
     }
 
-    public void notifica() {
+    public void notificarObservers() {
         for (Observer o : observers) {
             o.update();
         }
     }
+
+    public void imprimir(){
+        for(Questao questao: questoes){
+            System.out.println(questao.getDificuldade().getDescricao() + questao.getPergunta()+"\n");
+        }
+
+    }
+
+
 
 }

@@ -1,5 +1,7 @@
 package projeto.projeto_poo.model;
 
+import java.util.Random;
+
 public enum Dificuldade {
     FACIL(1, "Fácil"),
     MEDIO(2, "Médio"),
@@ -37,5 +39,11 @@ public enum Dificuldade {
             }
         }
         throw new IllegalArgumentException("Descrição inválida para dificuldade: " + descricao);
+    }
+
+    public static Dificuldade getDificuldadeAleatoria() {
+        Random random = new Random();
+        Dificuldade[] dificuldades = Dificuldade.values();
+        return dificuldades[random.nextInt(dificuldades.length)];
     }
 }

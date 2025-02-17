@@ -4,13 +4,20 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import projeto.projeto_poo.model.Configuracoes;
 import projeto.projeto_poo.model.Jogador;
 
 public class TelaMenuViewController {
-    @FXML private Label txtEntradaJogador;
-    @FXML private Button btnIniciarJogo;
-    @FXML private Button btnEstatisticas;
-    @FXML private Button btnConfiguracoes;
+    @FXML
+    private Label txtEntradaJogador;
+    @FXML
+    private Button btnIniciarJogo;
+    @FXML
+    private Button btnEstatisticas;
+    @FXML
+    private Button btnConfiguracoes;
+    @FXML
+    private Button btnJogoAleatorio;
 
     private Jogador jogador;
     private TelaMenuView view;
@@ -39,7 +46,8 @@ public class TelaMenuViewController {
 
     @FXML
     public  void iniciarJogoAleatorio() {
-        ScreenManager.alterarTelaComController("/projeto/projeto_poo/view/menuDificuldade-view.fxml",600,800);
+
+        DebugWinView telaDeJogoAleatorio = new DebugWinView( (Stage) btnJogoAleatorio.getScene().getWindow(), Configuracoes.getInstancia());
         System.out.println("Iniciando Debug & Win aleatorio");
         // aqui é do botao iniciar jogo aleatorio
     }

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Configuracoes {
     private static Configuracoes instancia;
-    private int qntdQuestoesPorJogo = 10;
+    private int qntdQuestoesPorJogo = 4; // altarar para 10 depois
     private HashMap<String, Integer> tempoDificuldadeQuestao;
     private HashMap<String, Integer> pontuacaoDificuldadeQuestao;
     private List<Observer> observers = new ArrayList<>();
@@ -16,14 +16,15 @@ public class Configuracoes {
         tempoDificuldadeQuestao = new HashMap<>();
         pontuacaoDificuldadeQuestao = new HashMap<>();
 
-        tempoDificuldadeQuestao.put("Fácil", 20);
-        tempoDificuldadeQuestao.put("Médio", 30);
-        tempoDificuldadeQuestao.put("Difícil", 40);
+        tempoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 20);
+        tempoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 30);
+        tempoDificuldadeQuestao.put(Dificuldade.DIFICIL.getDescricao(), 40);
         tempoDificuldadeQuestao.put("Aleatória", 30);
 
-        pontuacaoDificuldadeQuestao.put("Fácil", 50);
-        pontuacaoDificuldadeQuestao.put("Médio", 100);
-        pontuacaoDificuldadeQuestao.put("Difícil", 200);
+        pontuacaoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 50);
+        pontuacaoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 100);
+        pontuacaoDificuldadeQuestao.put(Dificuldade.DIFICIL.getDescricao(), 200);
+
     }
 
     public static Configuracoes getInstancia() {
@@ -47,7 +48,7 @@ public class Configuracoes {
         }
     }
 
-    // Métodos GET para recuperar os valores
+
     public int getTempoPorDificuldade(String dificuldade) {
         return tempoDificuldadeQuestao.getOrDefault(dificuldade, 30);
     }
@@ -60,7 +61,7 @@ public class Configuracoes {
         return qntdQuestoesPorJogo;
     }
 
-    // Métodos SET para modificar os valores
+
     public void setTempoPorDificuldade(String dificuldade, int tempo) {
         tempoDificuldadeQuestao.put(dificuldade, tempo);
         notificarObservers();
