@@ -39,6 +39,9 @@ public class GerenciadorBanco {
                     String dificuldadeStr = element.getElementsByTagName("dificuldade").item(0).getTextContent();
                     String pergunta = element.getElementsByTagName("pergunta").item(0).getTextContent();
                     int correta = Integer.parseInt(element.getElementsByTagName("correta").item(0).getTextContent());
+                    if(correta == 0){
+                        correta = 1;
+                    }
 
                     Dificuldade dificuldade = Dificuldade.fromDescricao(dificuldadeStr);
 

@@ -67,6 +67,26 @@ public class DebugWin {
 
     public int getMaiorSequenciaAcerto() { return this.maiorSequenciaAcerto; }
     public void setMaiorSequenciaAcerto(int maiorSequenciaAcerto) {}
+    public int getAuxSequenciaAcerto() { return this.auxSequenciaAcerto; }
+
+    public int getIntQuestaoAtual(){
+        return questaoAtual;
+    }
+    public void setIntQuestaoAtual(int questaoAtual){
+        this.questaoAtual = questaoAtual;
+    }
+
+    public void setAuxSequenciaAcerto(int auxSequenciaAcerto) {
+        this.auxSequenciaAcerto = auxSequenciaAcerto;
+    }
+
+    public Map<String, Integer> getAuxAcertosPorAssunto() {
+        return auxAcertosPorAssunto;
+    }
+    public Map<String, Integer> getAuxErrosPorAssunto(){
+        return auxErrosPorAssunto;
+    }
+
 
     public boolean temMaisQuestao(){
         return questaoAtual < questoes.size();
@@ -77,13 +97,17 @@ public class DebugWin {
     }
 
     public void responderQuestao(int resposta){
-        if(!temMaisQuestao()){ return; }
+        if(!temMaisQuestao()){return;}
 
         Questao questao = questoes.get(questaoAtual);
         if(questao.verificarResposta(resposta) ){
             auxAcertosPorAssunto.put(questao.getAssunto(), auxAcertosPorAssunto.get(questao.getAssunto()) + 1);
             pontuacao+= configuracoes.getPontuacaoPorDificuldade(questao.getDificuldade().getDescricao());
             auxSequenciaAcerto++;
+
+            if(questaoAtual == questoes.size()-1){
+                maiorSequenciaAcerto = auxSequenciaAcerto;
+            }
         }
         else{
             auxErrosPorAssunto.put(questao.getAssunto(), auxErrosPorAssunto.get(questao.getAssunto()) + 1);
@@ -92,22 +116,11 @@ public class DebugWin {
                 auxSequenciaAcerto = 0;
             }
         }
+
+
         questaoAtual++;
-        notificarObservers();
     }
 
-    public void encerrarJogo(){
-        EstatisticaJogador.setMaiorPontuacao(maiorSequenciaAcerto);
-        if(pontuacao > EstatisticaJogador.getMaiorPontuacao()){
-            EstatisticaJogador.setMaiorPontuacao(pontuacao);
-        }
-        EstatisticaJogador.setMaiorSequenciaAcerto(maiorSequenciaAcerto);
-        EstatisticaJogador.contabilizarAcertosAssunto(auxAcertosPorAssunto);
-        EstatisticaJogador.contabilizarErrosAssunto(auxErrosPorAssunto);
-        EstatisticaJogador.atualizarEstatisticaJogador();
-        auxAcertosPorAssunto.clear(); auxErrosPorAssunto.clear();
-        //System.out.println("Encerrando Jogo"); notificar tela
-    }
 
     public void attachObserver(Observer observer) {
         if(!observers.contains(observer)){

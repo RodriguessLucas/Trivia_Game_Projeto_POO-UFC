@@ -52,7 +52,7 @@ public class DebugWinViewController implements Observer {
 
     public void initDebugWinViewController(Configuracoes config){
         this.debugWinJogo = new DebugWin(config);
-        debugWinJogo.attachObserver(this);
+        adicionarObserver();
         carregarQuestao();
     }
 
@@ -65,7 +65,7 @@ public class DebugWinViewController implements Observer {
     }
 
     private void adicionarObserver() {
-        if (!observadorRegistrado) { // ✅ Evita adicionar múltiplos observadores
+        if (!observadorRegistrado) {
             debugWinJogo.attachObserver(this);
             observadorRegistrado = true;
         }
@@ -129,6 +129,7 @@ public class DebugWinViewController implements Observer {
         timer.play();
     }
 
+
     @FXML
     private void pularQuestao() {
         if (timer != null) {
@@ -143,6 +144,8 @@ public class DebugWinViewController implements Observer {
         if (timer != null) {
             timer.stop();
         }
+
+
         lblPergunta.setText("Questões Finalizadas!");
         lblPergunta.setText("Sua pontuação total: "+ debugWinJogo.getPontuacao());
         lblExibirTempoPorPergunta.setText("");
@@ -157,7 +160,8 @@ public class DebugWinViewController implements Observer {
 
         btnFinalizarJogo.setDisable(false);
         btnFinalizarJogo.setVisible(true);
-        debugWinJogo.encerrarJogo();
+        debugWinJogo.detachObserver(this);
+
     }
 
     @FXML
@@ -175,8 +179,17 @@ public class DebugWinViewController implements Observer {
 
     @FXML
     private void finalizarJogo() {
-        debugWinJogo.detachObserver(this);
 
+
+        if(debugWinJogo.getPontuacao() > EstatisticaJogador.getMaiorPontuacao()){
+            EstatisticaJogador.setMaiorPontuacao(debugWinJogo.getPontuacao());
+        }
+        EstatisticaJogador.setMaiorSequenciaAcerto(debugWinJogo.getMaiorSequenciaAcerto());
+        EstatisticaJogador.contabilizarAcertosAssunto(debugWinJogo.getAuxAcertosPorAssunto());
+        EstatisticaJogador.contabilizarErrosAssunto(debugWinJogo.getAuxErrosPorAssunto());
+        EstatisticaJogador.atualizarEstatisticaJogador();
+
+        debugWinJogo.detachObserver(this);
         TelaMenuView menuView = new TelaMenuView();
         menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador());// arruma esse new jogador
     }
