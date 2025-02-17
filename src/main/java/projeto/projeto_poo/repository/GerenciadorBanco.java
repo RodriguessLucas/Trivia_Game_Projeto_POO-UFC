@@ -18,7 +18,7 @@ public class GerenciadorBanco {
     private static Map<String, List<Questao>> bancoQuestoes = new HashMap<>();
 
 
-    public static Map<String, List<Questao>> carregarQuestoes(){
+    public static void carregarQuestoes(){
         bancoQuestoes.clear();
 
         try {
@@ -58,20 +58,18 @@ public class GerenciadorBanco {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        embaralharQuestoes(5);
-        return bancoQuestoes;
     }
 
-    public static void embaralharQuestoes(int quantidade) {
-        Random rand = new Random();
+    public static Map<String, List<Questao>> embaralharQuestoes(int quantidade, Map<String, List<Questao>> aux) {
+
         while(quantidade != 0) {
-            for (List<Questao> listaQuestoes : bancoQuestoes.values()) {
+            Random rand = new Random();
+            for (List<Questao> listaQuestoes : aux.values()) {
                 Collections.shuffle(listaQuestoes, rand);
             }
             quantidade--;
         }
-
+        return aux;
     }
 
     public static void adicionarQuestao(Questao questao) {
@@ -80,6 +78,9 @@ public class GerenciadorBanco {
     }
 
     public static List<Questao> obterQuestoesAleatoria(int quantidade) {
+        Map<String, List<Questao>> auxBancoQuestoes = bancoQuestoes;
+        embaralharQuestoes(5, auxBancoQuestoes);
+
         Random rand = new Random();
         ArrayList<Questao> questoesEscolhidas = new ArrayList<>();
 
@@ -88,7 +89,7 @@ public class GerenciadorBanco {
             do {
                 String assuntoAux = Assunto.getAssuntoAleatorio().getDescricao();
                 Dificuldade dificuldadeAux = Dificuldade.getDificuldadeAleatoria();
-                Questao questaoAux = bancoQuestoes.get(assuntoAux).get(rand.nextInt(bancoQuestoes.size()));
+                Questao questaoAux = auxBancoQuestoes.get(assuntoAux).get(rand.nextInt(auxBancoQuestoes.size()));
                 System.out.println("Verificando dentro do questoes geradas antes de verificacao \n" + questaoAux.getDificuldade().getDescricao() + " " + questaoAux.getPergunta());
 
 
@@ -141,6 +142,6 @@ public class GerenciadorBanco {
 }
 
 /*
-depois arumar uma forma de melhorar a escoha das questoes pseudoaleatoria, pois desta forma é mt ineficiente
+depois arumar uma forma de melhorar a escoha das questoes pseudoaleatoria, pois desta forma nao é mt ineficiente
  */
 
