@@ -7,14 +7,16 @@ import java.util.List;
 
 public class Configuracoes {
     private static Configuracoes instancia;
+    private Jogador jogador;
     private int qntdQuestoesPorJogo = 4; // altarar para 10 depois
     private HashMap<String, Integer> tempoDificuldadeQuestao;
     private HashMap<String, Integer> pontuacaoDificuldadeQuestao;
     private List<Observer> observers = new ArrayList<>();
 
-    private Configuracoes() {
+    private Configuracoes(Jogador aux) {
         tempoDificuldadeQuestao = new HashMap<>();
         pontuacaoDificuldadeQuestao = new HashMap<>();
+        jogador = aux;
 
         tempoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 20);
         tempoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 30);
@@ -27,9 +29,9 @@ public class Configuracoes {
 
     }
 
-    public static Configuracoes getInstancia() {
+    public static Configuracoes getInstancia(Jogador aux) {
         if (instancia == null) {
-            instancia = new Configuracoes();
+            instancia = new Configuracoes(aux);
         }
         return instancia;
     }
@@ -78,6 +80,11 @@ public class Configuracoes {
         this.qntdQuestoesPorJogo = qntQuestoes;
         notificarObservers();
     }
+
+    public Jogador getJogador() {
+        return jogador;
+    }
+    public void setJogador(Jogador jogador) {}
 
     @Override
     public String toString() {

@@ -14,7 +14,7 @@ public class ConfiguracaoView implements Observer {
     private Stage stage;
 
     public void initConfiguracaoView(Stage stage, Jogador jogador) {
-        this.configuracoes = Configuracoes.getInstancia(); // Usa Singleton para garantir que é único
+        this.configuracoes = Configuracoes.getInstancia(jogador); // Usa Singleton para garantir que é único
         this.stage = stage;
 
         // Registra a view como observador das mudanças nas configurações

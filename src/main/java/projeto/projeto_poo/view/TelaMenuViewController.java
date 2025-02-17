@@ -41,7 +41,7 @@ public class TelaMenuViewController {
     @FXML
     public  void iniciarJogoAleatorio() {
         DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(), Configuracoes.getInstancia());
+        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(), Configuracoes.getInstancia(jogador));
         System.out.println("Iniciando Debug & Win aleatorio");
         // aqui é do botao iniciar jogo aleatorio
     }

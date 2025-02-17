@@ -169,11 +169,9 @@ public class DebugWinViewController implements Observer {
         if (timer != null) {
             timer.stop();
         }
-
         debugWinJogo.detachObserver(this);
-
         TelaMenuView menuView = new TelaMenuView();
-        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador());
+        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWinJogo.getConfiguracoes().getJogador());
         // arruma esse new jogador
     }
 
@@ -191,7 +189,7 @@ public class DebugWinViewController implements Observer {
 
         debugWinJogo.detachObserver(this);
         TelaMenuView menuView = new TelaMenuView();
-        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador());// arruma esse new jogador
+        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWinJogo.getConfiguracoes().getJogador());// arruma esse new jogador
     }
 
     @Override
