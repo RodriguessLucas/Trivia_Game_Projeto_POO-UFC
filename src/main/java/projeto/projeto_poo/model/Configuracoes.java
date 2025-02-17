@@ -1,22 +1,17 @@
 package projeto.projeto_poo.model;
-
-import projeto.projeto_poo.view.Observer;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+
 
 public class Configuracoes {
-    private static Configuracoes instancia;
-    private Jogador jogador;
     private int qntdQuestoesPorJogo = 4; // altarar para 10 depois
     private HashMap<String, Integer> tempoDificuldadeQuestao;
     private HashMap<String, Integer> pontuacaoDificuldadeQuestao;
-    private List<Observer> observers = new ArrayList<>();
 
-    private Configuracoes(Jogador aux) {
+
+    public Configuracoes() {
         tempoDificuldadeQuestao = new HashMap<>();
         pontuacaoDificuldadeQuestao = new HashMap<>();
-        jogador = aux;
+
 
         tempoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 20);
         tempoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 30);
@@ -29,28 +24,14 @@ public class Configuracoes {
 
     }
 
-    public static Configuracoes getInstancia(Jogador aux) {
-        if (instancia == null) {
-            instancia = new Configuracoes(aux);
-        }
-        return instancia;
+    public HashMap<String, Integer> getHashMapTempoDificuldadeQuestao() {
+        return tempoDificuldadeQuestao;
     }
 
-    public void attachObserver(Observer observer) {
-        if(observers.contains(observer)){
-            observers.add(observer);
-        }
+    public HashMap<String, Integer> getHasMapPontuacaoDificuldadeQuestao() {
+        return pontuacaoDificuldadeQuestao;
     }
 
-    public void detachObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    public void notificarObservers() {
-        for (Observer observer : observers) {
-            observer.update();
-        }
-    }
 
 
     public int getTempoPorDificuldade(String dificuldade) {
@@ -65,26 +46,17 @@ public class Configuracoes {
         return qntdQuestoesPorJogo;
     }
 
-
     public void setTempoPorDificuldade(String dificuldade, int tempo) {
         tempoDificuldadeQuestao.put(dificuldade, tempo);
-        notificarObservers();
     }
 
     public void setPontuacaoPorDificuldade(String dificuldade, int pontuacao) {
         pontuacaoDificuldadeQuestao.put(dificuldade, pontuacao);
-        notificarObservers();
     }
 
     public void setQntdQuestoesPorJogo(int qntQuestoes) {
         this.qntdQuestoesPorJogo = qntQuestoes;
-        notificarObservers();
     }
-
-    public Jogador getJogador() {
-        return jogador;
-    }
-    public void setJogador(Jogador jogador) {}
 
     @Override
     public String toString() {
