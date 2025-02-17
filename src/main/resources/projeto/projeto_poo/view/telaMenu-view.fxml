@@ -55,7 +55,7 @@
             <!-- Quiz 2 -->
             <HBox prefHeight="40.0" prefWidth="720.0" spacing="15" style="-fx-background-color: #fff; -fx-padding: 10px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
                <VBox prefHeight="30.0" prefWidth="299.0" spacing="5.0">
-                  <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Java - Básico" textAlignment="CENTER">
+                  <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="POO - Básico" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -67,7 +67,31 @@
                <VBox prefHeight="30.0" prefWidth="91.0" spacing="2">
                   <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="05 questões" />
                </VBox>
-               <Button fx:id="btnJavaQuiz" alignment="CENTER" contentDisplay="TOP" onAction="#teste" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
+               <Button fx:id="btnPOOFacil" alignment="CENTER" contentDisplay="TOP" onAction="#iniciarPOOFacil" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
+            </HBox>
+            <HBox prefHeight="40.0" prefWidth="720.0" spacing="15" style="-fx-background-color: #fff; -fx-padding: 10px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
+               <children>
+                  <VBox prefHeight="30.0" prefWidth="299.0" spacing="5.0">
+                     <children>
+                        <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="300.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Estruturas de Dados - Básico" textAlignment="CENTER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="30.0" prefWidth="73.0" spacing="2">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="76.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Fácil" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="30.0" prefWidth="91.0" spacing="2">
+                     <children>
+                        <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="05 questões" />
+                     </children>
+                  </VBox>
+                  <Button fx:id="btnEDFacil" alignment="CENTER" contentDisplay="TOP" onAction="#iniciarEDFacil" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
+               </children>
             </HBox>
             <HBox prefHeight="40.0" prefWidth="720.0" spacing="15" style="-fx-background-color: #fff; -fx-padding: 10px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
                <children>
@@ -90,14 +114,14 @@
                         <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="05 questões" />
                      </children>
                   </VBox>
-                  <Button fx:id="btnJavaQuiz1" alignment="CENTER" contentDisplay="TOP" onAction="#teste" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
+                  <Button fx:id="btnJavaFacil" alignment="CENTER" contentDisplay="TOP" onAction="#iniciarJavaFacil" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
                </children>
             </HBox>
             <HBox prefHeight="40.0" prefWidth="720.0" spacing="15" style="-fx-background-color: #fff; -fx-padding: 10px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
                <children>
                   <VBox prefHeight="30.0" prefWidth="299.0" spacing="5.0">
                      <children>
-                        <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Java - Básico" textAlignment="CENTER">
+                        <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Java - Avançado" textAlignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -106,46 +130,22 @@
                   </VBox>
                   <VBox prefHeight="30.0" prefWidth="73.0" spacing="2">
                      <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="76.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Fácil" />
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="76.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Difícil" />
                      </children>
                   </VBox>
                   <VBox prefHeight="30.0" prefWidth="91.0" spacing="2">
                      <children>
-                        <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="10 questões" />
+                        <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="08 questões" />
                      </children>
                   </VBox>
-                  <Button fx:id="btnJavaQuiz2" alignment="CENTER" contentDisplay="TOP" onAction="#teste" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
-               </children>
-            </HBox>
-            <HBox prefHeight="40.0" prefWidth="720.0" spacing="15" style="-fx-background-color: #fff; -fx-padding: 10px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
-               <children>
-                  <VBox prefHeight="30.0" prefWidth="299.0" spacing="5.0">
-                     <children>
-                        <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Java - Básico" textAlignment="CENTER">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="30.0" prefWidth="73.0" spacing="2">
-                     <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="76.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Fácil" />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="30.0" prefWidth="91.0" spacing="2">
-                     <children>
-                        <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="10 questões" />
-                     </children>
-                  </VBox>
-                  <Button fx:id="btnJavaQuiz3" alignment="CENTER" contentDisplay="TOP" onAction="#teste" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
+                  <Button fx:id="btnJavaDificil" alignment="CENTER" contentDisplay="TOP" onAction="#iniciarJavaDificil" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
                </children>
             </HBox>
             <HBox fx:id="lblQiestoes5" prefHeight="40.0" prefWidth="720.0" spacing="15" style="-fx-background-color: #fff; -fx-padding: 10px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
                <children>
                   <VBox fx:id="lblQuestoes" prefHeight="30.0" prefWidth="299.0" spacing="5.0">
                      <children>
-                        <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Java - Básico" textAlignment="CENTER">
+                        <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="298.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Estruturas de Dados - Avançado" textAlignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -154,22 +154,22 @@
                   </VBox>
                   <VBox prefHeight="30.0" prefWidth="73.0" spacing="2">
                      <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="76.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Fácil" />
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="76.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Difícil" />
                      </children>
                   </VBox>
                   <VBox prefHeight="30.0" prefWidth="91.0" spacing="2">
                      <children>
-                        <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="10 questões" />
+                        <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="08 questões" />
                      </children>
                   </VBox>
-                  <Button fx:id="btnJavaQuiz4" alignment="CENTER" contentDisplay="TOP" onAction="#teste" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
+                  <Button fx:id="btnEDDificil" alignment="CENTER" contentDisplay="TOP" onAction="#iniciarEDDificil" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
                </children>
             </HBox>
             <HBox fx:id="lblQiestoes6" prefHeight="40.0" prefWidth="720.0" spacing="15" style="-fx-background-color: #fff; -fx-padding: 10px; -fx-border-radius: 10px; -fx-background-radius: 10px;">
                <children>
                   <VBox prefHeight="30.0" prefWidth="299.0" spacing="5.0">
                      <children>
-                        <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Java - Básico" textAlignment="CENTER">
+                        <Label contentDisplay="CENTER" prefHeight="30.0" prefWidth="158.0" style="-fx-font-size: 18; -fx-font-weight: bold;" text="C - Intermediário" textAlignment="CENTER">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -178,15 +178,15 @@
                   </VBox>
                   <VBox prefHeight="30.0" prefWidth="73.0" spacing="2">
                      <children>
-                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="76.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Fácil" />
+                        <Label alignment="CENTER" prefHeight="30.0" prefWidth="76.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Médio" />
                      </children>
                   </VBox>
                   <VBox prefHeight="30.0" prefWidth="91.0" spacing="2">
                      <children>
-                        <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="10 questões" />
+                        <Label fx:id="lblQuestoes" prefHeight="30.0" prefWidth="83.0" style="-fx-font-size: 14; -fx-text-fill: gray;" text="07 questões" />
                      </children>
                   </VBox>
-                  <Button fx:id="btnJavaQuiz5" alignment="CENTER" contentDisplay="TOP" onAction="#teste" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
+                  <Button fx:id="btnCMedio" alignment="CENTER" contentDisplay="TOP" onAction="#iniciarCMedio" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #00b894; -fx-text-fill: white; -fx-font-size: 14px;" text="▶" />
                </children>
             </HBox>
 
