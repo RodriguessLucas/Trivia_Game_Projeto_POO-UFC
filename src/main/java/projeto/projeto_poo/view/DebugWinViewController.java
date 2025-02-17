@@ -5,9 +5,13 @@ import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextBoundsType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import projeto.projeto_poo.model.*;
+
 
 
 public class DebugWinViewController implements Observer {
@@ -52,6 +56,8 @@ public class DebugWinViewController implements Observer {
 
     public void initDebugWinViewController(Configuracoes config){
         this.debugWinJogo = new DebugWin(config);
+        lblPergunta.setWrapText(true);
+        btnLetraA.setWrapText(true);btnLetraB.setWrapText(true);btnLetraC.setWrapText(true);btnLetraD.setWrapText(true);
         adicionarObserver();
         carregarQuestao();
     }
@@ -80,11 +86,20 @@ public class DebugWinViewController implements Observer {
         Questao questaoAtual = debugWinJogo.getQuestaoAtual();
         System.out.println("Resposta: " + questaoAtual.getCorreta());
         lblPergunta.setText(questaoAtual.getPergunta());
+        ajustarFonteLabel(lblPergunta, questaoAtual.getPergunta());
+
 
         btnLetraA.setText(questaoAtual.getAlternativas().get(0));
         btnLetraB.setText(questaoAtual.getAlternativas().get(1));
         btnLetraC.setText(questaoAtual.getAlternativas().get(2));
         btnLetraD.setText(questaoAtual.getAlternativas().get(3));
+
+        ajustarFonteBotao(btnLetraA);
+        ajustarFonteBotao(btnLetraB);
+        ajustarFonteBotao(btnLetraC);
+        ajustarFonteBotao(btnLetraD);
+
+
         lblExibirPontuacaoQuestao.setText("Pontuação da questão: " + debugWinJogo.getConfiguracoes().getPontuacaoPorDificuldade(questaoAtual.getDificuldade().getDescricao()));
 
         iniciarContadorDeTempo();
@@ -197,4 +212,39 @@ public class DebugWinViewController implements Observer {
         carregarQuestao();
 
     }
+
+    private void ajustarFonteBotao(Button botao) {
+        double tamanhoFonte = 16;
+        double larguraBotao = botao.getWidth() - 10;
+        Text textNode = new Text(botao.getText());
+        textNode.setFont(Font.font(tamanhoFonte));
+        textNode.setBoundsType(TextBoundsType.VISUAL);
+
+        while (textNode.getLayoutBounds().getWidth() > larguraBotao && tamanhoFonte > 8) {
+            tamanhoFonte -= 1;
+            textNode.setFont(Font.font(tamanhoFonte));
+        }
+        botao.setFont(Font.font(tamanhoFonte));
+    }
+
+
+    private void ajustarFonteLabel(Label label, String texto) {
+        double tamanhoFonte = 16;
+        double larguraMaxima = 600;
+
+        Text textNode = new Text(texto);
+        textNode.setFont(Font.font(tamanhoFonte));
+        textNode.setBoundsType(TextBoundsType.VISUAL);
+
+        while (textNode.getLayoutBounds().getWidth() > larguraMaxima && tamanhoFonte > 10) {
+            tamanhoFonte -= 2;
+            textNode.setFont(Font.font(tamanhoFonte));
+        }
+        label.setFont(Font.font(tamanhoFonte));
+        label.setText(texto);
+    }
+
+
+
+
 }
