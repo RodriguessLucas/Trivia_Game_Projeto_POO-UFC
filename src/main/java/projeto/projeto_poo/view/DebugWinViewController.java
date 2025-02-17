@@ -94,6 +94,7 @@ public class DebugWinViewController implements Observer {
         btnLetraC.setText(questaoAtual.getAlternativas().get(2));
         btnLetraD.setText(questaoAtual.getAlternativas().get(3));
 
+
         ajustarFonteBotao(btnLetraA);
         ajustarFonteBotao(btnLetraB);
         ajustarFonteBotao(btnLetraC);

@@ -41,16 +41,16 @@
    </StackPane>
 
    <VBox alignment="CENTER" spacing="15">
-      <Button fx:id="btnLetraA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#responderA" prefHeight="70.0" prefWidth="500" style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 10px;" text="Alternativa A" wrapText="true" />
-      <Button fx:id="btnLetraB" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#responderB" prefHeight="70.0" prefWidth="500" style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 10px;" text="Alternativa B" wrapText="true" />
-      <Button fx:id="btnLetraC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#responderC" prefHeight="70.0" prefWidth="500" style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 10px;" text="Alternativa C" wrapText="true" />
-      <Button fx:id="btnLetraD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#responderD" prefHeight="70.0" prefWidth="500" style="-fx-background-color: #0078D7; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 10px;" text="Alternativa D" wrapText="true" />
+      <Button fx:id="btnLetraA" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#responderA" prefHeight="70.0" prefWidth="500" style="-fx-background-color: #ffffff; -fx-text-fill: #191919; -fx-font-size: 18px; -fx-padding: 10px;" text="Alternativa A" wrapText="true" />
+      <Button fx:id="btnLetraB" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#responderB" prefHeight="70.0" prefWidth="500" style="-fx-background-color: #ffffff; -fx-text-fill: #191919; -fx-font-size: 18px; -fx-padding: 10px;" text="Alternativa B" wrapText="true" />
+      <Button fx:id="btnLetraC" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#responderC" prefHeight="70.0" prefWidth="500" style="-fx-background-color: #ffffff; -fx-text-fill: #191919; -fx-font-size: 18px; -fx-padding: 10px;" text="Alternativa C" wrapText="true" />
+      <Button fx:id="btnLetraD" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#responderD" prefHeight="70.0" prefWidth="500" style="-fx-background-color: #ffffff; -fx-text-fill: #191919; -fx-font-size: 18px; -fx-padding: 10px;" text="Alternativa D" wrapText="true" />
    </VBox>
 
    <!-- Botões inferiores (Pular Questão e Desistir) -->
    <HBox alignment="CENTER" spacing="50">
-      <Button fx:id="btnPularQuestao" onAction="#pularQuestao" prefWidth="200" style="-fx-background-color: #FFA500; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 12px;" text="Pular Questão" />
-      <Button fx:id="btnDesistir" onAction="#desistirJogo" prefWidth="200" style="-fx-background-color: #FF3333; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 12px;" text="Desistir" />
+      <Button fx:id="btnPularQuestao" onAction="#pularQuestao" prefWidth="200" style="-fx-background-color: #6bb8c0; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 12px;" text="Pular Questão" />
+      <Button fx:id="btnDesistir" onAction="#desistirJogo" prefWidth="200" style="-fx-background-color: #7ba89d; -fx-text-fill: white; -fx-font-size: 18px; -fx-padding: 12px;" text="Desistir" />
    </HBox>
 
    <!-- 🔥 Botão de Finalizar Jogo (inicialmente invisível) -->
