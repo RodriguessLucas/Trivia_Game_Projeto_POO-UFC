@@ -33,7 +33,6 @@ public class DebugWinView {
             e.printStackTrace();
             System.out.println("Erro ao abrir a tela do jogo.");
         }
-
     }
 
     public void initDebugWinView(Stage stage, Configuracoes config, Dificuldade dificuldade, Assunto assunto) {

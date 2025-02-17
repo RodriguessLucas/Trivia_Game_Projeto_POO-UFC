@@ -52,7 +52,7 @@ public class DebugWinViewController implements Observer {
 
     public void initDebugWinViewController(Configuracoes config){
         this.debugWinJogo = new DebugWin(config);
-        adicionarObserver();
+        debugWinJogo.attachObserver(this);
         carregarQuestao();
     }
 
@@ -78,6 +78,7 @@ public class DebugWinViewController implements Observer {
         }
 
         Questao questaoAtual = debugWinJogo.getQuestaoAtual();
+        System.out.println("Resposta: " + questaoAtual.getCorreta());
         lblPergunta.setText(questaoAtual.getPergunta());
 
         btnLetraA.setText(questaoAtual.getAlternativas().get(0));
@@ -90,13 +91,13 @@ public class DebugWinViewController implements Observer {
     }
 
     @FXML
-    private void responderA(){ processarResposta(0); }
+    private void responderA(){ processarResposta(1); }
     @FXML
-    private void responderB(){ processarResposta(1); }
+    private void responderB(){ processarResposta(2); }
     @FXML
-    private void responderC(){ processarResposta(2); }
+    private void responderC(){ processarResposta(3); }
     @FXML
-    private void responderD(){ processarResposta(3); }
+    private void responderD(){ processarResposta(4); }
 
     private void processarResposta(int resposta){
         debugWinJogo.responderQuestao(resposta);
@@ -169,6 +170,7 @@ public class DebugWinViewController implements Observer {
 
         TelaMenuView menuView = new TelaMenuView();
         menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador());
+        // arruma esse new jogador
     }
 
     @FXML
@@ -176,11 +178,12 @@ public class DebugWinViewController implements Observer {
         debugWinJogo.detachObserver(this);
 
         TelaMenuView menuView = new TelaMenuView();
-        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador());
+        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador());// arruma esse new jogador
     }
 
     @Override
     public void update() {
         carregarQuestao();
+
     }
 }

@@ -30,6 +30,7 @@ public class DebugWin {
         questoes = GerenciadorBanco.obterQuestoesAleatoria(configuracoes.getQntdQuestoesPorJogo());
         pontuacao = 0;
         maiorSequenciaAcerto = 0;
+        auxSequenciaAcerto = 0;
         iniciarAuxiliaresMap();
     }
 
@@ -41,6 +42,7 @@ public class DebugWin {
         this.assunto = assunto;
         pontuacao = 0;
         maiorSequenciaAcerto = 0;
+        auxSequenciaAcerto = 0;
         iniciarAuxiliaresMap();
     }
 
@@ -85,13 +87,13 @@ public class DebugWin {
         }
         else{
             auxErrosPorAssunto.put(questao.getAssunto(), auxErrosPorAssunto.get(questao.getAssunto()) + 1);
-            maiorSequenciaAcerto = auxSequenciaAcerto;
-            auxSequenciaAcerto = 0;
+            if(auxSequenciaAcerto > maiorSequenciaAcerto){
+                maiorSequenciaAcerto = auxSequenciaAcerto;
+                auxSequenciaAcerto = 0;
+            }
         }
-
         questaoAtual++;
         notificarObservers();
-
     }
 
     public void encerrarJogo(){
@@ -104,8 +106,6 @@ public class DebugWin {
         EstatisticaJogador.contabilizarErrosAssunto(auxErrosPorAssunto);
         EstatisticaJogador.atualizarEstatisticaJogador();
         auxAcertosPorAssunto.clear(); auxErrosPorAssunto.clear();
-
-
         //System.out.println("Encerrando Jogo"); notificar tela
     }
 
@@ -120,6 +120,10 @@ public class DebugWin {
     }
 
     public void notificarObservers() {
+        if(observers.isEmpty()){
+            System.out.println("Nenhum Observer foi encontrado");
+            return;
+        }
         for (Observer o : observers) {
             o.update();
         }

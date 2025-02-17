@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class EstatisticaJogador {
     private static int maiorSequenciaAcerto = 0;
-    private static int auxSequenciaAcerto = 0;
     private static String assuntoMaiorAcerto = "";
     private static String assuntoMenorAcerto = "";
     private  static int maiorPontuacao = 0;
@@ -39,7 +38,6 @@ public class EstatisticaJogador {
                 acertosPorAssunto.put(chave, acertosPorAssunto.get(chave) + valor);
                 notificar = true;
             }
-
         }
         if(notificar){
             notificarObservadores();
@@ -68,15 +66,9 @@ public class EstatisticaJogador {
 
     public static int getMaiorSequenciaAcerto() { return maiorSequenciaAcerto; }
     public static void setMaiorSequenciaAcerto(int aux) {
-        if(aux > auxSequenciaAcerto){
-            auxSequenciaAcerto = aux;
-
-            if(auxSequenciaAcerto > maiorSequenciaAcerto){
-                maiorSequenciaAcerto = auxSequenciaAcerto;
-                auxSequenciaAcerto = 0;
-            }
+        if(aux > maiorSequenciaAcerto){
+            maiorSequenciaAcerto = aux;
         }
-
     }
 
     public static String getAssuntoMaiorAcerto() { return assuntoMaiorAcerto; }
@@ -86,7 +78,11 @@ public class EstatisticaJogador {
     public static void setAssuntoMenorAcerto(String assunto) { }
 
     public static int getMaiorPontuacao() { return maiorPontuacao; }
-    public static void setMaiorPontuacao(int pontuacao) { maiorPontuacao = pontuacao; }
+    public static void setMaiorPontuacao(int pontuacao) {
+        if(pontuacao > maiorPontuacao){
+            maiorPontuacao = pontuacao;
+        }
+    }
 
     public static int getTotalAcertos() { return totalAcertos; }
     public static int getTotalErros() { return totalErros; }
