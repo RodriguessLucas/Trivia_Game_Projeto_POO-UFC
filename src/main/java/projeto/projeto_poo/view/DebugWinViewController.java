@@ -62,8 +62,8 @@ public class DebugWinViewController implements Observer {
         carregarQuestao();
     }
 
-    public void initDebugWinViewController(Dificuldade dificuldade, Assunto assunto, Configuracoes config){
-        this.debugWinJogo = new DebugWin(config, dificuldade, assunto);
+    public void initDebugWinViewController(Dificuldade dificuldade, Assunto assunto, Configuracoes config, int qntdQuestoes){
+        this.debugWinJogo = new DebugWin(config, dificuldade, assunto, qntdQuestoes);
         this.assunto = assunto;
         this.dificuldade = dificuldade;
         adicionarObserver();

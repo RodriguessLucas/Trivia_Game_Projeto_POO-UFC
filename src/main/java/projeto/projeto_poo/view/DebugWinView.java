@@ -35,7 +35,7 @@ public class DebugWinView {
         }
     }
 
-    public void initDebugWinView(Stage stage, Configuracoes config, Dificuldade dificuldade, Assunto assunto) {
+    public void initDebugWinView(Stage stage, Configuracoes config, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
         this.stage = stage;
 
         try{
@@ -43,7 +43,7 @@ public class DebugWinView {
             Parent root = loader.load();
 
             controller = loader.getController();
-            controller.initDebugWinViewController(dificuldade, assunto, config);
+            controller.initDebugWinViewController(dificuldade, assunto, config, qntdQuestoes);
 
             stage.setTitle("Debug & Win");
             stage.setScene(new Scene(root, 650, 800));

@@ -4,7 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import projeto.projeto_poo.model.Assunto;
 import projeto.projeto_poo.model.Configuracoes;
+import projeto.projeto_poo.model.Dificuldade;
 import projeto.projeto_poo.model.Jogador;
 
 public class TelaMenuViewController {
@@ -18,6 +20,10 @@ public class TelaMenuViewController {
     private Button btnConfiguracoes;
     @FXML
     private Button btnJogoAleatorio;
+
+    @FXML
+    private Button btnPythonFacilCurto;
+
 
     private Jogador jogador;
     private TelaMenuView view;
@@ -79,10 +85,11 @@ public class TelaMenuViewController {
     @FXML
     public void teste(){}
 
-
-
-
-
-
+    @FXML
+    public void iniciarPythonFacilCurto(){
+        DebugWinView telaDeJogoAleatorio = new DebugWinView();
+        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(),Configuracoes.getInstancia(jogador), Dificuldade.FACIL, Assunto.POO, 5);
+        System.out.println("Iniciando Debug & Win Personalizado!");
+    }
 
 }

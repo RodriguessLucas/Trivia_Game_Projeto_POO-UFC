@@ -34,7 +34,7 @@ public class DebugWin {
         iniciarAuxiliaresMap();
     }
 
-    public DebugWin(Configuracoes configuracoes, Dificuldade dificuldade, Assunto assunto) {
+    public DebugWin(Configuracoes configuracoes, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
         this.configuracoes = configuracoes;
         GerenciadorBanco.carregarQuestoes();
         questoes = GerenciadorBanco.obterQuestoesPersonalizada(configuracoes.getQntdQuestoesPorJogo(), dificuldade, assunto);
