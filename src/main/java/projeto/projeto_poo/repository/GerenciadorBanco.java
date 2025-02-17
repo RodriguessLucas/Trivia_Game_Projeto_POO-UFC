@@ -90,16 +90,11 @@ public class GerenciadorBanco {
                 String assuntoAux = Assunto.getAssuntoAleatorio().getDescricao();
                 Dificuldade dificuldadeAux = Dificuldade.getDificuldadeAleatoria();
                 Questao questaoAux = auxBancoQuestoes.get(assuntoAux).get(rand.nextInt(auxBancoQuestoes.size()));
-                System.out.println("Verificando dentro do questoes geradas antes de verificacao \n" + questaoAux.getDificuldade().getDescricao() + " " + questaoAux.getPergunta());
 
 
                 if(questaoAux.getDificuldade().equals(dificuldadeAux)) {
                     if (!questoesEscolhidas.contains(questaoAux)) {
                         questoesEscolhidas.add(questaoAux);
-                        System.out.println("Analisando a entrada das questoes");
-                        System.out.println(questaoAux.getDificuldade().getDescricao() + " " + questaoAux.getPergunta());
-                        System.out.println( dificuldadeAux.getDescricao());
-
                         questaoNaoRepetida = false;
                     }
                 }

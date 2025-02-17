@@ -9,9 +9,10 @@ import java.util.Map;
 
 public class EstatisticaJogador {
     private static int maiorSequenciaAcerto = 0;
+    private static int auxSequenciaAcerto = 0;
     private static String assuntoMaiorAcerto = "";
     private static String assuntoMenorAcerto = "";
-    private static int maiorPontuacao = 0;
+    private  static int maiorPontuacao = 0;
     private static int totalAcertos = 0;
     private static int totalErros = 0;
     private static Map<String, Integer> acertosPorAssunto = new HashMap<>();
@@ -26,26 +27,63 @@ public class EstatisticaJogador {
         }
     }
 
-    public static void contabilizarAcertosAssunto(String assunto, int pontos) {
-        acertosPorAssunto.put(assunto, acertosPorAssunto.getOrDefault(assunto, 0) + pontos);
-        totalAcertos += pontos;
-        notificarObservadores();
+    public static void contabilizarAcertosAssunto(Map<String, Integer> aux) {
+        boolean notificar = false;
+        for(Map.Entry<String, Integer> acerto : aux.entrySet()){
+            String chave = acerto.getKey();
+            int valor = acerto.getValue();
+
+            if(valor>0){
+                totalAcertos += valor;
+                System.out.println("Passando contabilizar acertos por assunto");
+                acertosPorAssunto.put(chave, acertosPorAssunto.get(chave) + valor);
+                notificar = true;
+            }
+
+        }
+        if(notificar){
+            notificarObservadores();
+        }
     }
 
-    public static void contabilizarErrosAssunto(String assunto, int pontos) {
-        errosPorAssunto.put(assunto, errosPorAssunto.getOrDefault(assunto, 0) + pontos);
-        totalErros += pontos;
-        notificarObservadores();
+    public static void contabilizarErrosAssunto(Map<String, Integer> aux) {
+        boolean notificar = false;
+
+        for(Map.Entry<String, Integer> erro : aux.entrySet()){
+            String chave = erro.getKey();
+            int valor = erro.getValue();
+
+            if(valor>0){
+                totalErros += valor;
+                System.out.println("Passando contabilizar erros por assunto");
+                errosPorAssunto.put(chave, acertosPorAssunto.get(chave) + valor);
+                notificar = true;
+            }
+        }
+        if(notificar){
+            notificarObservadores();
+        }
     }
+
 
     public static int getMaiorSequenciaAcerto() { return maiorSequenciaAcerto; }
-    public static void setMaiorSequenciaAcerto(int maiorSequencia) { maiorSequenciaAcerto = maiorSequencia; }
+    public static void setMaiorSequenciaAcerto(int aux) {
+        if(aux > auxSequenciaAcerto){
+            auxSequenciaAcerto = aux;
+
+            if(auxSequenciaAcerto > maiorSequenciaAcerto){
+                maiorSequenciaAcerto = auxSequenciaAcerto;
+                auxSequenciaAcerto = 0;
+            }
+        }
+
+    }
 
     public static String getAssuntoMaiorAcerto() { return assuntoMaiorAcerto; }
-    public static void setAssuntoMaiorAcerto(String assunto) { assuntoMaiorAcerto = assunto; }
+    public static void setAssuntoMaiorAcerto(String assunto) {  }
 
     public static String getAssuntoMenorAcerto() { return assuntoMenorAcerto; }
-    public static void setAssuntoMenorAcerto(String assunto) { assuntoMenorAcerto = assunto; }
+    public static void setAssuntoMenorAcerto(String assunto) { }
 
     public static int getMaiorPontuacao() { return maiorPontuacao; }
     public static void setMaiorPontuacao(int pontuacao) { maiorPontuacao = pontuacao; }
@@ -67,7 +105,9 @@ public class EstatisticaJogador {
     }
 
     public static void adicionarObservador(Observer observer) {
-        observador.add(observer);
+        if (!observador.contains(observer)) {
+            observador.add(observer);
+        }
     }
 
     public static void removerObservador(Observer observer) {

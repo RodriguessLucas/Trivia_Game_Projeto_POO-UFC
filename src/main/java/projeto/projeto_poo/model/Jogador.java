@@ -22,7 +22,9 @@ public class Jogador {
     }
 
     public void attachObserver(Observer observer) {
-        observers.add(observer);
+        if(!observers.contains(observer)){
+            observers.add(observer);
+        }
     }
 
     public void detachObserver(Observer observer) {

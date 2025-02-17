@@ -14,7 +14,9 @@ public class DebugWinView {
     private DebugWinViewController controller; // aqui pode dar erro sepa
     private Stage stage;
 
-    public DebugWinView(Stage stage, Configuracoes config) {
+    public DebugWinView() {}
+
+    public void initDebugWinView(Stage stage, Configuracoes config) {
         this.stage = stage;
 
         try{
@@ -34,7 +36,7 @@ public class DebugWinView {
 
     }
 
-    public DebugWinView(Stage stage, Configuracoes config, Dificuldade dificuldade, Assunto assunto) {
+    public void initDebugWinView(Stage stage, Configuracoes config, Dificuldade dificuldade, Assunto assunto) {
         this.stage = stage;
 
         try{

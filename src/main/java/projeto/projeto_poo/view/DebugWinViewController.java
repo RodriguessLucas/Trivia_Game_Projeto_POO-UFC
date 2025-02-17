@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import jdk.swing.interop.SwingInterOpUtils;
 import projeto.projeto_poo.model.*;
 
 
@@ -43,17 +42,17 @@ public class DebugWinViewController implements Observer {
     @FXML
     private Button btnFinalizarJogo;
 
-
     private DebugWin debugWinJogo;
     private DebugWinView debugWinView;
     private Dificuldade dificuldade;
     private Assunto assunto;
     private Timeline timer;
     private int tempoRestante;
+    private boolean observadorRegistrado = false; // ✅ Variável para evitar múltiplos observadores
 
     public void initDebugWinViewController(Configuracoes config){
         this.debugWinJogo = new DebugWin(config);
-        debugWinJogo.attachObserver(this);
+        adicionarObserver();
         carregarQuestao();
     }
 
@@ -61,8 +60,15 @@ public class DebugWinViewController implements Observer {
         this.debugWinJogo = new DebugWin(config, dificuldade, assunto);
         this.assunto = assunto;
         this.dificuldade = dificuldade;
-        debugWinJogo.attachObserver(this);
+        adicionarObserver();
         carregarQuestao();
+    }
+
+    private void adicionarObserver() {
+        if (!observadorRegistrado) { // ✅ Evita adicionar múltiplos observadores
+            debugWinJogo.attachObserver(this);
+            observadorRegistrado = true;
+        }
     }
 
     private void carregarQuestao(){
@@ -78,46 +84,36 @@ public class DebugWinViewController implements Observer {
         btnLetraB.setText(questaoAtual.getAlternativas().get(1));
         btnLetraC.setText(questaoAtual.getAlternativas().get(2));
         btnLetraD.setText(questaoAtual.getAlternativas().get(3));
-        // essa aqui é para apresentar a pontuação, não sei se é legal deixar a pontuacao na questao ou so dps de acertar ou errar
-        System.out.println(debugWinJogo.getConfiguracoes().getPontuacaoPorDificuldade(questaoAtual.getDificuldade().getDescricao()));
-        lblExibirPontuacaoQuestao.setText("pontuacao da questao: " + debugWinJogo.getConfiguracoes().getPontuacaoPorDificuldade(questaoAtual.getDificuldade().getDescricao()));
+        lblExibirPontuacaoQuestao.setText("Pontuação da questão: " + debugWinJogo.getConfiguracoes().getPontuacaoPorDificuldade(questaoAtual.getDificuldade().getDescricao()));
 
         iniciarContadorDeTempo();
-
     }
 
-    //aqui é a chamada ao clicar nos botoes das alternativas
-    // Pensei em ser so direto na processarResposta e os botoes chamar a mesma função, mas acho q da problema
     @FXML
-    private void responderA(){ processarResposta(1);}
+    private void responderA(){ processarResposta(0); }
     @FXML
-    private void responderB(){ processarResposta(2);}
+    private void responderB(){ processarResposta(1); }
     @FXML
-    private void responderC(){ processarResposta(3);}
+    private void responderC(){ processarResposta(2); }
     @FXML
-    private void responderD(){ processarResposta(4);}
+    private void responderD(){ processarResposta(3); }
 
     private void processarResposta(int resposta){
         debugWinJogo.responderQuestao(resposta);
         carregarQuestao();
     }
 
-
     private void iniciarContadorDeTempo() {
         if (timer != null) {
             timer.stop();
         }
 
-        if(debugWinJogo.getAssunto() == null && debugWinJogo.getDificuldade() == null ){
-            tempoRestante = debugWinJogo.getConfiguracoes().getTempoPorDificuldade("Aleatória");
-        }
-        else{
-            tempoRestante = debugWinJogo.getConfiguracoes().getTempoPorDificuldade(dificuldade.getDescricao());
-        }
+        tempoRestante = (debugWinJogo.getAssunto() == null && debugWinJogo.getDificuldade() == null)
+                ? debugWinJogo.getConfiguracoes().getTempoPorDificuldade("Aleatória")
+                : debugWinJogo.getConfiguracoes().getTempoPorDificuldade(dificuldade.getDescricao());
 
         lblExibirTempoPorPergunta.setText("Tempo: " + this.tempoRestante + "s");
 
-        // 🔥 Criando um contador que diminui o tempo a cada segundo
         timer = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             this.tempoRestante--;
             lblExibirTempoPorPergunta.setText("Tempo: " + this.tempoRestante + "s");
@@ -138,7 +134,6 @@ public class DebugWinViewController implements Observer {
             timer.stop();
         }
 
-        System.out.println("⏳ Tempo esgotado! Pulando para a próxima questão.");
         debugWinJogo.responderQuestao(-1);
         carregarQuestao();
     }
@@ -147,7 +142,6 @@ public class DebugWinViewController implements Observer {
         if (timer != null) {
             timer.stop();
         }
-        debugWinJogo.encerrarJogo();
         lblPergunta.setText("Questões Finalizadas!");
         lblPergunta.setText("Sua pontuação total: "+ debugWinJogo.getPontuacao());
         lblExibirTempoPorPergunta.setText("");
@@ -162,7 +156,7 @@ public class DebugWinViewController implements Observer {
 
         btnFinalizarJogo.setDisable(false);
         btnFinalizarJogo.setVisible(true);
-
+        debugWinJogo.encerrarJogo();
     }
 
     @FXML
@@ -171,19 +165,18 @@ public class DebugWinViewController implements Observer {
             timer.stop();
         }
 
-        System.out.println("🚨 Jogo cancelado! Retornando ao menu principal...");
+        debugWinJogo.detachObserver(this);
 
         TelaMenuView menuView = new TelaMenuView();
-        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador());// tem q arrumar o jogador
-
+        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador());
     }
 
     @FXML
     private void finalizarJogo() {
+        debugWinJogo.detachObserver(this);
 
         TelaMenuView menuView = new TelaMenuView();
-        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador()); // tem q arrumar o jogador
-        // adicionar metodo para atualizar as estatisticas
+        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), new Jogador());
     }
 
     @Override

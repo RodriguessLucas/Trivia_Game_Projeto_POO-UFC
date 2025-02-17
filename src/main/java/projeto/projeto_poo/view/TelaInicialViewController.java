@@ -39,7 +39,7 @@ public class TelaInicialViewController {
 
         System.out.println("Nome salvo no jogador: " + jogador.getNome());
 
-        // Troca para a Tela de Menu
+
         TelaMenuView telaMenu = new TelaMenuView();
         telaMenu.initTelaMenuView((Stage) btnIniciar.getScene().getWindow(), jogador);
     }

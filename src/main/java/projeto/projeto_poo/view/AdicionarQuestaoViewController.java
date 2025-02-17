@@ -29,6 +29,7 @@ public class AdicionarQuestaoViewController implements Observer {
     private AdicionarQuestaoView view;
     private ToggleGroup toggleCorreta;
 
+
     public void initAdicionarQuestaoViewController(Jogador jogador, AdicionarQuestaoView view) {
         this.jogador = jogador;
         this.view = view;
@@ -45,7 +46,6 @@ public class AdicionarQuestaoViewController implements Observer {
         radioAlternativaC.setToggleGroup(toggleCorreta);
         radioAlternativaD.setToggleGroup(toggleCorreta);
 
-        Questao.attachObserver(this);
     }
 
     @FXML
@@ -91,8 +91,9 @@ public class AdicionarQuestaoViewController implements Observer {
         List<String> alternativas = Arrays.asList(alternativaA, alternativaB, alternativaC, alternativaD);
         Questao novaQuestao = new Questao(enunciado, alternativas, correta, dificuldade, assunto);
 
+        novaQuestao.attachObserver(this);
         GerenciadorBanco.adicionarQuestao(novaQuestao); // tem que verificar aqui
-        Questao.notificarObservers();
+        novaQuestao.notificarObservers();
         GerenciadorBanco.imprimirQuestoes();
 
         System.out.println("Questão adicionada com sucesso!");
@@ -101,6 +102,7 @@ public class AdicionarQuestaoViewController implements Observer {
 
     @FXML
     public void voltarConfiguracoes() {
+
         ConfiguracaoView configuracaoView = new ConfiguracaoView();
         configuracaoView.initConfiguracaoView((Stage) btnCancelar.getScene().getWindow(), jogador);
         System.out.println("Voltando para a tela de configurações...");
@@ -108,6 +110,7 @@ public class AdicionarQuestaoViewController implements Observer {
 
     @Override
     public void update() {
+
         System.out.println("AdicionarQuestaoViewController: Uma nova questão foi adicionada!");
     }
 }

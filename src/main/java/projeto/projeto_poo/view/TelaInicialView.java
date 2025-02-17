@@ -36,6 +36,7 @@ public class TelaInicialView implements Observer {
 
     @Override
     public void update() {
+
         // Atualiza a interface gráfica caso o Model mude
         System.out.println("TelaInicialView: Nome do jogador atualizado para " + jogador.getNome());
     }

@@ -38,7 +38,7 @@ public class ConfiguracaoViewController implements Observer {
 
     @Override
     public void update() {
-        System.out.println("ConfiguracaoViewController: Configurações foram alteradas!");
+        //System.out.println("ConfiguracaoViewController: Configurações foram alteradas!"); notificar tela
         atualizarValores();
     }
 
@@ -78,10 +78,10 @@ public class ConfiguracaoViewController implements Observer {
 
             configuracoes.notificarObservers();
 
-            System.out.println("Configurações salvas: " + configuracoes);
+            //System.out.println("Configurações salvas: " + configuracoes); notificar tela
             voltarMenu();
         } catch (NumberFormatException e) {
-            System.out.println("Erro: Certifique-se de inserir apenas números.");
+            //System.out.println("Erro: Certifique-se de inserir apenas números."); notificar tela
         }
     }
 
@@ -90,18 +90,20 @@ public class ConfiguracaoViewController implements Observer {
         Stage stageAtual = (Stage) btnAdicionarQuestao.getScene().getWindow();
 
         if (stageAtual == null) {
-            System.out.println("Erro: Stage está NULL ao abrir AdicionarQuestaoView.");
+            //System.out.println("Erro: Stage está NULL ao abrir AdicionarQuestaoView.");
             return;
         }
 
         AdicionarQuestaoView adicionarQuestao = new AdicionarQuestaoView();
         adicionarQuestao.initAdicionarQuestaoView(stageAtual, jogador);
-        System.out.println("Indo para a tela de adicionar questão...");
+        //System.out.println("Indo para a tela de adicionar questão...");
     }
 
 
     @FXML
     public void voltarMenu() {
+        configuracoes.detachObserver(this);
+        configuracoes.notificarObservers();
         TelaMenuView telaMenu = new TelaMenuView();
         telaMenu.initTelaMenuView((Stage) btnSalvar.getScene().getWindow(), jogador);
         System.out.println("Voltando para a tela do menu.");

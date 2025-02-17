@@ -4,16 +4,22 @@ import projeto.projeto_poo.repository.GerenciadorBanco;
 import projeto.projeto_poo.view.Observer;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class DebugWin {
     private List<Questao> questoes;
     private int pontuacao;
+    private int maiorSequenciaAcerto;
+    private int auxSequenciaAcerto;
     private int questaoAtual;
     private Dificuldade dificuldade;
     private Assunto assunto;
     private Configuracoes configuracoes;
+    private static Map<String, Integer> auxAcertosPorAssunto = new HashMap<>();
+    private static Map<String, Integer> auxErrosPorAssunto = new HashMap<>();
     private ArrayList<Observer> observers = new ArrayList<>();
 
     public DebugWin() {}
@@ -23,7 +29,8 @@ public class DebugWin {
         GerenciadorBanco.carregarQuestoes();
         questoes = GerenciadorBanco.obterQuestoesAleatoria(configuracoes.getQntdQuestoesPorJogo());
         pontuacao = 0;
-        imprimir();
+        maiorSequenciaAcerto = 0;
+        iniciarAuxiliaresMap();
     }
 
     public DebugWin(Configuracoes configuracoes, Dificuldade dificuldade, Assunto assunto) {
@@ -33,6 +40,15 @@ public class DebugWin {
         this.dificuldade = dificuldade;
         this.assunto = assunto;
         pontuacao = 0;
+        maiorSequenciaAcerto = 0;
+        iniciarAuxiliaresMap();
+    }
+
+    private void iniciarAuxiliaresMap(){
+        for (Assunto assunto : Assunto.values()) {
+            auxAcertosPorAssunto.put(assunto.getDescricao(), 0);
+            auxErrosPorAssunto.put(assunto.getDescricao(), 0);
+        }
     }
 
     public int getPontuacao() { return this.pontuacao; }
@@ -47,6 +63,8 @@ public class DebugWin {
     public Assunto getAssunto() { return this.assunto; }
     public void setAssunto(Assunto assunto) { this.assunto = assunto;}
 
+    public int getMaiorSequenciaAcerto() { return this.maiorSequenciaAcerto; }
+    public void setMaiorSequenciaAcerto(int maiorSequenciaAcerto) {}
 
     public boolean temMaisQuestao(){
         return questaoAtual < questoes.size();
@@ -61,29 +79,40 @@ public class DebugWin {
 
         Questao questao = questoes.get(questaoAtual);
         if(questao.verificarResposta(resposta) ){
+            auxAcertosPorAssunto.put(questao.getAssunto(), auxAcertosPorAssunto.get(questao.getAssunto()) + 1);
             pontuacao+= configuracoes.getPontuacaoPorDificuldade(questao.getDificuldade().getDescricao());
-            EstatisticaJogador.contabilizarAcertosAssunto(questao.getAssunto(),1 );
+            auxSequenciaAcerto++;
         }
         else{
-            EstatisticaJogador.contabilizarErrosAssunto(questao.getAssunto(),1);
+            auxErrosPorAssunto.put(questao.getAssunto(), auxErrosPorAssunto.get(questao.getAssunto()) + 1);
+            maiorSequenciaAcerto = auxSequenciaAcerto;
+            auxSequenciaAcerto = 0;
         }
+
         questaoAtual++;
         notificarObservers();
 
-        // tem que da uma arrumada, pois está adicionando direto nas estatisticas
     }
 
     public void encerrarJogo(){
-        EstatisticaJogador.atualizarEstatisticaJogador();
+        EstatisticaJogador.setMaiorPontuacao(maiorSequenciaAcerto);
         if(pontuacao > EstatisticaJogador.getMaiorPontuacao()){
             EstatisticaJogador.setMaiorPontuacao(pontuacao);
         }
-        //tem mais coisas, como maior sequencia de acerto
-        System.out.println("Encerrando Jogo");
+        EstatisticaJogador.setMaiorSequenciaAcerto(maiorSequenciaAcerto);
+        EstatisticaJogador.contabilizarAcertosAssunto(auxAcertosPorAssunto);
+        EstatisticaJogador.contabilizarErrosAssunto(auxErrosPorAssunto);
+        EstatisticaJogador.atualizarEstatisticaJogador();
+        auxAcertosPorAssunto.clear(); auxErrosPorAssunto.clear();
+
+
+        //System.out.println("Encerrando Jogo"); notificar tela
     }
 
     public void attachObserver(Observer observer) {
-        observers.add(observer);
+        if(!observers.contains(observer)){
+            observers.add(observer);
+        }
     }
 
     public void detachObserver(Observer observer) {
@@ -95,14 +124,5 @@ public class DebugWin {
             o.update();
         }
     }
-
-    public void imprimir(){
-        for(Questao questao: questoes){
-            System.out.println(questao.getDificuldade().getDescricao() + questao.getPergunta()+"\n");
-        }
-
-    }
-
-
 
 }

@@ -44,6 +44,5 @@ public class ConfiguracaoView implements Observer {
         }
     }
 
-    public void teste(){}
 
 }

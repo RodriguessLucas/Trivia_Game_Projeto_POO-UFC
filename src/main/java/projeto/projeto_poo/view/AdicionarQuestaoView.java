@@ -12,6 +12,7 @@ public class AdicionarQuestaoView implements Observer {
     private Stage stage;
     private AdicionarQuestaoViewController controller;
 
+
     public void initAdicionarQuestaoView(Stage stage, Jogador jogador) {
         if (stage == null) {
             System.out.println("Erro: Stage está NULL ao iniciar AdicionarQuestaoView.");
@@ -20,6 +21,7 @@ public class AdicionarQuestaoView implements Observer {
 
         this.stage = stage;
 
+
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaAdicionarQuestao-view.fxml"));
             Parent root = loader.load();
@@ -27,7 +29,6 @@ public class AdicionarQuestaoView implements Observer {
             controller = loader.getController();
             controller.initAdicionarQuestaoViewController(jogador, this);
 
-            Questao.attachObserver(this);
 
             stage.setTitle("Debug & Win");
             stage.setScene(new Scene(root, 650, 800));

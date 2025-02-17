@@ -38,16 +38,10 @@ public class TelaMenuViewController {
     }
 
 
-    /*
-        Aqui precisamos ir call para conectar os botoes,
-        os botoes para iniciar jogo aleatorio
-        botoes para iniciar jogo dos quizz que estao feitos no menu de rolagem
-     */
-
     @FXML
     public  void iniciarJogoAleatorio() {
-
-        DebugWinView telaDeJogoAleatorio = new DebugWinView( (Stage) btnJogoAleatorio.getScene().getWindow(), Configuracoes.getInstancia());
+        DebugWinView telaDeJogoAleatorio = new DebugWinView();
+        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(), Configuracoes.getInstancia());
         System.out.println("Iniciando Debug & Win aleatorio");
         // aqui é do botao iniciar jogo aleatorio
     }

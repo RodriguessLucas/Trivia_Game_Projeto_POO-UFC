@@ -11,7 +11,7 @@ public class Questao {
     private List<String> alternativas;
     private Dificuldade dificuldade;
     private int correta;
-    private static List<Observer> observers = new ArrayList<>();
+    private  List<Observer> observers = new ArrayList<>();
 
     public Questao() {}
 
@@ -53,15 +53,16 @@ public class Questao {
         return resposta == correta;
     }
 
-    public static void attachObserver(Observer observer) {
-        observers.add(observer);
+    public void attachObserver(Observer observer) {
+        if(!observers.contains(observer)){
+            observers.add(observer);
+        }
     }
-
-    public static void detachObserver(Observer observer) {
+    public  void detachObserver(Observer observer) {
         observers.remove(observer);
     }
 
-    public static void notificarObservers() {
+    public  void notificarObservers() {
         for (Observer observer : observers) {
             observer.update();
         }
