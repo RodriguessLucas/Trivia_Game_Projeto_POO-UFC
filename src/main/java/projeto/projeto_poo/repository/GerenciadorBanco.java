@@ -15,10 +15,20 @@ import java.util.*;
 
 public class GerenciadorBanco {
     private static final String XML_PATH = "src/main/resources/projeto/projeto_poo/data/questions.xml";
-    private static Map<String, List<Questao>> bancoQuestoes = new HashMap<>();
+    private static Map<String, List<Questao>> bancoQuestoes;
+
+    public GerenciadorBanco() {
+        bancoQuestoes = new HashMap<>();
+        carregarQuestoes();
+    }
+
+    public Map<String, List<Questao>> getBancoQuestoes() {
+        return bancoQuestoes;
+    }
+    public void setBancoQuestoes(){}
 
 
-    public static void carregarQuestoes(){
+    public void carregarQuestoes(){
         bancoQuestoes.clear();
 
         try {
@@ -51,7 +61,7 @@ public class GerenciadorBanco {
                         alternativas.add(alternativaNodes.item(j).getTextContent());
                     }
 
-                    Questao questao = new Questao(pergunta, alternativas, correta, dificuldade.getDescricao(), assunto);
+                    Questao questao = new Questao(pergunta, alternativas, correta, dificuldade, assunto);
 
                     // Adicionando ao HashMap
                     bancoQuestoes.putIfAbsent(assunto, new ArrayList<>());
@@ -75,12 +85,12 @@ public class GerenciadorBanco {
         return aux;
     }
 
-    public static void adicionarQuestao(Questao questao) {
+    public void adicionarQuestao(Questao questao) {
         bancoQuestoes.putIfAbsent(questao.getAssunto(), new ArrayList<>());
         bancoQuestoes.get(questao.getAssunto()).add(questao);
     }
 
-    public static List<Questao> obterQuestoesAleatoria(int quantidade) {
+    public List<Questao> obterQuestoesAleatoria(int quantidade) {
         Map<String, List<Questao>> auxBancoQuestoes = bancoQuestoes;
         embaralharQuestoes(5, auxBancoQuestoes);
 
@@ -106,7 +116,7 @@ public class GerenciadorBanco {
         return questoesEscolhidas;
     }
 
-    public static List<Questao> obterQuestoesPersonalizada(int quantidade, Dificuldade dificuldade, Assunto assunto) {
+    public List<Questao> obterQuestoesPersonalizada(int quantidade, Dificuldade dificuldade, Assunto assunto) {
         ArrayList<Questao> auxListaQuestaoPorDificuldade = new ArrayList<>();
         ArrayList<Questao> questoesPersonalizada = new ArrayList<>();
 
@@ -125,7 +135,8 @@ public class GerenciadorBanco {
         return questoesPersonalizada;
     }
 
-    public static void imprimirQuestoes() {
+    // só para finalizade de olhar se esta indo certinho no terminal
+    public void imprimirQuestoes() {
         for (Map.Entry<String, List<Questao>> entry : bancoQuestoes.entrySet()) {
             System.out.println("Categoria: " + entry.getKey());
             for (Questao questao : entry.getValue()) {
