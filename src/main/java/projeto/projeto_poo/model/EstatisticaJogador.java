@@ -1,10 +1,6 @@
 package projeto.projeto_poo.model;
 
-import projeto.projeto_poo.view.Observer;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class EstatisticaJogador {
@@ -17,17 +13,15 @@ public class EstatisticaJogador {
     private static Map<String, Integer> acertosPorAssunto = new HashMap<>();
     private static Map<String, Integer> errosPorAssunto = new HashMap<>();
 
-    private static final List<Observer> observador = new ArrayList<>();
 
-    static {
+    public EstatisticaJogador() {
         for (Assunto assunto : Assunto.values()) {
             acertosPorAssunto.put(assunto.getDescricao(), 0);
             errosPorAssunto.put(assunto.getDescricao(), 0);
         }
     }
 
-    public static void contabilizarAcertosAssunto(Map<String, Integer> aux) {
-        boolean notificar = false;
+    public void contabilizarAcertosAssunto(Map<String, Integer> aux) {
         for(Map.Entry<String, Integer> acerto : aux.entrySet()){
             String chave = acerto.getKey();
             int valor = acerto.getValue();
@@ -36,16 +30,11 @@ public class EstatisticaJogador {
                 totalAcertos += valor;
                 System.out.println("Passando contabilizar acertos por assunto");
                 acertosPorAssunto.put(chave, acertosPorAssunto.get(chave) + valor);
-                notificar = true;
             }
-        }
-        if(notificar){
-            notificarObservadores();
         }
     }
 
-    public static void contabilizarErrosAssunto(Map<String, Integer> aux) {
-        boolean notificar = false;
+    public void contabilizarErrosAssunto(Map<String, Integer> aux) {
 
         for(Map.Entry<String, Integer> erro : aux.entrySet()){
             String chave = erro.getKey();
@@ -55,14 +44,10 @@ public class EstatisticaJogador {
                 totalErros += valor;
                 System.out.println("Passando contabilizar erros por assunto");
                 errosPorAssunto.put(chave, acertosPorAssunto.get(chave) + valor);
-                notificar = true;
+
             }
         }
-        if(notificar){
-            notificarObservadores();
-        }
     }
-
 
     public static int getMaiorSequenciaAcerto() { return maiorSequenciaAcerto; }
     public static void setMaiorSequenciaAcerto(int aux) {
@@ -72,10 +57,10 @@ public class EstatisticaJogador {
     }
 
     public static String getAssuntoMaiorAcerto() { return assuntoMaiorAcerto; }
-    public static void setAssuntoMaiorAcerto(String assunto) {  }
+    public static void setAssuntoMaiorAcerto() {  }
 
     public static String getAssuntoMenorAcerto() { return assuntoMenorAcerto; }
-    public static void setAssuntoMenorAcerto(String assunto) { }
+    public static void setAssuntoMenorAcerto() { }
 
     public static int getMaiorPontuacao() { return maiorPontuacao; }
     public static void setMaiorPontuacao(int pontuacao) {
@@ -97,36 +82,6 @@ public class EstatisticaJogador {
                 .max(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey)
                 .orElse("");
-        notificarObservadores();
     }
 
-    public static void adicionarObservador(Observer observer) {
-        if (!observador.contains(observer)) {
-            observador.add(observer);
-        }
-    }
-
-    public static void removerObservador(Observer observer) {
-        observador.remove(observer);
-    }
-
-    private static void notificarObservadores() {
-        for (Observer observer : observador) {
-            observer.update();
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "{\n" +
-                "  \"maiorSequenciaAcerto\": " + maiorSequenciaAcerto + ",\n" +
-                "  \"assuntoMaiorAcerto\": \"" + assuntoMaiorAcerto + "\",\n" +
-                "  \"assuntoMenorAcerto\": \"" + assuntoMenorAcerto + "\",\n" +
-                "  \"maiorPontuacao\": " + maiorPontuacao + ",\n" +
-                "  \"totalAcertos\": " + totalAcertos + ",\n" +
-                "  \"totalErros\": " + totalErros + ",\n" +
-                "  \"acertosPorAssunto\": " + acertosPorAssunto + ",\n" +
-                "  \"errosPorAssunto\": " + errosPorAssunto + "\n" +
-                "}";
-    }
 }
