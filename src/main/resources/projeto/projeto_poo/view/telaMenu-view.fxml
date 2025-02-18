@@ -199,7 +199,6 @@
    <HBox alignment="CENTER" prefHeight="186.0" prefWidth="1054.0" spacing="50" style="-fx-padding: 20px;">
       <Button fx:id="btnConfiguracoes" mnemonicParsing="false" onAction="#configuracoes" prefHeight="50.0" prefWidth="80.0" styleClass="circular-button" text="Configurações" />
       <Button fx:id="btnEstatisticas" mnemonicParsing="false" onAction="#estatisticas" prefHeight="50.0" prefWidth="80.0" styleClass="circular-button" text="Estatísticas" />
-      <Button fx:id="btnSobre" mnemonicParsing="false" onAction="#teste" prefHeight="50.0" prefWidth="80.0" styleClass="circular-button" text="Sobre" />
       <Button fx:id="btnTelaInicio" mnemonicParsing="false" onAction="#irTelaInicial" prefHeight="50.0" prefWidth="80.0" styleClass="circular-button" text="Tela inicial" />
    </HBox>
 

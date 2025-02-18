@@ -211,11 +211,6 @@ public class Model {
         debugWin = null;
     }
 
-
-
-
-
-
     /*
            METODOS PARA OS OBSERVADORES
      */
