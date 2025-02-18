@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import projeto.projeto_poo.model.Assunto;
-import projeto.projeto_poo.model.Configuracoes;
-import projeto.projeto_poo.model.Dificuldade;
-import projeto.projeto_poo.model.Jogador;
+import projeto.projeto_poo.model.*;
 
 public class TelaMenuViewController {
 
@@ -41,13 +38,13 @@ public class TelaMenuViewController {
     private static final int MEDIO_QUESTOES = 7;
     private static final int DIFICIL_QUESTOES = 8;
 
-    private Jogador jogador;
+    private QuizModel model;
     private TelaMenuView view;
 
-    public void initTelaMenuViewController(Jogador jogador, TelaMenuView view) {
-        this.jogador = jogador;
+    public void initTelaMenuViewController(QuizModel model, TelaMenuView view) {
+        this.model = model;
         this.view = view;
-        setMensagem(jogador.getNome());
+        setMensagem(model.getJogador().getNome());
     }
 
     @FXML
@@ -103,15 +100,11 @@ public class TelaMenuViewController {
         iniciarJogo(Dificuldade.MEDIO, Assunto.C, MEDIO_QUESTOES);
     }
 
+
     private void iniciarJogo(Dificuldade dificuldade, Assunto assunto, int questoes) {
         DebugWinView telaDeJogo = new DebugWinView();
-        telaDeJogo.initDebugWinView(
-                (Stage) btnJogoAleatorio.getScene().getWindow(),
-                Configuracoes.getInstancia(jogador),
-                dificuldade,
-                assunto,
-                questoes
-        );
+        telaDeJogo.initialize((Stage) btnJogoAleatorio.getScene().getWindow(), model, dificuldade, assunto, questoes);
+
     }
 
     @FXML

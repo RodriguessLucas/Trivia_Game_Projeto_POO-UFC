@@ -21,18 +21,18 @@ public class DebugWin {
         inicializarMapasDeAssuntos();
     }
 
-    public DebugWin(Configuracoes configuracoes){
-        this.pontuacao = 0;
-        this.maiorSequenciaDeAcertos = 0;
-        this.sequenciaAtualDeAcertos = 0;
-        inicializarMapasDeAssuntos();
-    }
 
     private void inicializarMapasDeAssuntos() {
         for (Assunto assunto : Assunto.values()) {
             acertosPorAssunto.put(assunto.getDescricao(), 0);
             errosPorAssunto.put(assunto.getDescricao(), 0);
         }
+    }
+    public List<Questao> getQuestoes() {
+        return questoes;
+    }
+    public void setQuestoes(List<Questao> questoes) {
+        this.questoes = questoes;
     }
 
     public int getPontuacao() {
@@ -63,16 +63,16 @@ public class DebugWin {
         return errosPorAssunto;
     }
 
-    public boolean temMaisQuestoes() {
+    public boolean temMaisQuestao() {
         return indiceQuestaoAtual < questoes.size();
     }
 
     public Questao getQuestaoAtual() {
-        return temMaisQuestoes() ? questoes.get(indiceQuestaoAtual) : null;
+        return temMaisQuestao() ? questoes.get(indiceQuestaoAtual) : null;
     }
 
     public void responderQuestao(int resposta, int pontos) {
-        if (!temMaisQuestoes()) return;
+        if (!temMaisQuestao()) return;
 
         Questao questaoAtual = questoes.get(indiceQuestaoAtual);
 

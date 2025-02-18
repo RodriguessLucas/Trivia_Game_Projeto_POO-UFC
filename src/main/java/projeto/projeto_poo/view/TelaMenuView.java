@@ -1,6 +1,5 @@
 package projeto.projeto_poo.view;
 
-import projeto.projeto_poo.model.Jogador;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -15,23 +14,14 @@ public class TelaMenuView implements Observer {
     private static final String WINDOW_TITLE = "Debug & Win";
 
     private QuizModel model;
-    private Jogador jogador;
     private TelaMenuViewController controller;
     private Stage stage;
 
-    @Override
-    public void update() {
-        System.out.println("TelaMenuView: Nome do jogador atualizado para " + jogador.getNome());
-        if (controller != null) {
-            controller.setMensagem(jogador.getNome());
-        }
-    }
-
-    public void initTelaMenuView(Stage stage, Jogador jogador) {
+    public void initTelaMenuView(Stage stage, QuizModel model) {
         this.stage = stage;
-        this.jogador = jogador;
+        this.model = model;
 
-        jogador.attachObserver(this);
+        model.attachObserver(this);
 
         Parent root = carregarFXML();
         if (root != null) {
@@ -49,7 +39,6 @@ public class TelaMenuView implements Observer {
                 System.err.println("Erro: Controlador não foi carregado corretamente!");
                 return null;
             }
-            controller.initTelaMenuViewController(jogador, this);
 
             return root;
         } catch (IOException e) {
@@ -63,5 +52,13 @@ public class TelaMenuView implements Observer {
         stage.setTitle(WINDOW_TITLE);
         stage.setScene(new Scene(root, 650, 800));
         stage.show();
+    }
+
+    @Override
+    public void update() {
+        System.out.println("TelaMenuView: Nome do jogador atualizado para " + model.getJogador().getNome());
+        if (controller != null) {
+            controller.setMensagem(model.getJogador().getNome());
+        }
     }
 }

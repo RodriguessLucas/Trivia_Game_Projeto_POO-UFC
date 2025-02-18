@@ -77,7 +77,7 @@ public class AdicionarQuestaoViewController implements Observer {
 
         try {
             gerenciadorBanco.adicionarQuestao(novaQuestao); // Agora utilizando a instância
-            novaQuestao.notificarObservers();
+            //novaQuestao.notificarObservers();
             mostrarAlertaTemporario("Aviso", "Questão salva com sucesso! Voltando para configurações...", Alert.AlertType.INFORMATION, 2);
             voltarConfiguracoes();
         } catch (Exception e) {
@@ -123,7 +123,7 @@ public class AdicionarQuestaoViewController implements Observer {
         // Criando a questão
         List<String> alternativas = Arrays.asList(alternativaA, alternativaB, alternativaC, alternativaD);
         Questao novaQuestao = new Questao(enunciado, alternativas, correta, dificuldadeEnum, assuntoEnum.getDescricao());
-        novaQuestao.attachObserver(this);
+        //novaQuestao.attachObserver(this);
 
         return Optional.of(novaQuestao);
     }

@@ -7,36 +7,35 @@ import javafx.stage.Stage;
 import projeto.projeto_poo.model.Assunto;
 import projeto.projeto_poo.model.Configuracoes;
 import projeto.projeto_poo.model.Dificuldade;
+import projeto.projeto_poo.model.QuizModel;
 
 import java.io.IOException;
 
 public class DebugWinView {
+    private QuizModel model;
     private DebugWinViewController controller;
     private Stage stage;
 
     public DebugWinView() {
     }
 
-    public void initialize(Stage stage, Configuracoes config) {
+
+
+    public void initialize(Stage stage, QuizModel model, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
         this.stage = stage;
-        loadScene(config, null, null, 0);
+        loadScene(dificuldade, assunto, qntdQuestoes, model);
     }
 
-    public void initialize(Stage stage, Configuracoes config, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
-        this.stage = stage;
-        loadScene(config, dificuldade, assunto, qntdQuestoes);
-    }
-
-    private void loadScene(Configuracoes config, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
+    private void loadScene( Dificuldade dificuldade, Assunto assunto, int qntdQuestoes, QuizModel Model) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaDebugWin-view.fxml"));
             Parent root = loader.load();
             controller = loader.getController();
 
             if (dificuldade == null || assunto == null || qntdQuestoes == 0) {
-                controller.initDebugWinViewController(config);
+                controller.initializeController(null, null, 0, model);
             } else {
-                controller.initDebugWinViewController(dificuldade, assunto, config, qntdQuestoes);
+                controller.initializeController(dificuldade, assunto, qntdQuestoes, model);
             }
 
             stage.setTitle("Debug & Win");

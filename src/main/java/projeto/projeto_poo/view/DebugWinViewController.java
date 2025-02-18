@@ -22,27 +22,28 @@ public class DebugWinViewController implements Observer {
     @FXML
     private Button btnLetraA, btnLetraB, btnLetraC, btnLetraD, btnPular, btnDesistir, btnFinalizar;
 
+    private QuizModel model;
     private DebugWin debugWin;
     private Dificuldade dificuldade;
     private Assunto assunto;
+    private int totalQuestoes;
     private Timeline timer;
     private int tempoRestante, qntdPulos = MAX_PULOS;
     private boolean isObserverAttached = false;
 
-    public void initializeController(Configuracoes config) {
-        initJogo(new DebugWin(config));
-        configurarTela();
-    }
-
-    public void initializeController(Dificuldade dificuldade, Assunto assunto, Configuracoes config, int totalQuestoes) {
+    public void initializeController(Dificuldade dificuldade, Assunto assunto, int totalQuestoes ,QuizModel model) {
         this.dificuldade = dificuldade;
         this.assunto = assunto;
-        initJogo(new DebugWin(config, dificuldade, assunto, totalQuestoes));
+        this.model = model;
+        this.totalQuestoes = totalQuestoes;
+        initJogo(new DebugWin());
+        //(config, dificuldade, assunto, totalQuestoes));
         configurarTela();
     }
 
     private void initJogo(DebugWin debugWin) {
         this.debugWin = debugWin;
+        model.iniciarQuizPersonalizado(dificuldade, assunto, totalQuestoes, debugWin);
         adicionarObserver();
     }
 
@@ -61,9 +62,13 @@ public class DebugWinViewController implements Observer {
 
     private void adicionarObserver() {
         if (!isObserverAttached) {
-            debugWin.attachObserver(this);
+            this.attachObserver(this);
             isObserverAttached = true;
         }
+    }
+
+    private void attachObserver(DebugWinViewController debugWinViewController) {
+        model.attachObserver(debugWinViewController);
     }
 
     private void carregarQuestao() {
@@ -87,7 +92,7 @@ public class DebugWinViewController implements Observer {
         btnLetraC.setText(alternativas[2]);
         btnLetraD.setText(alternativas[3]);
 
-        lblPontuacaoQuestao.setText("Pontuação: " + debugWin.getConfiguracoes().getPontuacaoPorDificuldade(questao.getDificuldade().getDescricao()));
+        lblPontuacaoQuestao.setText("Pontuação: " + model.getConfiguracoes().getPontuacaoPorDificuldade(questao.getDificuldade().getDescricao()));
     }
 
     private void iniciarContadorDeTempo() {
@@ -136,7 +141,7 @@ public class DebugWinViewController implements Observer {
     }
 
     private void processarResposta(int resposta) {
-        debugWin.responderQuestao(resposta);
+        debugWin.responderQuestao(resposta, );
         carregarQuestao();
     }
 
@@ -145,7 +150,7 @@ public class DebugWinViewController implements Observer {
         if (timer != null) timer.stop();
 
         if (qntdPulos > 0) {
-            debugWin.responderQuestao(-1);
+            debugWin.responderQuestao(-1, 0);
             carregarQuestao();
             qntdPulos--;
         } else {
