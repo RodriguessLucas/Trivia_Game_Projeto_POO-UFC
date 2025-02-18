@@ -14,7 +14,7 @@
 
     <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #00b894;" text="Adicionar Nova Questão" textFill="#00b894">
       <font>
-         <Font size="15.0" />
+         <Font name="Baloo 2 Regular" size="15.0" />
       </font></Label>
 
 
@@ -22,31 +22,31 @@
       <font>
          <Font size="15.0" />
       </font></Label>
-    <TextField fx:id="txtEnunciado" prefHeight="50.0" prefWidth="560.0" promptText="Digite a pergunta aqui..." />
+    <TextField fx:id="txtEnunciado" prefHeight="50.0" prefWidth="560.0" promptText="Digite a pergunta aqui..." style="-fx-background-radius: 25px;" />
    <HBox alignment="CENTER" prefHeight="32.0" prefWidth="560.0">
       <children>
-         <HBox prefHeight="100.0" prefWidth="200.0">
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #1A8C88; -fx-background-radius: 20px;">
             <children>
             
             
                 <Label prefHeight="50.0" prefWidth="90.0" style="-fx-text-fill: white;" text="Dificuldade:">
                   <font>
-                     <Font size="15.0" />
+                     <Font name="Baloo 2 Regular" size="15.0" />
                   </font>
                </Label>
-                <ChoiceBox fx:id="choiceDificuldade" />
+                <ChoiceBox fx:id="choiceDificuldade" style="-fx-background-radius: 25px;" />
             </children>
          </HBox>
-         <HBox prefHeight="100.0" prefWidth="200.0">
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #1A8C88; -fx-background-radius: 25px;">
             <children>
             
             
                 <Label prefHeight="50.0" prefWidth="90.0" style="-fx-text-fill: white;" text="Assunto:">
                   <font>
-                     <Font size="15.0" />
+                     <Font name="Baloo 2 Regular" size="15.0" />
                   </font>
                </Label>
-                <ChoiceBox fx:id="choiceAssunto" />
+                <ChoiceBox fx:id="choiceAssunto" style="-fx-background-radius: 25px;" />
             </children>
          </HBox>
       </children>
@@ -57,10 +57,22 @@
 
 
     <Label style="-fx-text-fill: white;" text="Alternativas:" />
-    <TextField fx:id="txtAlternativaA" prefHeight="50.0" prefWidth="560.0" promptText="Alternativa A" />
-    <TextField fx:id="txtAlternativaB" prefHeight="50.0" prefWidth="560.0" promptText="Alternativa B" />
-    <TextField fx:id="txtAlternativaC" prefHeight="50.0" prefWidth="560.0" promptText="Alternativa C" />
-    <TextField fx:id="txtAlternativaD" prefHeight="50.0" prefWidth="560.0" promptText="Alternativa D" />
+    <TextField fx:id="txtAlternativaA" prefHeight="50.0" prefWidth="560.0" promptText="Alternativa A" style="-fx-background-radius: 25px;">
+      <font>
+         <Font name="Baloo 2 Medium" size="12.0" />
+      </font></TextField>
+    <TextField fx:id="txtAlternativaB" prefHeight="50.0" prefWidth="560.0" promptText="Alternativa B" style="-fx-background-radius: 25px;">
+      <font>
+         <Font name="Baloo 2 Medium" size="12.0" />
+      </font></TextField>
+    <TextField fx:id="txtAlternativaC" prefHeight="50.0" prefWidth="560.0" promptText="Alternativa C" style="-fx-background-radius: 25px;">
+      <font>
+         <Font name="Baloo 2 Medium" size="12.0" />
+      </font></TextField>
+    <TextField fx:id="txtAlternativaD" prefHeight="50.0" prefWidth="560.0" promptText="Alternativa D" style="-fx-background-radius: 25px;">
+      <font>
+         <Font name="Baloo 2 Medium" size="12.0" />
+      </font></TextField>
 
 
     <Label style="-fx-text-fill: white;" text="Selecione a alternativa correta:">
@@ -72,33 +84,33 @@
       </VBox.margin></Label>
    <HBox alignment="TOP_CENTER" prefHeight="41.0" prefWidth="560.0">
       <children>
-          <RadioButton fx:id="radioAlternativaA" style="-fx-text-fill: white;" text="A">
+          <RadioButton fx:id="radioAlternativaA" style="-fx-text-fill: #191919; -fx-padding: 4px; -fx-background-color: #ABD1C6; -fx-background-radius: 20px;" text="A">
             <font>
-               <Font size="15.0" />
+               <Font name="Baloo 2 Medium" size="15.0" />
             </font>
             <HBox.margin>
                <Insets right="20.0" />
             </HBox.margin>
          </RadioButton>
-          <RadioButton fx:id="radioAlternativaB" style="-fx-text-fill: white;" text="B">
+          <RadioButton fx:id="radioAlternativaB" style="-fx-text-fill: #191919; -fx-padding: 4px; -fx-background-color: #ABD1C6; -fx-background-radius: 20px;" text="B">
             <font>
-               <Font size="15.0" />
+               <Font name="Baloo 2 Medium" size="15.0" />
             </font>
             <HBox.margin>
                <Insets left="20.0" right="20.0" />
             </HBox.margin>
          </RadioButton>
-          <RadioButton fx:id="radioAlternativaC" style="-fx-text-fill: white;" text="C">
+          <RadioButton fx:id="radioAlternativaC" style="-fx-text-fill: #191919; -fx-padding: 4px; -fx-background-color: #ABD1C6; -fx-background-radius: 20px;" text="C">
             <font>
-               <Font size="15.0" />
+               <Font name="Baloo 2 Medium" size="15.0" />
             </font>
             <HBox.margin>
                <Insets left="20.0" right="20.0" />
             </HBox.margin>
          </RadioButton>
-          <RadioButton fx:id="radioAlternativaD" style="-fx-text-fill: white;" text="D">
+          <RadioButton fx:id="radioAlternativaD" style="-fx-text-fill: #191919; -fx-padding: 4px; -fx-background-color: #ABD1C6; -fx-background-radius: 20px;" text="D">
             <font>
-               <Font size="15.0" />
+               <Font name="Baloo 2 Medium" size="15.0" />
             </font>
             <HBox.margin>
                <Insets left="20.0" />
@@ -110,7 +122,7 @@
       <children>
       
       
-          <Button fx:id="btnSalvarQuestao" onAction="#salvarQuestao" style="-fx-background-color: #ffcc00; -fx-text-fill: black; -fx-font-size: 16px;" text="Salvar Questão">
+          <Button fx:id="btnSalvarQuestao" onAction="#salvarQuestao" style="-fx-background-color: #1A8C88; -fx-text-fill: black; -fx-font-size: 16px; -fx-background-radius: 30px;" text="Salvar Questão">
             <font>
                <Font size="15.0" />
             </font>
@@ -119,7 +131,7 @@
             </HBox.margin>
          </Button>
       
-                <Button fx:id="btnCancelar" onAction="#voltarConfiguracoes" style="-fx-background-color: #555; -fx-text-fill: white; -fx-font-size: 16px;" text="Cancelar">
+                <Button fx:id="btnCancelar" onAction="#voltarConfiguracoes" style="-fx-background-color: #555; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 30px;" text="Cancelar">
             <font>
                <Font size="15.0" />
             </font>
