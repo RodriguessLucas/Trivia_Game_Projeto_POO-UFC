@@ -5,6 +5,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import projeto.projeto_poo.model.EstatisticaJogador;
 import projeto.projeto_poo.model.Jogador;
+import projeto.projeto_poo.model.QuizModel;
 
 public class EstatisticasViewController implements Observer {
 
@@ -24,11 +25,12 @@ public class EstatisticasViewController implements Observer {
     private static final String MENSAGEM_VOLTAR_MENU = "Voltando para a tela do menu.";
     private Jogador jogador;
     private EstatisticasView view;
+    private QuizModel model;
 
     public void inicializarController(Jogador jogador, EstatisticasView view) {
         this.jogador = jogador;
         this.view = view;
-        EstatisticaJogador.adicionarObservador(this);
+        model.attachObserver(this);
         atualizarEstatisticas();
     }
 
@@ -56,9 +58,9 @@ public class EstatisticasViewController implements Observer {
 
     @FXML
     public void voltarMenu() {
-        EstatisticaJogador.removerObservador(this);
+        model.detachObserver(this);
         TelaMenuView telaMenu = new TelaMenuView();
-        telaMenu.initTelaMenuView((Stage) lblMaiorSequenciaAcertos.getScene().getWindow(), jogador);
+        telaMenu.initTelaMenuView((Stage) lblMaiorSequenciaAcertos.getScene().getWindow(), model);
         System.out.println(MENSAGEM_VOLTAR_MENU);
     }
 

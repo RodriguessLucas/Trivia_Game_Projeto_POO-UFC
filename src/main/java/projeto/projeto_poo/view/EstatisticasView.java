@@ -24,7 +24,7 @@ public class EstatisticasView {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH));
             Parent root = loader.load();
             this.controller = loader.getController();
-            this.controller.initEstatisticasViewController(jogador, this);
+            this.controller.inicializarController(jogador, this);
             stage.setTitle("Debug & Win");
             stage.setScene(new Scene(root, 650, 800));
             stage.show();

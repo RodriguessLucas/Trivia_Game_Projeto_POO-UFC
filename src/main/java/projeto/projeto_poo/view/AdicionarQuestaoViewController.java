@@ -6,10 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import projeto.projeto_poo.model.Dificuldade;
-import projeto.projeto_poo.model.Jogador;
-import projeto.projeto_poo.model.Questao;
-import projeto.projeto_poo.model.Assunto;
+import projeto.projeto_poo.model.*;
 import projeto.projeto_poo.repository.GerenciadorBanco;
 
 import java.util.Arrays;
@@ -167,7 +164,7 @@ public class AdicionarQuestaoViewController implements Observer {
         }
 
         ConfiguracaoView configuracaoView = new ConfiguracaoView();
-        configuracaoView.initConfiguracaoView(stage, jogador);
+        configuracaoView.initConfiguracaoView(stage, new Configuracoes(), jogador);
     }
 
     @Override

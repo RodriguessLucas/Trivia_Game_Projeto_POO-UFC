@@ -18,7 +18,7 @@ public class QuizModel {
     // Construtor padrão
     public QuizModel() {
         this(new GerenciadorBanco(), new Jogador(), new Configuracoes());
-        new ArrayList<Observer>();
+        observers = new ArrayList<>();
     }
 
     // Construtor adicional para injeção de dependências
@@ -92,6 +92,7 @@ public class QuizModel {
             o.update();
         }
     }
+
 
 
 

@@ -11,6 +11,7 @@ import javafx.util.Duration;
 import projeto.projeto_poo.model.Configuracoes;
 import projeto.projeto_poo.model.Dificuldade;
 import projeto.projeto_poo.model.Jogador;
+import projeto.projeto_poo.model.QuizModel;
 
 public class ConfiguracaoViewController implements Observer {
     @FXML private TextField txtQntQuestoes;
@@ -27,6 +28,7 @@ public class ConfiguracaoViewController implements Observer {
     @FXML private Button btnSalvar;
     @FXML private Button btnAdicionarQuestao;
 
+    private QuizModel model;
     private Configuracoes configuracoes;
     private ConfiguracaoView view;
     private Jogador jogador;
@@ -36,7 +38,7 @@ public class ConfiguracaoViewController implements Observer {
         this.view = view;
         this.jogador = jogador;
 
-        configuracoes.attachObserver(this);
+        model.attachObserver(this);
         atualizarValores();
     }
 
@@ -79,7 +81,7 @@ public class ConfiguracaoViewController implements Observer {
             configuracoes.setPontuacaoPorDificuldade(Dificuldade.MEDIO.getDescricao(), pontuacaoMedio);
             configuracoes.setPontuacaoPorDificuldade(Dificuldade.DIFICIL.getDescricao(), pontuacaoDificil);
 
-            configuracoes.notificarObservers();
+            model.notifica();
             mostrarAlertaTemporario("Aviso", "Configurações salvas", Alert.AlertType.INFORMATION, 1);
             voltarMenu();
         } catch (NumberFormatException e) {
@@ -97,7 +99,7 @@ public class ConfiguracaoViewController implements Observer {
         }
 
         AdicionarQuestaoView adicionarQuestao = new AdicionarQuestaoView();
-        adicionarQuestao.initAdicionarQuestaoView(stageAtual, jogador);
+        adicionarQuestao.inicializar(stageAtual, jogador);
 
     }
 
@@ -118,10 +120,10 @@ public class ConfiguracaoViewController implements Observer {
 
     @FXML
     public void voltarMenu() {
-        configuracoes.detachObserver(this);
-        configuracoes.notificarObservers();
+        model.detachObserver(this);
+        model.notifica();
         TelaMenuView telaMenu = new TelaMenuView();
-        telaMenu.initTelaMenuView((Stage) btnSalvar.getScene().getWindow(), jogador);
+        telaMenu.initTelaMenuView((Stage) btnSalvar.getScene().getWindow(), model);
         System.out.println("Voltando para a tela do menu.");
     }
 }

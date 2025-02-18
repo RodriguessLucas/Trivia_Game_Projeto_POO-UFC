@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import projeto.projeto_poo.model.QuizModel;
 
 import java.io.IOException;
 
@@ -14,6 +15,7 @@ public class ConfiguracaoView implements Observer {
     private static final int WINDOW_WIDTH = 650;
     private static final int WINDOW_HEIGHT = 800;
 
+    private QuizModel model;
     private Configuracoes configuracoes;
     private Stage stage;
     private ConfiguracaoViewController configuracoesController;
@@ -23,7 +25,7 @@ public class ConfiguracaoView implements Observer {
         this.stage = stage;
 
         // Registra a ConfiguracaoView como observadora das configurações.
-        configuracoes.attachObserver(this);
+        model.attachObserver(this);
 
         // Configura a cena (FXML).
         setupScene(jogador);

@@ -59,9 +59,9 @@ public class TelaMenuViewController {
     @FXML
     public void iniciarJogoAleatorio() {
         DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView(
+        telaDeJogoAleatorio.initialize(
                 (Stage) btnJogoAleatorio.getScene().getWindow(),
-                Configuracoes.getInstancia(jogador)
+                model, Dificuldade.getDificuldadeAleatoria(), Assunto.getAssuntoAleatorio(), 0
         );
     }
 
@@ -110,7 +110,7 @@ public class TelaMenuViewController {
     @FXML
     public void estatisticas() {
         EstatisticasView telaEstatisticas = new EstatisticasView();
-        telaEstatisticas.initEstatisticasView((Stage) btnEstatisticas.getScene().getWindow(), jogador);
+        telaEstatisticas.initialize((Stage) btnEstatisticas.getScene().getWindow(), model.getJogador());
         System.out.println("Indo para a tela de estatísticas...");
     }
 
@@ -118,13 +118,13 @@ public class TelaMenuViewController {
     public void configuracoes() {
         Stage stageAtual = (Stage) btnConfiguracoes.getScene().getWindow();
         ConfiguracaoView telaConfiguracoes = new ConfiguracaoView();
-        telaConfiguracoes.initConfiguracaoView(stageAtual, jogador);
+        telaConfiguracoes.initConfiguracaoView(stageAtual, model.getConfiguracoes(), model.getJogador());
         System.out.println("Indo para a tela de configurações...");
     }
 
     public void irTelaInicial() {
         TelaInicialView telaInicial = new TelaInicialView();
-        telaInicial.handleEvent((Stage) btnConfiguracoes.getScene().getWindow(), jogador);
+        telaInicial.initTelaInicialView((Stage) btnConfiguracoes.getScene().getWindow(), model);
         System.out.println("Voltando para a tela inicial...");
     }
 

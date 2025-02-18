@@ -98,9 +98,9 @@ public class DebugWinViewController implements Observer {
     private void iniciarContadorDeTempo() {
         if (timer != null) timer.stop();
 
-        tempoRestante = (debugWin.getAssunto() == null && debugWin.getDificuldade() == null)
-                ? debugWin.getConfiguracoes().getTempoPorDificuldade("Aleatória")
-                : debugWin.getConfiguracoes().getTempoPorDificuldade(dificuldade.getDescricao());
+        tempoRestante = (debugWin.getQuestaoAtual() == null)
+                ? model.getConfiguracoes().getTempoPorDificuldade("Aleatória")
+                : model.getConfiguracoes().getTempoPorDificuldade(dificuldade.getDescricao());
 
         atualizarTempoLabel();
 
@@ -141,7 +141,7 @@ public class DebugWinViewController implements Observer {
     }
 
     private void processarResposta(int resposta) {
-        debugWin.responderQuestao(resposta, );
+        debugWin.responderQuestao(resposta, tempoRestante);
         carregarQuestao();
     }
 
@@ -165,7 +165,7 @@ public class DebugWinViewController implements Observer {
         lblPontuacaoQuestao.setText(mensagemPontuacao);
         lblTempoPorPergunta.setText("");
         ajustarEstadoBotoesFinalizacao();
-        debugWin.detachObserver(this);
+        ;
     }
 
     private void ajustarEstadoBotoesFinalizacao() {
@@ -179,19 +179,19 @@ public class DebugWinViewController implements Observer {
     @FXML
     private void desistirJogo() {
         terminarTimerEDetachObserver();
-        new TelaMenuView().initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWin.getConfiguracoes().getJogador());
+        new TelaMenuView().initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), model); // !!!!!!!!!!!!!!!!!
     }
 
     @FXML
     private void finalizarJogo() {
-        EstatisticaJogador.atualizarEstatisticas(debugWin);
+        EstatisticaJogador.atualizarEstatisticaJogador();
         terminarTimerEDetachObserver();
-        new TelaMenuView().initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWin.getConfiguracoes().getJogador());
+        new TelaMenuView().initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), model); // !!!!!!!!!!!!!!!!!!!!!!!!
     }
 
     private void terminarTimerEDetachObserver() {
         if (timer != null) timer.stop();
-        debugWin.detachObserver(this);
+        model.detachObserver(this);
     }
 
     @Override

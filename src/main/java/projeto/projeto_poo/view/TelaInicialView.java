@@ -17,9 +17,15 @@ public class TelaInicialView implements Observer {
     // Renomeado para um nome mais representativo
     public void initTelaInicialView(Stage stage, QuizModel model) {
         this.stage = stage;
-        model.attachObserver(this);
+        configurarModelo(model);
+        carregarInterface(stage, model);
+    }
 
-        // Extração de método para isolar a lógica de carregamento da interface
+    private void configurarModelo(QuizModel model) {
+        model.attachObserver(this);
+    }
+
+    private void carregarInterface(Stage stage, QuizModel model) {
         loadScene(stage, model);
     }
 
@@ -39,6 +45,7 @@ public class TelaInicialView implements Observer {
         } catch (IOException e) {
             // Mensagem de erro mais clara
             System.err.println("Erro ao carregar a tela inicial: " + e.getMessage());
+            e.printStackTrace();
         }
     }
 
