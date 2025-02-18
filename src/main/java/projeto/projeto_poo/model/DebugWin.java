@@ -39,12 +39,13 @@ public class DebugWin {
         }
     }
 
-    public Map<String, Integer> getauxAcertosPorAssunto() {
-        return auxAcertosPorAssunto;
+    public List<Questao> getQuestoes() {
+        return questoes;
     }
-    public Map<String, Integer> getauxErrosPorAssunto() {
-        return auxErrosPorAssunto;
+    public void setQuestoes(List<Questao> questoes) {
+        this.questoes = questoes;
     }
+
 
     public int getPontuacao() {
         return pontuacao;
@@ -54,9 +55,6 @@ public class DebugWin {
         return maiorSequenciaAcerto;
     }
 
-    public int getAuxSequenciaAcerto() {
-        return auxSequenciaAcerto;
-    }
 
     public int getQuestaoAtualIndex() {
         return questaoAtual;

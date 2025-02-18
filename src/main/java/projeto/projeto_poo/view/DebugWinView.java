@@ -7,27 +7,34 @@ import javafx.stage.Stage;
 import projeto.projeto_poo.model.Assunto;
 import projeto.projeto_poo.model.Configuracoes;
 import projeto.projeto_poo.model.Dificuldade;
+import projeto.projeto_poo.model.Model;
 
 import java.io.IOException;
 
-public class DebugWinView {
-    private DebugWinViewController controller; // aqui pode dar erro sepa
+public class DebugWinView implements Observer {
+    private Model model;
+    private DebugWinViewController controller;
     private Stage stage;
 
-    public DebugWinView() {}
+    public DebugWinView(Model model) {
+        this.model = model;
+    }
 
-    public void initDebugWinView(Stage stage, Configuracoes config) {
+    public void initDebugWinView(Stage stage) {
         this.stage = stage;
+        model.adicionarObservador(this);
 
-        try{
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaDebugWin-view.fxml"));
             Parent root = loader.load();
 
             controller = loader.getController();
-            controller.initDebugWinViewController(config);
+            controller.initDebugWinViewController(model, this);
 
             stage.setTitle("Debug & Win");
             stage.setScene(new Scene(root, 650, 800));
+            stage.setOnCloseRequest(event -> removerObservador());
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,23 +42,14 @@ public class DebugWinView {
         }
     }
 
-    public void initDebugWinView(Stage stage, Configuracoes config, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
-        this.stage = stage;
+    public void removerObservador() {
+        model.removerObservador(this);
+    }
 
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaDebugWin-view.fxml"));
-            Parent root = loader.load();
-
-            controller = loader.getController();
-            controller.initDebugWinViewController(dificuldade, assunto, config, qntdQuestoes);
-
-            stage.setTitle("Debug & Win");
-            stage.setScene(new Scene(root, 650, 800));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao abrir a tela do jogo.");
+    @Override
+    public void update() {
+        if (controller != null) {
+            controller.atualizarQuestao();
         }
-
     }
 }

@@ -8,6 +8,7 @@ public class Model {
     private static Model instancia;
     private Configuracoes configuracoes;
     private Jogador jogador;
+    private DebugWin debugWin;
     private Estatistica estatisticaGlobal;
     private GerenciadorBanco gerenciadorBanco;
     private List<Observer> observers = new ArrayList<>();
@@ -32,7 +33,6 @@ public class Model {
     /*
         MÉTODOS PARA CONFIGURAÇÕES
      */
-
     public Configuracoes getConfiguracoes() {
         return configuracoes;
     }
@@ -67,7 +67,6 @@ public class Model {
     /*
         MÉTODOS PARA JOGADOR
      */
-
     public Jogador getJogador() {
         return jogador;
     }
@@ -131,7 +130,6 @@ public class Model {
     /*
         MÉTODOS PARA GERENCIADORANCO
      */
-
     public Map<String, List<Questao>> getGerenciadorBancoQuestoes() {
         return gerenciadorBanco.getGerenciadorBancoQuestoes();
     }
@@ -152,7 +150,47 @@ public class Model {
     /*
             MÉTODOS PARA DEBUGWIN
      */
-    public
+    public List<Questao> getDebugWinQuestoes(){
+        return debugWin.getQuestoes();
+    }
+    public void setDebugWinQuestoes(List<Questao> questoes) {
+        debugWin.setQuestoes(questoes);
+    }
+
+    public Map<String, Integer> getDebugWinAcertosPorAssunto() {
+        return debugWin.getAuxAcertosPorAssunto();
+    }
+    public Map<String, Integer> getDebugWinErrosPorAssunto() {
+        return debugWin.getAuxErrosPorAssunto();
+    }
+
+    public int getDebugWinPontuacao() {
+        return debugWin.getPontuacao();
+    }
+
+    public int getDebugWinMaiorSequenciaAcerto() {
+        return debugWin.getMaiorSequenciaAcerto();
+    }
+
+
+    public void iniciarDebugWinAleatorio() {
+        List<Questao> questoes = gerenciadorBanco.obterQuestoesAleatoria(configuracoes.getQntdQuestoesPorJogo());
+        debugWin = new DebugWin(questoes, configuracoes);
+    }
+
+    public void iniciarJogoPersonalizado(Dificuldade dificuldade, Assunto assunto) {
+        List<Questao> questoes = gerenciadorBanco.obterQuestoesPersonalizada(configuracoes.getQntdQuestoesPorJogo(), dificuldade, assunto);
+        debugWin = new DebugWin(questoes, configuracoes);
+    }
+
+    public boolean jogoAtivo() {
+        return debugWin != null;
+    }
+
+    public void encerrarJogo() {
+        debugWin = null;
+    }
+
 
 
 
