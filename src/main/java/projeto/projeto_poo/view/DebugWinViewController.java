@@ -6,21 +6,34 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextBoundsType;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import projeto.projeto_poo.model.*;
 
 public class DebugWinViewController implements Observer {
-    @FXML private Label lblExibirTempoPorPergunta;
-    @FXML private Label lblExibirPontuacaoQuestao;
-    @FXML private Label lblPergunta;
-    @FXML private Button btnLetraA;
-    @FXML private Button btnLetraB;
-    @FXML private Button btnLetraC;
-    @FXML private Button btnLetraD;
-    @FXML private Button btnPularQuestao;
-    @FXML private Button btnDesistir;
-    @FXML private Button btnFinalizarJogo;
+    @FXML
+    private Label lblExibirTempoPorPergunta;
+    @FXML
+    private Label lblExibirPontuacaoQuestao;
+    @FXML
+    private Label lblPergunta;
+    @FXML
+    private Button btnLetraA;
+    @FXML
+    private Button btnLetraB;
+    @FXML
+    private Button btnLetraC;
+    @FXML
+    private Button btnLetraD;
+    @FXML
+    private Button btnPularQuestao;
+    @FXML
+    private Button btnDesistir;
+    @FXML
+    private Button btnFinalizarJogo;
 
     private Model model;
     private DebugWinView view;
@@ -58,13 +71,24 @@ public class DebugWinViewController implements Observer {
     }
 
     @FXML
-    private void responderA() { processarResposta(1, btnLetraA); }
+    private void responderA() {
+        processarResposta(1, btnLetraA);
+    }
+
     @FXML
-    private void responderB() { processarResposta(2, btnLetraB); }
+    private void responderB() {
+        processarResposta(2, btnLetraB);
+    }
+
     @FXML
-    private void responderC() { processarResposta(3, btnLetraC); }
+    private void responderC() {
+        processarResposta(3, btnLetraC);
+    }
+
     @FXML
-    private void responderD() { processarResposta(4, btnLetraD); }
+    private void responderD() {
+        processarResposta(4, btnLetraD);
+    }
 
     private void processarResposta(int resposta, Button btnResposta) {
         // Para o contador de tempo imediatamente
@@ -94,8 +118,6 @@ public class DebugWinViewController implements Observer {
     }
 
 
-
-
     private void iniciarContadorDeTempo() {
         if (timer != null) timer.stop();
 
@@ -110,7 +132,7 @@ public class DebugWinViewController implements Observer {
                 timer.stop();
                 pularQuestao();
             }
-            if(tempoRestante == 0 && qntdPulos ==0) {
+            if (tempoRestante == 0 && qntdPulos == 0) {
                 mostrarAlerta("Encerrando jogo por inatividade...", Alert.AlertType.INFORMATION);
                 desistirJogo();
             }
@@ -182,4 +204,35 @@ public class DebugWinViewController implements Observer {
         alerta.showAndWait();
     }
 
+    private void ajustarFonteBotao(Button botao) {
+        double tamanhoFonte = 16;
+        double larguraBotao = botao.getWidth() - 10;
+        Text textNode = new Text(botao.getText());
+        textNode.setFont(Font.font(tamanhoFonte));
+        textNode.setBoundsType(TextBoundsType.VISUAL);
+
+        while (textNode.getLayoutBounds().getWidth() > larguraBotao && tamanhoFonte > 8) {
+            tamanhoFonte -= 1;
+            textNode.setFont(Font.font(tamanhoFonte));
+        }
+        botao.setFont(Font.font(tamanhoFonte));
+    }
+
+
+    private void ajustarFonteLabel(Label label, String texto) {
+        double tamanhoFonte = 16;
+        double larguraMaxima = 600;
+
+        Text textNode = new Text(texto);
+        textNode.setFont(Font.font(tamanhoFonte));
+        textNode.setBoundsType(TextBoundsType.VISUAL);
+
+        while (textNode.getLayoutBounds().getWidth() > larguraMaxima && tamanhoFonte > 10) {
+            tamanhoFonte -= 2;
+            textNode.setFont(Font.font(tamanhoFonte));
+        }
+        label.setFont(Font.font(tamanhoFonte));
+        label.setText(texto);
+
+    }
 }
