@@ -9,36 +9,41 @@ import projeto.projeto_poo.model.QuizModel;
 
 import java.io.IOException;
 
-public class AdicionarQuestaoView  {
+public class AdicionarQuestaoView {
+    private static final String TELA_TITULO = "Debug & Win";
+    private static final int SCENE_LARGURA = 650;
+    private static final int SCENE_ALTURA = 800;
+
     private QuizModel model;
     private Stage stage;
-    private AdicionarQuestaoViewController controller;
+    private AdicionarQuestaoViewController adicionarQuestaoController;
 
-
-    public void initAdicionarQuestaoView(Stage stage, Jogador jogador) {
+    public void inicializar(Stage stage, Jogador jogador) {
         if (stage == null) {
-            System.out.println("Erro: Stage está NULL ao iniciar AdicionarQuestaoView.");
+            System.err.println("Erro: Stage está NULL ao iniciar AdicionarQuestaoView.");
             return;
         }
-
         this.stage = stage;
 
+        Parent root = carregarFXML("/projeto/projeto_poo/view/telaAdicionarQuestao-view.fxml");
+        if (root == null) return;
 
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaAdicionarQuestao-view.fxml"));
-            Parent root = loader.load();
+        adicionarQuestaoController.initAdicionarQuestaoViewController(jogador, this);
 
-            controller = loader.getController();
-            controller.initAdicionarQuestaoViewController(jogador, this);
-
-
-            stage.setTitle("Debug & Win");
-            stage.setScene(new Scene(root, 650, 800));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao abrir a tela de adicionar questão.");
-        }
+        stage.setTitle(TELA_TITULO);
+        stage.setScene(new Scene(root, SCENE_LARGURA, SCENE_ALTURA));
+        stage.show();
     }
 
+    private Parent carregarFXML(String caminhoFXML) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(caminhoFXML));
+            Parent root = loader.load();
+            this.adicionarQuestaoController = loader.getController();
+            return root;
+        } catch (IOException e) {
+            System.err.println("Erro ao carregar a tela: " + e.getMessage());
+            return null;
+        }
+    }
 }

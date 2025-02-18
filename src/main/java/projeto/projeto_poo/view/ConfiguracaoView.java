@@ -6,46 +6,51 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import projeto.projeto_poo.model.QuizModel;
 
 import java.io.IOException;
 
 public class ConfiguracaoView implements Observer {
-    private QuizModel model;
-    private Configuracoes configuracoes;
-    private ConfiguracaoViewController controller;
-    private Stage stage;
 
-    public void initConfiguracaoView(Stage stage, Jogador jogador) {
-        this.configuracoes = Configuracoes.getInstancia(jogador); // Usa Singleton para garantir que é único
+    private static final int WINDOW_WIDTH = 650;
+    private static final int WINDOW_HEIGHT = 800;
+
+    private Configuracoes configuracoes;
+    private Stage stage;
+    private ConfiguracaoViewController configuracoesController;
+
+    public void initConfiguracaoView(Stage stage, Configuracoes configuracoes, Jogador jogador) {
+        this.configuracoes = configuracoes;
         this.stage = stage;
 
-        // Registra a view como observador das mudanças nas configurações
+        // Registra a ConfiguracaoView como observadora das configurações.
         configuracoes.attachObserver(this);
 
+        // Configura a cena (FXML).
+        setupScene(jogador);
+    }
+
+    private void setupScene(Jogador jogador) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaConfiguracoes-view.fxml"));
             Parent root = loader.load();
+            configuracoesController = loader.getController();
 
-            controller = loader.getController();
-            controller.initConfiguracaoViewController(configuracoes, this, jogador);
+            configuracoesController.initConfiguracaoViewController(configuracoes, this, jogador);
 
             stage.setTitle("Debug & Win");
-            stage.setScene(new Scene(root, 650, 800));
+            stage.setScene(new Scene(root, WINDOW_WIDTH, WINDOW_HEIGHT));
             stage.show();
         } catch (IOException e) {
+            System.err.println("Erro ao carregar a tela de configurações: " + e.getMessage());
             e.printStackTrace();
-            System.out.println("Erro ao abrir a tela de configurações.");
         }
     }
 
     @Override
     public void update() {
         System.out.println("ConfiguraçãoView: Configurações foram alteradas!");
-        if (controller != null) {
-            controller.atualizarValores();
+        if (configuracoesController != null) {
+            configuracoesController.atualizarValores();
         }
     }
-
-
 }

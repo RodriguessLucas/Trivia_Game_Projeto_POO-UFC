@@ -21,7 +21,8 @@ public class Questao {
     public String getAssunto() {
         return assunto.getDescricao();
     }
-    public void serAssunto() {}
+
+    public void setAssunto() {}
 
     public Dificuldade getDificuldade() {
         return dificuldade;

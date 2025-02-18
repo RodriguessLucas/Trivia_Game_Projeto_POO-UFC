@@ -7,45 +7,37 @@ import javafx.stage.Stage;
 import projeto.projeto_poo.model.Assunto;
 import projeto.projeto_poo.model.Configuracoes;
 import projeto.projeto_poo.model.Dificuldade;
-import projeto.projeto_poo.model.QuizModel;
 
 import java.io.IOException;
 
 public class DebugWinView {
-    private QuizModel model;
-    private DebugWinViewController controller; // aqui pode dar erro sepa
+    private DebugWinViewController controller;
     private Stage stage;
 
-    public DebugWinView() {}
-
-    public void initDebugWinView(Stage stage, Configuracoes config) {
-        this.stage = stage;
-
-        try{
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaDebugWin-view.fxml"));
-            Parent root = loader.load();
-
-            controller = loader.getController();
-            controller.initDebugWinViewController(config);
-
-            stage.setTitle("Debug & Win");
-            stage.setScene(new Scene(root, 650, 800));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao abrir a tela do jogo.");
-        }
+    public DebugWinView() {
     }
 
-    public void initDebugWinView(Stage stage, Configuracoes config, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
+    public void initialize(Stage stage, Configuracoes config) {
         this.stage = stage;
+        loadScene(config, null, null, 0);
+    }
 
-        try{
+    public void initialize(Stage stage, Configuracoes config, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
+        this.stage = stage;
+        loadScene(config, dificuldade, assunto, qntdQuestoes);
+    }
+
+    private void loadScene(Configuracoes config, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaDebugWin-view.fxml"));
             Parent root = loader.load();
-
             controller = loader.getController();
-            controller.initDebugWinViewController(dificuldade, assunto, config, qntdQuestoes);
+
+            if (dificuldade == null || assunto == null || qntdQuestoes == 0) {
+                controller.initDebugWinViewController(config);
+            } else {
+                controller.initDebugWinViewController(dificuldade, assunto, config, qntdQuestoes);
+            }
 
             stage.setTitle("Debug & Win");
             stage.setScene(new Scene(root, 650, 800));
@@ -54,6 +46,5 @@ public class DebugWinView {
             e.printStackTrace();
             System.out.println("Erro ao abrir a tela do jogo.");
         }
-
     }
 }

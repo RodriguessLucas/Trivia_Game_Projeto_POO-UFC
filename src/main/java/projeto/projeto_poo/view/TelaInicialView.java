@@ -9,19 +9,25 @@ import projeto.projeto_poo.model.QuizModel;
 
 import java.io.IOException;
 
-
 public class TelaInicialView implements Observer {
-    private QuizModel model;
+
+    private final QuizModel model; // Exemplo de tornar final, se aplicável
     private Jogador jogador;
     private TelaInicialViewController controller;
     private Stage stage;
 
-    public void handleEvent(Stage stage, Jogador jogador) {
-        controller = new TelaInicialViewController();
+    // Renomeado para um nome mais representativo
+    public void initTelaInicialView(Stage stage, Jogador jogador) {
         this.jogador = jogador;
         this.stage = stage;
         jogador.attachObserver(this);
 
+        // Extração de método para isolar a lógica de carregamento da interface
+        loadScene(stage, jogador);
+    }
+
+    // Método extraído para carregar a cena e atribuir o controlador
+    private void loadScene(Stage stage, Jogador jogador) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaInicial-view.fxml"));
             Parent root = loader.load();
@@ -33,19 +39,19 @@ public class TelaInicialView implements Observer {
             stage.setScene(new Scene(root, 650, 800));
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao abrir tela inicial");
+            // Mensagem de erro mais clara
+            System.err.println("Erro ao carregar a tela inicial: " + e.getMessage());
         }
     }
 
     @Override
     public void update() {
-
         // Atualiza a interface gráfica caso o Model mude
         System.out.println("TelaInicialView: Nome do jogador atualizado para " + jogador.getNome());
     }
 
-    public void exibeMSG(String msg) {
-        System.out.println("\n" + msg + "\n");
+    public void exibeMensagem(String mensagem) {
+        // Renomeação do método para melhor clareza
+        System.out.println("\n" + mensagem + "\n");
     }
 }

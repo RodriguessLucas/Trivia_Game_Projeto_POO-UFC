@@ -1,37 +1,35 @@
 package projeto.projeto_poo.view;
 
-import projeto.projeto_poo.model.Jogador;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import projeto.projeto_poo.model.QuizModel;
+import projeto.projeto_poo.model.Jogador;
 
 import java.io.IOException;
 
 public class EstatisticasView {
-    private QuizModel model;
-    private Jogador jogador;
+
+    private static final String FXML_PATH = "/projeto/projeto_poo/view/telaEstatisticas-view.fxml";
     private EstatisticasViewController controller;
     private Stage stage;
 
-    public void initEstatisticasView(Stage stage, Jogador jogador) {
-        this.jogador = jogador;
+    public void initialize(Stage stage, Jogador jogador) {
         this.stage = stage;
+        loadScene(jogador);
+    }
 
+    private void loadScene(Jogador jogador) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaEstatisticas-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(FXML_PATH));
             Parent root = loader.load();
-
-            controller = loader.getController();
-            controller.initEstatisticasViewController(jogador, this);
-
+            this.controller = loader.getController();
+            this.controller.initEstatisticasViewController(jogador, this);
             stage.setTitle("Debug & Win");
             stage.setScene(new Scene(root, 650, 800));
             stage.show();
         } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Erro ao abrir tela de estatísticas.");
+            System.err.println("Erro ao carregar a tela de estatísticas: " + e.getMessage());
         }
     }
 }

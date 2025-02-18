@@ -6,14 +6,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import projeto.projeto_poo.model.Dificuldade;
 import projeto.projeto_poo.model.Jogador;
 import projeto.projeto_poo.model.Questao;
+import projeto.projeto_poo.model.Assunto;
 import projeto.projeto_poo.repository.GerenciadorBanco;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class AdicionarQuestaoViewController implements Observer {
+
     @FXML private TextField txtEnunciado;
     @FXML private ChoiceBox<String> choiceDificuldade;
     @FXML private ChoiceBox<String> choiceAssunto;
@@ -32,86 +36,142 @@ public class AdicionarQuestaoViewController implements Observer {
     private AdicionarQuestaoView view;
     private ToggleGroup toggleCorreta;
 
+    // Agora o GerenciadorBanco será utilizado como uma instância
+    private final GerenciadorBanco gerenciadorBanco;
+
+    // Adicionamos um construtor para inicializar o GerenciadorBanco
+    public AdicionarQuestaoViewController() {
+        this.gerenciadorBanco = new GerenciadorBanco(); // Instanciando o gerenciador
+    }
 
     public void initAdicionarQuestaoViewController(Jogador jogador, AdicionarQuestaoView view) {
         this.jogador = jogador;
         this.view = view;
 
+        configurarChoiceBoxes();
+        configurarToggleGroup();
+    }
+
+    private void configurarChoiceBoxes() {
         choiceDificuldade.getItems().addAll("Fácil", "Médio", "Difícil");
-        choiceDificuldade.setValue("Nenhum");
+        choiceDificuldade.setValue(null); // Em vez de "Nenhum", usamos null como padrão.
 
-        choiceAssunto.getItems().addAll("POO", "Estruturas de dados", "Python", "C","Java");
-        choiceAssunto.setValue("Nenhum");
+        choiceAssunto.getItems().addAll("POO", "Estruturas de dados", "Python", "C", "Java");
+        choiceAssunto.setValue(null); // Em vez de "Nenhum", usamos null como padrão.
+    }
 
+    private void configurarToggleGroup() {
         toggleCorreta = new ToggleGroup();
         radioAlternativaA.setToggleGroup(toggleCorreta);
         radioAlternativaB.setToggleGroup(toggleCorreta);
         radioAlternativaC.setToggleGroup(toggleCorreta);
         radioAlternativaD.setToggleGroup(toggleCorreta);
-
     }
 
     @FXML
-    public void salvarQuestao() {  // tem q por aqui o retorno q será um alerta na tela
+    public void salvarQuestao() {
+        Optional<Questao> questaoOpt = validarCampos();
+        if (questaoOpt.isEmpty()) return;
+
+        Questao novaQuestao = questaoOpt.get();
+
+        try {
+            gerenciadorBanco.adicionarQuestao(novaQuestao); // Agora utilizando a instância
+            novaQuestao.notificarObservers();
+            mostrarAlertaTemporario("Aviso", "Questão salva com sucesso! Voltando para configurações...", Alert.AlertType.INFORMATION, 2);
+            voltarConfiguracoes();
+        } catch (Exception e) {
+            mostrarAlertaTemporario("Erro", "Houve um erro ao salvar a questão no banco!", Alert.AlertType.ERROR, 2);
+        }
+    }
+
+    private Optional<Questao> validarCampos() {
+        // Obtendo textos dos campos
         String enunciado = txtEnunciado.getText().trim();
-        String dificuldade = choiceDificuldade.getValue();
-        String assunto = choiceAssunto.getValue();
         String alternativaA = txtAlternativaA.getText().trim();
         String alternativaB = txtAlternativaB.getText().trim();
         String alternativaC = txtAlternativaC.getText().trim();
         String alternativaD = txtAlternativaD.getText().trim();
 
-        if(dificuldade.equals("Nenhum")) {
-            mostrarAlertaTemporario("Aviso","Selecione uma dificuldade!", Alert.AlertType.INFORMATION, 2);
-            return;
+        // Validando dificuldade e assunto
+        Dificuldade dificuldadeEnum = obterDificuldade();
+        if (dificuldadeEnum == null) {
+            mostrarAlertaTemporario("Aviso", "Selecione uma dificuldade!", Alert.AlertType.INFORMATION, 2);
+            return Optional.empty();
         }
 
-        if(assunto.equals("Nenhum")) {
-            mostrarAlertaTemporario("Aviso","Selecione um assunto!", Alert.AlertType.INFORMATION, 2);
-            return;
+        Assunto assuntoEnum = obterAssunto();
+        if (assuntoEnum == null) {
+            mostrarAlertaTemporario("Aviso", "Selecione um assunto!", Alert.AlertType.INFORMATION, 2);
+            return Optional.empty();
         }
 
-        int correta;
-        if (radioAlternativaA.isSelected()) {
-            correta = 0;
-        } else if (radioAlternativaB.isSelected()) {
-            correta = 1;
-        } else if (radioAlternativaC.isSelected()) {
-            correta = 2;
-        } else if (radioAlternativaD.isSelected()) {
-            correta = 3;
-        } else {
-            mostrarAlertaTemporario("Aviso","Erro: Selecione uma alternativa correta!", Alert.AlertType.INFORMATION, 2);
-            return;
-        }
-
+        // Validando campos de texto
         if (enunciado.isEmpty() || alternativaA.isEmpty() || alternativaB.isEmpty() ||
                 alternativaC.isEmpty() || alternativaD.isEmpty()) {
-            mostrarAlertaTemporario("Aviso","Erro: Todos os campos devem ser preenchidos!", Alert.AlertType.INFORMATION, 2);
-            return;
+            mostrarAlertaTemporario("Aviso", "Erro: Todos os campos devem ser preenchidos!", Alert.AlertType.INFORMATION, 2);
+            return Optional.empty();
         }
 
-        List<String> alternativas = Arrays.asList(alternativaA, alternativaB, alternativaC, alternativaD);
-        Questao novaQuestao = new Questao(enunciado, alternativas, correta, dificuldade, assunto);
+        // Obtendo alternativa correta
+        int correta = obterAlternativaCorreta();
+        if (correta == -1) {
+            mostrarAlertaTemporario("Aviso", "Erro: Selecione uma alternativa correta!", Alert.AlertType.INFORMATION, 2);
+            return Optional.empty();
+        }
 
+        // Criando a questão
+        List<String> alternativas = Arrays.asList(alternativaA, alternativaB, alternativaC, alternativaD);
+        Questao novaQuestao = new Questao(enunciado, alternativas, correta, dificuldadeEnum, assuntoEnum.getDescricao());
         novaQuestao.attachObserver(this);
-        GerenciadorBanco.adicionarQuestao(novaQuestao); // tem que verificar aqui
-        novaQuestao.notificarObservers();
-        GerenciadorBanco.imprimirQuestoes();
-        mostrarAlertaTemporario("Aviso", "Questão salva com sucesso! Voltando para configurações...", Alert.AlertType.INFORMATION, 2);
-        voltarConfiguracoes();
+
+        return Optional.of(novaQuestao);
+    }
+
+    private Dificuldade obterDificuldade() {
+        String dificuldade = choiceDificuldade.getValue();
+        try {
+            return Dificuldade.valueOf(dificuldade.toUpperCase());
+        } catch (IllegalArgumentException | NullPointerException e) {
+            return null;
+        }
+    }
+
+    private Assunto obterAssunto() {
+        String assunto = choiceAssunto.getValue();
+        try {
+            return Assunto.fromDescricao(assunto);
+        } catch (IllegalArgumentException | NullPointerException e) {
+            return null;
+        }
+    }
+
+    private int obterAlternativaCorreta() {
+        if (radioAlternativaA.isSelected()) return 0;
+        if (radioAlternativaB.isSelected()) return 1;
+        if (radioAlternativaC.isSelected()) return 2;
+        if (radioAlternativaD.isSelected()) return 3;
+        return -1; // Nenhuma alternativa selecionada.
     }
 
     @FXML
     public void voltarConfiguracoes() {
+        Stage stage = null;
+        if (btnCancelar.getScene() != null) {
+            stage = (Stage) btnCancelar.getScene().getWindow();
+        }
+
+        if (stage == null) {
+            mostrarAlertaTemporario("Erro", "Janela não está disponível para voltar!", Alert.AlertType.ERROR, 2);
+            return;
+        }
 
         ConfiguracaoView configuracaoView = new ConfiguracaoView();
-        configuracaoView.initConfiguracaoView((Stage) btnCancelar.getScene().getWindow(), jogador);
+        configuracaoView.initConfiguracaoView(stage, jogador);
     }
 
     @Override
     public void update() {
-
         System.out.println("AdicionarQuestaoViewController: Uma nova questão foi adicionada!");
     }
 
@@ -123,10 +183,9 @@ public class AdicionarQuestaoViewController implements Observer {
 
         alerta.show();
 
-        // ✅ Criando um contador para fechar automaticamente
+        // Criando contador para fechar automaticamente o alerta
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(segundos), event -> alerta.close()));
         timeline.setCycleCount(1);
         timeline.play();
     }
-
 }

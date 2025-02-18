@@ -1,45 +1,47 @@
 package projeto.projeto_poo.model;
+
 import java.util.HashMap;
 
-
 public class Configuracoes {
-    private int qntdQuestoesPorJogo = 4; // altarar para 10 depois
-    private HashMap<String, Integer> tempoDificuldadeQuestao;
-    private HashMap<String, Integer> pontuacaoDificuldadeQuestao;
+    private static final int DEFAULT_QNTD_QUESTOES = 4; // Pode ser alterado para outro valor conforme necessário
+    private static final int TEMPO_PADRAO = 30;
+    private static final int PONTUACAO_PADRAO = 100;
 
+    private int qntdQuestoesPorJogo = DEFAULT_QNTD_QUESTOES;
+    private final HashMap<String, Integer> tempoPorDificuldadeMap;
+    private final HashMap<String, Integer> pontuacaoPorDificuldadeMap;
 
     public Configuracoes() {
-        tempoDificuldadeQuestao = new HashMap<>();
-        pontuacaoDificuldadeQuestao = new HashMap<>();
-
-
-        tempoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 20);
-        tempoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 30);
-        tempoDificuldadeQuestao.put(Dificuldade.DIFICIL.getDescricao(), 40);
-        tempoDificuldadeQuestao.put("Aleatória", 30);
-
-        pontuacaoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 50);
-        pontuacaoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 100);
-        pontuacaoDificuldadeQuestao.put(Dificuldade.DIFICIL.getDescricao(), 200);
-
+        tempoPorDificuldadeMap = new HashMap<>();
+        pontuacaoPorDificuldadeMap = new HashMap<>();
+        inicializarMapas();
     }
 
-    public HashMap<String, Integer> getHashMapTempoDificuldadeQuestao() {
-        return tempoDificuldadeQuestao;
+    private void inicializarMapas() {
+        tempoPorDificuldadeMap.put(Dificuldade.FACIL.getDescricao(), 20);
+        tempoPorDificuldadeMap.put(Dificuldade.MEDIO.getDescricao(), 30);
+        tempoPorDificuldadeMap.put(Dificuldade.DIFICIL.getDescricao(), 40);
+        tempoPorDificuldadeMap.put("Aleatória", TEMPO_PADRAO);
+
+        pontuacaoPorDificuldadeMap.put(Dificuldade.FACIL.getDescricao(), 50);
+        pontuacaoPorDificuldadeMap.put(Dificuldade.MEDIO.getDescricao(), 100);
+        pontuacaoPorDificuldadeMap.put(Dificuldade.DIFICIL.getDescricao(), 200);
     }
 
-    public HashMap<String, Integer> getHasMapPontuacaoDificuldadeQuestao() {
-        return pontuacaoDificuldadeQuestao;
+    public HashMap<String, Integer> getTempoPorDificuldadeMap() {
+        return tempoPorDificuldadeMap;
     }
 
-
+    public HashMap<String, Integer> getPontuacaoPorDificuldadeMap() {
+        return pontuacaoPorDificuldadeMap;
+    }
 
     public int getTempoPorDificuldade(String dificuldade) {
-        return tempoDificuldadeQuestao.getOrDefault(dificuldade, 30);
+        return tempoPorDificuldadeMap.getOrDefault(dificuldade, TEMPO_PADRAO);
     }
 
     public int getPontuacaoPorDificuldade(String dificuldade) {
-        return pontuacaoDificuldadeQuestao.getOrDefault(dificuldade, 100);
+        return pontuacaoPorDificuldadeMap.getOrDefault(dificuldade, PONTUACAO_PADRAO);
     }
 
     public int getQntdQuestoesPorJogo() {
@@ -47,11 +49,11 @@ public class Configuracoes {
     }
 
     public void setTempoPorDificuldade(String dificuldade, int tempo) {
-        tempoDificuldadeQuestao.put(dificuldade, tempo);
+        tempoPorDificuldadeMap.put(dificuldade, tempo);
     }
 
     public void setPontuacaoPorDificuldade(String dificuldade, int pontuacao) {
-        pontuacaoDificuldadeQuestao.put(dificuldade, pontuacao);
+        pontuacaoPorDificuldadeMap.put(dificuldade, pontuacao);
     }
 
     public void setQntdQuestoesPorJogo(int qntQuestoes) {
@@ -62,8 +64,8 @@ public class Configuracoes {
     public String toString() {
         return "Configuracoes {" +
                 "\n  Quantidade de Questões por Jogo = " + qntdQuestoesPorJogo +
-                "\n  Tempo por Dificuldade = " + tempoDificuldadeQuestao +
-                "\n  Pontuação por Dificuldade = " + pontuacaoDificuldadeQuestao +
+                "\n  Tempo por Dificuldade = " + tempoPorDificuldadeMap +
+                "\n  Pontuação por Dificuldade = " + pontuacaoPorDificuldadeMap +
                 "\n}";
     }
 }

@@ -12,246 +12,212 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import projeto.projeto_poo.model.*;
 
-
-
 public class DebugWinViewController implements Observer {
+    private static final int FONT_SIZE_DEFAULT = 16;
+    private static final int FONT_SIZE_MIN = 8;
+    private static final int MAX_PULOS = 2;
 
     @FXML
-    private Label lblExibirTempoPorPergunta;
-
+    private Label lblTempoPorPergunta, lblPontuacaoQuestao, lblPergunta;
     @FXML
-    private Label lblExibirPontuacaoQuestao;
+    private Button btnLetraA, btnLetraB, btnLetraC, btnLetraD, btnPular, btnDesistir, btnFinalizar;
 
-    @FXML
-    private Label lblPergunta;
-
-    @FXML
-    private Button btnLetraA;
-
-    @FXML
-    private Button btnLetraB;
-
-    @FXML
-    private Button btnLetraC;
-
-    @FXML
-    private Button btnLetraD;
-
-    @FXML
-    private Button btnPularQuestao;
-
-    @FXML
-    private Button btnDesistir;
-
-    @FXML
-    private Button btnFinalizarJogo;
-
-    private DebugWin debugWinJogo;
+    private DebugWin debugWin;
     private Dificuldade dificuldade;
     private Assunto assunto;
     private Timeline timer;
-    private int tempoRestante;
-    private int qntdPulos = 2;
-    private boolean observadorRegistrado = false; // ✅ Variável para evitar múltiplos observadores
+    private int tempoRestante, qntdPulos = MAX_PULOS;
+    private boolean isObserverAttached = false;
 
-    public void initDebugWinViewController(Configuracoes config){
-        this.debugWinJogo = new DebugWin(config);
-        lblPergunta.setWrapText(true);
-        btnLetraA.setWrapText(true);btnLetraB.setWrapText(true);btnLetraC.setWrapText(true);btnLetraD.setWrapText(true);
+    public void initializeController(Configuracoes config) {
+        initJogo(new DebugWin(config));
+        configurarTela();
+    }
+
+    public void initializeController(Dificuldade dificuldade, Assunto assunto, Configuracoes config, int totalQuestoes) {
+        this.dificuldade = dificuldade;
+        this.assunto = assunto;
+        initJogo(new DebugWin(config, dificuldade, assunto, totalQuestoes));
+        configurarTela();
+    }
+
+    private void initJogo(DebugWin debugWin) {
+        this.debugWin = debugWin;
         adicionarObserver();
+    }
+
+    private void configurarTela() {
+        lblPergunta.setWrapText(true);
+        configurarBotoesDeAlternativa(btnLetraA, btnLetraB, btnLetraC, btnLetraD);
         carregarQuestao();
     }
 
-    public void initDebugWinViewController(Dificuldade dificuldade, Assunto assunto, Configuracoes config, int qntdQuestoes){
-        this.debugWinJogo = new DebugWin(config, dificuldade, assunto, qntdQuestoes);
-        this.assunto = assunto;
-        this.dificuldade = dificuldade;
-        adicionarObserver();
-        carregarQuestao();
+    private void configurarBotoesDeAlternativa(Button... botoes) {
+        for (Button botao : botoes) {
+            botao.setWrapText(true);
+            ajustarFonteBotao(botao);
+        }
     }
 
     private void adicionarObserver() {
-        if (!observadorRegistrado) {
-            debugWinJogo.attachObserver(this);
-            observadorRegistrado = true;
+        if (!isObserverAttached) {
+            debugWin.attachObserver(this);
+            isObserverAttached = true;
         }
     }
 
-    private void carregarQuestao(){
-        if(!debugWinJogo.temMaisQuestao()){
-            encerrarDebugWin();
+    private void carregarQuestao() {
+        if (!debugWin.temMaisQuestao()) {
+            finalizarJogoComMensagem("Questões Finalizadas!", "Sua pontuação total: " + debugWin.getPontuacao());
             return;
         }
 
-        Questao questaoAtual = debugWinJogo.getQuestaoAtual();
-        System.out.println("Resposta: " + questaoAtual.getCorreta());
-        lblPergunta.setText(questaoAtual.getPergunta());
-        ajustarFonteLabel(lblPergunta, questaoAtual.getPergunta());
-
-
-        btnLetraA.setText(questaoAtual.getAlternativas().get(0));
-        btnLetraB.setText(questaoAtual.getAlternativas().get(1));
-        btnLetraC.setText(questaoAtual.getAlternativas().get(2));
-        btnLetraD.setText(questaoAtual.getAlternativas().get(3));
-
-
-        ajustarFonteBotao(btnLetraA);
-        ajustarFonteBotao(btnLetraB);
-        ajustarFonteBotao(btnLetraC);
-        ajustarFonteBotao(btnLetraD);
-
-
-        lblExibirPontuacaoQuestao.setText("Pontuação da questão: " + debugWinJogo.getConfiguracoes().getPontuacaoPorDificuldade(questaoAtual.getDificuldade().getDescricao()));
-
+        Questao questaoAtual = debugWin.getQuestaoAtual();
+        atualizarInterfaceComQuestao(questaoAtual);
         iniciarContadorDeTempo();
     }
 
-    @FXML
-    private void responderA(){ processarResposta(1); }
-    @FXML
-    private void responderB(){ processarResposta(2); }
-    @FXML
-    private void responderC(){ processarResposta(3); }
-    @FXML
-    private void responderD(){ processarResposta(4); }
+    private void atualizarInterfaceComQuestao(Questao questao) {
+        lblPergunta.setText(questao.getPergunta());
+        ajustarFonteLabel(lblPergunta, questao.getPergunta());
 
-    private void processarResposta(int resposta){
-        debugWinJogo.responderQuestao(resposta);
-        carregarQuestao();
+        String[] alternativas = questao.getAlternativas().toArray(new String[0]);
+        btnLetraA.setText(alternativas[0]);
+        btnLetraB.setText(alternativas[1]);
+        btnLetraC.setText(alternativas[2]);
+        btnLetraD.setText(alternativas[3]);
+
+        lblPontuacaoQuestao.setText("Pontuação: " + debugWin.getConfiguracoes().getPontuacaoPorDificuldade(questao.getDificuldade().getDescricao()));
     }
 
     private void iniciarContadorDeTempo() {
-        if (timer != null) {
-            timer.stop();
-        }
+        if (timer != null) timer.stop();
 
-        tempoRestante = (debugWinJogo.getAssunto() == null && debugWinJogo.getDificuldade() == null)
-                ? debugWinJogo.getConfiguracoes().getTempoPorDificuldade("Aleatória")
-                : debugWinJogo.getConfiguracoes().getTempoPorDificuldade(dificuldade.getDescricao());
+        tempoRestante = (debugWin.getAssunto() == null && debugWin.getDificuldade() == null)
+                ? debugWin.getConfiguracoes().getTempoPorDificuldade("Aleatória")
+                : debugWin.getConfiguracoes().getTempoPorDificuldade(dificuldade.getDescricao());
 
-        lblExibirTempoPorPergunta.setText("Tempo: " + this.tempoRestante + "s");
+        atualizarTempoLabel();
 
         timer = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            this.tempoRestante--;
-            lblExibirTempoPorPergunta.setText("Tempo: " + this.tempoRestante + "s");
-
-            if (this.tempoRestante <= 0) {
+            tempoRestante--;
+            atualizarTempoLabel();
+            if (tempoRestante <= 0) {
                 timer.stop();
                 pularQuestao();
             }
         }));
-
-        timer.setCycleCount(this.tempoRestante);
+        timer.setCycleCount(tempoRestante);
         timer.play();
     }
 
+    private void atualizarTempoLabel() {
+        lblTempoPorPergunta.setText("Tempo: " + tempoRestante + "s");
+    }
+
+    @FXML
+    private void responderA() {
+        processarResposta(1);
+    }
+
+    @FXML
+    private void responderB() {
+        processarResposta(2);
+    }
+
+    @FXML
+    private void responderC() {
+        processarResposta(3);
+    }
+
+    @FXML
+    private void responderD() {
+        processarResposta(4);
+    }
+
+    private void processarResposta(int resposta) {
+        debugWin.responderQuestao(resposta);
+        carregarQuestao();
+    }
 
     @FXML
     private void pularQuestao() {
-        if (timer != null) {
-            timer.stop();
-        }
+        if (timer != null) timer.stop();
 
-        if(qntdPulos >0){
-            debugWinJogo.responderQuestao(-1);
+        if (qntdPulos > 0) {
+            debugWin.responderQuestao(-1);
             carregarQuestao();
             qntdPulos--;
+        } else {
+            btnPular.setDisable(true);
         }
-        else{
-            btnPularQuestao.setDisable(true);
-        }
-
     }
 
-    private void encerrarDebugWin(){
-        if (timer != null) {
-            timer.stop();
+    private void finalizarJogoComMensagem(String mensagemLabel, String mensagemPontuacao) {
+        if (timer != null) timer.stop();
+
+        lblPergunta.setText(mensagemLabel);
+        lblPontuacaoQuestao.setText(mensagemPontuacao);
+        lblTempoPorPergunta.setText("");
+        ajustarEstadoBotoesFinalizacao();
+        debugWin.detachObserver(this);
+    }
+
+    private void ajustarEstadoBotoesFinalizacao() {
+        for (Button botao : new Button[]{btnLetraA, btnLetraB, btnLetraC, btnLetraD, btnDesistir, btnPular}) {
+            botao.setDisable(true);
         }
-
-
-        lblPergunta.setText("Questões Finalizadas!");
-        lblPergunta.setText("Sua pontuação total: "+ debugWinJogo.getPontuacao());
-        lblExibirTempoPorPergunta.setText("");
-        lblExibirPontuacaoQuestao.setText("");
-
-        btnLetraA.setDisable(true);
-        btnLetraB.setDisable(true);
-        btnLetraC.setDisable(true);
-        btnLetraD.setDisable(true);
-        btnDesistir.setDisable(true);
-        btnPularQuestao.setDisable(true);
-
-        btnFinalizarJogo.setDisable(false);
-        btnFinalizarJogo.setVisible(true);
-        debugWinJogo.detachObserver(this);
-
+        btnFinalizar.setDisable(false);
+        btnFinalizar.setVisible(true);
     }
 
     @FXML
     private void desistirJogo() {
-        if (timer != null) {
-            timer.stop();
-        }
-        debugWinJogo.detachObserver(this);
-        TelaMenuView menuView = new TelaMenuView();
-        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWinJogo.getConfiguracoes().getJogador());
+        terminarTimerEDetachObserver();
+        new TelaMenuView().initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWin.getConfiguracoes().getJogador());
     }
 
     @FXML
     private void finalizarJogo() {
+        EstatisticaJogador.atualizarEstatisticas(debugWin);
+        terminarTimerEDetachObserver();
+        new TelaMenuView().initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWin.getConfiguracoes().getJogador());
+    }
 
-
-        if(debugWinJogo.getPontuacao() > EstatisticaJogador.getMaiorPontuacao()){
-            EstatisticaJogador.setMaiorPontuacao(debugWinJogo.getPontuacao());
-        }
-        EstatisticaJogador.setMaiorSequenciaAcerto(debugWinJogo.getMaiorSequenciaAcerto());
-        EstatisticaJogador.contabilizarAcertosAssunto(debugWinJogo.getAuxAcertosPorAssunto());
-        EstatisticaJogador.contabilizarErrosAssunto(debugWinJogo.getAuxErrosPorAssunto());
-        EstatisticaJogador.atualizarEstatisticaJogador();
-
-        debugWinJogo.detachObserver(this);
-        TelaMenuView menuView = new TelaMenuView();
-        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWinJogo.getConfiguracoes().getJogador());// arruma esse new jogador
+    private void terminarTimerEDetachObserver() {
+        if (timer != null) timer.stop();
+        debugWin.detachObserver(this);
     }
 
     @Override
     public void update() {
         carregarQuestao();
-
     }
 
     private void ajustarFonteBotao(Button botao) {
-        double tamanhoFonte = 16;
-        double larguraBotao = botao.getWidth() - 10;
-        Text textNode = new Text(botao.getText());
-        textNode.setFont(Font.font(tamanhoFonte));
-        textNode.setBoundsType(TextBoundsType.VISUAL);
-
-        while (textNode.getLayoutBounds().getWidth() > larguraBotao && tamanhoFonte > 8) {
-            tamanhoFonte -= 1;
-            textNode.setFont(Font.font(tamanhoFonte));
-        }
-        botao.setFont(Font.font(tamanhoFonte));
+        ajustarFonte(botao, botao.getText());
     }
 
-
     private void ajustarFonteLabel(Label label, String texto) {
-        double tamanhoFonte = 16;
-        double larguraMaxima = 600;
+        ajustarFonte(label, texto);
+    }
 
+    private void ajustarFonte(javafx.scene.Node componente, String texto) {
+        double tamanhoFonte = FONT_SIZE_DEFAULT;
+        double largura = componente instanceof Button ? ((Button) componente).getWidth() - 10 : ((Label) componente).getWidth() - 10;
         Text textNode = new Text(texto);
         textNode.setFont(Font.font(tamanhoFonte));
         textNode.setBoundsType(TextBoundsType.VISUAL);
 
-        while (textNode.getLayoutBounds().getWidth() > larguraMaxima && tamanhoFonte > 10) {
-            tamanhoFonte -= 2;
+        while (textNode.getLayoutBounds().getWidth() > largura && tamanhoFonte > FONT_SIZE_MIN) {
+            tamanhoFonte--;
             textNode.setFont(Font.font(tamanhoFonte));
         }
-        label.setFont(Font.font(tamanhoFonte));
-        label.setText(texto);
+
+        if (componente instanceof Button) {
+            ((Button) componente).setFont(Font.font(tamanhoFonte));
+        } else if (componente instanceof Label) {
+            ((Label) componente).setFont(Font.font(tamanhoFonte));
+        }
     }
-
-
-
-
 }

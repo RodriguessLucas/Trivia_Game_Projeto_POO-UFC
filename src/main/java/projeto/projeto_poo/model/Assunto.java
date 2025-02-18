@@ -3,49 +3,55 @@ package projeto.projeto_poo.model;
 import java.util.Random;
 
 public enum Assunto {
-    POO(1,"POO"),
+    POO(1, "POO"),
     ESTRUTURADADOS(2, "Estruturas de Dados"),
-    PYTHON(3,"Python"),
+    PYTHON(3, "Python"),
     C(4, "C"),
     JAVA(5, "Java");
 
-    private int id;
-    private String descricao;
+    private static final String ERRO_VALOR_INVALIDO = "Valor inválido para assunto: ";
+    private static final String ERRO_DESCRICAO_INVALIDA = "Descrição inválida para assunto: ";
 
-    private Assunto(int id, String descricao) {
+    private final int id;
+    private final String descricao;
+
+    Assunto(int id, String descricao) {
         this.id = id;
         this.descricao = descricao;
     }
+
     public int getId() {
         return id;
     }
+
     public String getDescricao() {
         return descricao;
     }
 
-    public static Assunto fromValor(int valor) {
+    public static Assunto fromId(int id) {
         for (Assunto assunto : values()) {
-            if (assunto.getId() == valor) {
+            if (assunto.getId() == id) {
                 return assunto;
             }
         }
-        throw new IllegalArgumentException("Valor invalido para assunto " + valor);
+        throw new IllegalArgumentException(ERRO_VALOR_INVALIDO + id);
     }
 
     public static Assunto fromDescricao(String descricao) {
-        for (Assunto d : Assunto.values()) {
-            if (d.getDescricao().equalsIgnoreCase(descricao)) {
-                return d;
+        for (Assunto assunto : values()) {
+            if (assunto.getDescricao().equalsIgnoreCase(descricao)) {
+                return assunto;
             }
         }
-        throw new IllegalArgumentException("Descrição inválida para assunto: " + descricao);
+        throw new IllegalArgumentException(ERRO_DESCRICAO_INVALIDA + descricao);
     }
 
     public static Assunto getAssuntoAleatorio() {
-        Random random = new Random();
-        Assunto[] assuntos = Assunto.values();
-        return assuntos[random.nextInt(assuntos.length)];
+        return obterValorAleatorio();
     }
 
-
+    private static Assunto obterValorAleatorio() {
+        Assunto[] valores = values();
+        return valores[new Random().nextInt(valores.length)];
+    }
 }

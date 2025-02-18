@@ -10,8 +10,10 @@ import projeto.projeto_poo.model.Dificuldade;
 import projeto.projeto_poo.model.Jogador;
 
 public class TelaMenuViewController {
+
     @FXML
     private Label txtEntradaJogador;
+
     @FXML
     private Button btnIniciarJogo;
     @FXML
@@ -20,7 +22,6 @@ public class TelaMenuViewController {
     private Button btnConfiguracoes;
     @FXML
     private Button btnJogoAleatorio;
-
     @FXML
     private Button btnPythonFacilCurto;
     @FXML
@@ -36,13 +37,12 @@ public class TelaMenuViewController {
     @FXML
     private Button btnCMedio;
 
-
-
+    private static final int FACIL_QUESTOES = 5;
+    private static final int MEDIO_QUESTOES = 7;
+    private static final int DIFICIL_QUESTOES = 8;
 
     private Jogador jogador;
     private TelaMenuView view;
-
-
 
     public void initTelaMenuViewController(Jogador jogador, TelaMenuView view) {
         this.jogador = jogador;
@@ -51,65 +51,68 @@ public class TelaMenuViewController {
     }
 
     @FXML
-    public void setMensagem(String mesagem) {
-        if (mesagem == null) {
+    public void setMensagem(String mensagem) {
+        if (mensagem == null) {
             System.out.println("O texto está vazio");
             return;
         }
-        txtEntradaJogador.setText("Bem-vindo, "+ mesagem + "!");
-    }
-
-
-    @FXML
-    public  void iniciarJogoAleatorio() {
-        DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(), Configuracoes.getInstancia(jogador));
+        txtEntradaJogador.setText("Bem-vindo, " + mensagem + "!");
     }
 
     @FXML
-    public void iniciarPythonFacilCurto(){
+    public void iniciarJogoAleatorio() {
         DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(),Configuracoes.getInstancia(jogador), Dificuldade.FACIL, Assunto.PYTHON, 5);
+        telaDeJogoAleatorio.initDebugWinView(
+                (Stage) btnJogoAleatorio.getScene().getWindow(),
+                Configuracoes.getInstancia(jogador)
+        );
     }
 
     @FXML
-    public void iniciarPOOFacil(){
-        DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(),Configuracoes.getInstancia(jogador), Dificuldade.FACIL, Assunto.POO, 5);
-    }
-
-
-    @FXML
-    public void iniciarEDFacil(){
-        DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(),Configuracoes.getInstancia(jogador), Dificuldade.FACIL, Assunto.ESTRUTURADADOS, 5);
+    private void iniciarPythonFacilCurto() {
+        iniciarJogo(Dificuldade.FACIL, Assunto.PYTHON, FACIL_QUESTOES);
     }
 
     @FXML
-    public void iniciarJavaFacil(){
-        DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(),Configuracoes.getInstancia(jogador), Dificuldade.FACIL, Assunto.JAVA, 5);
+    private void iniciarPOOFacil() {
+        iniciarJogo(Dificuldade.FACIL, Assunto.POO, FACIL_QUESTOES);
     }
 
     @FXML
-    public void iniciarJavaDificil(){
-        DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(),Configuracoes.getInstancia(jogador), Dificuldade.DIFICIL, Assunto.JAVA, 8);
+    private void iniciarEDFacil() {
+        iniciarJogo(Dificuldade.FACIL, Assunto.ESTRUTURADADOS, FACIL_QUESTOES);
     }
 
     @FXML
-    public void iniciarEDDificil(){
-        DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(),Configuracoes.getInstancia(jogador), Dificuldade.DIFICIL, Assunto.ESTRUTURADADOS, 8);
+    private void iniciarJavaFacil() {
+        iniciarJogo(Dificuldade.FACIL, Assunto.JAVA, FACIL_QUESTOES);
     }
 
     @FXML
-    public void iniciarCMedio(){
-        DebugWinView telaDeJogoAleatorio = new DebugWinView();
-        telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(),Configuracoes.getInstancia(jogador), Dificuldade.MEDIO, Assunto.C, 7);
+    private void iniciarJavaDificil() {
+        iniciarJogo(Dificuldade.DIFICIL, Assunto.JAVA, DIFICIL_QUESTOES);
     }
 
+    @FXML
+    private void iniciarEDDificil() {
+        iniciarJogo(Dificuldade.DIFICIL, Assunto.ESTRUTURADADOS, DIFICIL_QUESTOES);
+    }
 
+    @FXML
+    private void iniciarCMedio() {
+        iniciarJogo(Dificuldade.MEDIO, Assunto.C, MEDIO_QUESTOES);
+    }
+
+    private void iniciarJogo(Dificuldade dificuldade, Assunto assunto, int questoes) {
+        DebugWinView telaDeJogo = new DebugWinView();
+        telaDeJogo.initDebugWinView(
+                (Stage) btnJogoAleatorio.getScene().getWindow(),
+                Configuracoes.getInstancia(jogador),
+                dificuldade,
+                assunto,
+                questoes
+        );
+    }
 
     @FXML
     public void estatisticas() {
@@ -120,12 +123,11 @@ public class TelaMenuViewController {
 
     @FXML
     public void configuracoes() {
-        Stage stageAtual = (Stage) btnConfiguracoes.getScene().getWindow(); // Obtém o Stage correto
+        Stage stageAtual = (Stage) btnConfiguracoes.getScene().getWindow();
         ConfiguracaoView telaConfiguracoes = new ConfiguracaoView();
         telaConfiguracoes.initConfiguracaoView(stageAtual, jogador);
         System.out.println("Indo para a tela de configurações...");
     }
-
 
     public void irTelaInicial() {
         TelaInicialView telaInicial = new TelaInicialView();
@@ -134,8 +136,6 @@ public class TelaMenuViewController {
     }
 
     @FXML
-    public void teste(){}
-
-
-
+    public void teste() {
+    }
 }

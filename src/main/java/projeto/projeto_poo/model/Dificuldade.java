@@ -7,43 +7,49 @@ public enum Dificuldade {
     MEDIO(2, "Médio"),
     DIFICIL(3, "Difícil");
 
-    private final int valor;
+    private static final String ERRO_VALOR_INVALIDO = "Nível inválido para dificuldade: ";
+    private static final String ERRO_DESCRICAO_INVALIDA = "Descrição inválida para dificuldade: ";
+
+    private final int nivel;
     private final String descricao;
 
-    private Dificuldade(int valor, String descricao) {
-        this.valor = valor;
+    Dificuldade(int nivel, String descricao) {
+        this.nivel = nivel;
         this.descricao = descricao;
     }
 
-    public int getValor() {
-        return valor;
+    public int getNivel() {
+        return nivel;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public static Dificuldade fromValor(int valor) {
-        for (Dificuldade d : Dificuldade.values()) {
-            if (d.getValor() == valor) {
-                return d;
+    public static Dificuldade fromNivel(int nivel) {
+        for (Dificuldade dificuldade : values()) {
+            if (dificuldade.getNivel() == nivel) {
+                return dificuldade;
             }
         }
-        throw new IllegalArgumentException("Valor inválido para dificuldade: " + valor);
+        throw new IllegalArgumentException(ERRO_VALOR_INVALIDO + nivel);
     }
 
     public static Dificuldade fromDescricao(String descricao) {
-        for (Dificuldade d : Dificuldade.values()) {
-            if (d.getDescricao().equalsIgnoreCase(descricao)) {
-                return d;
+        for (Dificuldade dificuldade : values()) {
+            if (dificuldade.getDescricao().equalsIgnoreCase(descricao)) {
+                return dificuldade;
             }
         }
-        throw new IllegalArgumentException("Descrição inválida para dificuldade: " + descricao);
+        throw new IllegalArgumentException(ERRO_DESCRICAO_INVALIDA + descricao);
     }
 
     public static Dificuldade getDificuldadeAleatoria() {
-        Random random = new Random();
-        Dificuldade[] dificuldades = Dificuldade.values();
-        return dificuldades[random.nextInt(dificuldades.length)];
+        return obterValorAleatorio();
+    }
+
+    private static Dificuldade obterValorAleatorio() {
+        Dificuldade[] dificuldades = values();
+        return dificuldades[new Random().nextInt(dificuldades.length)];
     }
 }
