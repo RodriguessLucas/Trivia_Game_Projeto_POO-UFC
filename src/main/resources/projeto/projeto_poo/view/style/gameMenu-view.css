@@ -13,7 +13,7 @@
 
 }
 
-.top-circular-button{
+.top-circular-button {
     -fx-background-radius: 30px;
     -fx-border-radius: 30px;
     -fx-min-width: 178px;
@@ -25,6 +25,11 @@
     -fx-border-width: 3px;
     -fx-border-color: #fafafa;
     -fx-font-size: 14px;
+
+    /* Centralizar o texto */
     -fx-alignment: center;
     -fx-content-display: center;
+
+    /* Permitir quebra de linha no texto */
+    -fx-wrap-text: true;
 }
