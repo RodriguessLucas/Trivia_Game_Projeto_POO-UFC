@@ -15,7 +15,12 @@ import java.util.*;
 
 public class GerenciadorBanco {
     private static final String XML_PATH = "src/main/resources/projeto/projeto_poo/data/questions.xml";
-    private static Map<String, List<Questao>> bancoQuestoes = new HashMap<>();
+    private static Map<String, List<Questao>> bancoQuestoes ;
+
+    public GerenciadorBanco() {
+        bancoQuestoes = new HashMap<>();
+        carregarQuestoes();
+    }
 
 
     public static void carregarQuestoes(){
