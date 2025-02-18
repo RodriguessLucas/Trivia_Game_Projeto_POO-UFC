@@ -62,11 +62,13 @@ public class Model {
     public void adicionarObservador(Observer observer) {
         if (!observers.contains(observer)) {
             observers.add(observer);
+            System.out.println();
         }
     }
 
     public void removerObservador(Observer observer) {
         observers.remove(observer);
+
     }
 
     private void notificarObservadores() {

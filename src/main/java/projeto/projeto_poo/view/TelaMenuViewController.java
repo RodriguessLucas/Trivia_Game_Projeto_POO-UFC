@@ -4,47 +4,86 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import projeto.projeto_poo.model.*;
+import projeto.projeto_poo.model.Model;
 
-public class TelaMenuViewController {
-    @FXML
-    private Label txtEntradaJogador;
-    @FXML
-    private Button btnIniciarJogo;
-    @FXML
-    private Button btnEstatisticas;
-    @FXML
-    private Button btnConfiguracoes;
-    @FXML
-    private Button btnJogoAleatorio;
-
-    @FXML
-    private Button btnPythonFacilCurto;
-    @FXML
-    private Button btnPOOFacil;
-    @FXML
-    private Button btnEDFacil;
-    @FXML
-    private Button btnJavaFacil;
-    @FXML
-    private Button btnJavaDificil;
-    @FXML
-    private Button btnEDDificil;
-    @FXML
-    private Button btnCMedio;
-
-
-
+public class TelaMenuViewController implements Observer {
+    @FXML private Label txtEntradaJogador;
+    @FXML private Button btnIniciarJogo;
+    @FXML private Button btnEstatisticas;
+    @FXML private Button btnConfiguracoes;
+    @FXML private Button btnJogoAleatorio;
+    @FXML private Button btnPythonFacilCurto;
+    @FXML private Button btnPOOFacil;
+    @FXML private Button btnEDFacil;
+    @FXML private Button btnJavaFacil;
+    @FXML private Button btnJavaDificil;
+    @FXML private Button btnEDDificil;
+    @FXML private Button btnCMedio;
 
     private Model model;
     private TelaMenuView view;
-
-
 
     public void initTelaMenuViewController(Model model, TelaMenuView view) {
         this.model = model;
         this.view = view;
         setMensagem(model.getJogador().getNome());
+        model.adicionarObservador(this);
+    }
+
+    @FXML
+    public void setMensagem(String mensagem) {
+        if (mensagem == null) {
+            System.out.println("O texto está vazio");
+            return;
+        }
+        txtEntradaJogador.setText("Bem-vindo, " + mensagem + "!");
+    }
+
+    // Métodos comentados mantidos
+    @FXML
+    public void iniciarJogoAleatorio() {}
+    @FXML
+    public void iniciarPythonFacilCurto() {}
+    @FXML
+    public void iniciarPOOFacil() {}
+    @FXML
+    public void iniciarEDFacil() {}
+    @FXML
+    public void iniciarJavaFacil() {}
+    @FXML
+    public void iniciarJavaDificil() {}
+    @FXML
+    public void iniciarEDDificil() {}
+    @FXML
+    public void iniciarCMedio() {}
+    @FXML
+    public void estatisticas() {}
+    @FXML
+    public void configuracoes() {}
+
+    public void irTelaInicial() {
+        Stage stageAtual = (Stage) btnConfiguracoes.getScene().getWindow(); // Obtém a referência da janela atual
+        stageAtual.close(); // Fecha a tela do menu
+
+        TelaInicialView telaInicial = new TelaInicialView(model);
+        telaInicial.initTelaInicial(new Stage()); // Abre a tela inicial novamente
+
+        model.removerObservador(this);
+        System.out.println("Voltando para a tela inicial...");
+    }
+
+    public void update() {}
+    @FXML
+    public void teste() {}
+}
+
+
+/*
+    public void initTelaMenuViewController(Model model, TelaMenuView view) {
+        this.model = model;
+        this.view = view;
+        setMensagem(model.getJogador().getNome());
+        model.adicionarObservador(this);
     }
 
     @FXML
@@ -126,9 +165,13 @@ public class TelaMenuViewController {
 
     public void irTelaInicial() {
         //TelaInicialView telaInicial = new TelaInicialView();
-        //telaInicial.handleEvent((Stage) btnConfiguracoes.getScene().getWindow(), jogador);
+        //telaInicial.initTelaInicial((Stage) btnConfiguracoes.getScene().getWindow(), model.getJogador(), model);
+       // model.removerObservador(this);
+
         //System.out.println("Voltando para a tela inicial...");
     }
+
+    public void update() {}
 
     @FXML
     public void teste(){}
@@ -136,3 +179,6 @@ public class TelaMenuViewController {
 
 
 }
+
+
+ */

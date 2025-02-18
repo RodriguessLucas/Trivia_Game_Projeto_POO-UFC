@@ -1,6 +1,5 @@
 package projeto.projeto_poo.view;
 
-import projeto.projeto_poo.model.Jogador;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,8 +13,11 @@ public class TelaMenuView implements Observer {
     private TelaMenuViewController controller;
     private Stage stage;
 
-    public void initTelaMenuView(Stage stage, Model model) {
+    public TelaMenuView(Model model) {
         this.model = model;
+    }
+
+    public void initTelaMenuView(Stage stage) {
         this.stage = stage;
         model.adicionarObservador(this);
 
@@ -33,18 +35,19 @@ public class TelaMenuView implements Observer {
             // Configura a cena e exibe a janela
             stage.setTitle("Debug & Win");
             stage.setScene(new Scene(root, 650, 800));
+            stage.setOnCloseRequest(event -> removerObservador());
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
             System.out.printf("Erro ao abrir tela menu");
         }
     }
 
-    @Override
-    public void update() {
-        System.out.println("TelaMenuView: Nome do jogador atualizado para " + model.getJogador().getNome());
-        if (controller != null) {
-            controller.setMensagem(model.getJogador().getNome());
-        }
+    public void removerObservador() {
+        model.removerObservador(this);
     }
+
+    @Override
+    public void update() {}
 }
