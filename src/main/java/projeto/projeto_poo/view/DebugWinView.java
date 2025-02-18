@@ -7,10 +7,12 @@ import javafx.stage.Stage;
 import projeto.projeto_poo.model.Assunto;
 import projeto.projeto_poo.model.Configuracoes;
 import projeto.projeto_poo.model.Dificuldade;
+import projeto.projeto_poo.model.QuizModel;
 
 import java.io.IOException;
 
 public class DebugWinView {
+    private QuizModel model;
     private DebugWinViewController controller; // aqui pode dar erro sepa
     private Stage stage;
 

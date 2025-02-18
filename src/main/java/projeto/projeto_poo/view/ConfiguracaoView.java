@@ -6,9 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import projeto.projeto_poo.model.QuizModel;
+
 import java.io.IOException;
 
 public class ConfiguracaoView implements Observer {
+    private QuizModel model;
     private Configuracoes configuracoes;
     private ConfiguracaoViewController controller;
     private Stage stage;

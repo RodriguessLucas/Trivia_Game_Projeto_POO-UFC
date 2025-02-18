@@ -34,4 +34,12 @@ public class QuizModel {
     public void resetarQuiz() {
         indiceQuestoes = 1;
     }
+
+    public void adicionarObservador(){}
+
+    public void attachObserver(){}
+
+    public void notificarObservers(){}
+
+    public void updateObservers(){}
 }

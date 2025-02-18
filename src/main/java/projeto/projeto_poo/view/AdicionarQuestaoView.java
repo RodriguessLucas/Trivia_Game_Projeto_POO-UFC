@@ -5,9 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import projeto.projeto_poo.model.QuizModel;
+
 import java.io.IOException;
 
 public class AdicionarQuestaoView  {
+    private QuizModel model;
     private Stage stage;
     private AdicionarQuestaoViewController controller;
 

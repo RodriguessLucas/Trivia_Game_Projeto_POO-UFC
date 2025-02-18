@@ -5,9 +5,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import projeto.projeto_poo.model.QuizModel;
+
 import java.io.IOException;
 
 public class TelaMenuView implements Observer {
+    private QuizModel model;
     private Jogador jogador;
     private TelaMenuViewController controller;
     private Stage stage;
