@@ -60,14 +60,20 @@ public class DebugWinViewController implements Observer {
             return;
         }
 
-        lblPergunta.setText(questaoAtual.getPergunta());
+        ajustarFonteLabel(lblPergunta, questaoAtual.getPergunta());
         btnLetraA.setText(questaoAtual.getAlternativas().get(0));
         btnLetraB.setText(questaoAtual.getAlternativas().get(1));
         btnLetraC.setText(questaoAtual.getAlternativas().get(2));
         btnLetraD.setText(questaoAtual.getAlternativas().get(3));
         lblExibirPontuacaoQuestao.setText("Pontuação: " + model.getConfiguracoes().getPontuacaoPorDificuldade(questaoAtual.getDificuldade().getDescricao()));
 
+        ajustarFonteBotao(btnLetraA);
+        ajustarFonteBotao(btnLetraB);
+        ajustarFonteBotao(btnLetraC);
+        ajustarFonteBotao(btnLetraD);
+
         iniciarContadorDeTempo();
+
     }
 
     @FXML
@@ -100,6 +106,7 @@ public class DebugWinViewController implements Observer {
 
         // Muda a cor do botão para verde (acertou) ou vermelho (errou)
         btnResposta.setStyle(acertou ? "-fx-background-color: #7df37d;" : "-fx-background-color: #f17474;");
+        ajustarFonteBotao(btnResposta);
 
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
