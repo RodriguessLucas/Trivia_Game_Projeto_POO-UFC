@@ -1,42 +1,32 @@
 package projeto.projeto_poo.view;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-import projeto.projeto_poo.model.Configuracoes;
+import projeto.projeto_poo.model.Model;
 import projeto.projeto_poo.model.Dificuldade;
-import projeto.projeto_poo.model.Jogador;
 
 public class ConfiguracaoViewController implements Observer {
     @FXML private TextField txtQntQuestoes;
-
     @FXML private TextField txtTempoFacil;
     @FXML private TextField txtTempoMedio;
     @FXML private TextField txtTempoDificil;
     @FXML private TextField txtTempoAleatorio;
-
     @FXML private TextField txtPontuacaoFacil;
     @FXML private TextField txtPontuacaoMedio;
     @FXML private TextField txtPontuacaoDificil;
-
     @FXML private Button btnSalvar;
     @FXML private Button btnAdicionarQuestao;
 
-    private Configuracoes configuracoes;
+    private Model model;
     private ConfiguracaoView view;
-    private Jogador jogador;
 
-    public void initConfiguracaoViewController(Configuracoes configuracoes, ConfiguracaoView view, Jogador jogador) {
-        this.configuracoes = configuracoes;
+    public void initConfiguracaoViewController(Model model, ConfiguracaoView view) {
+        this.model = model;
         this.view = view;
-        this.jogador = jogador;
-
-        configuracoes.attachObserver(this);
+        model.adicionarObservador(this);
         atualizarValores();
     }
 
@@ -46,16 +36,14 @@ public class ConfiguracaoViewController implements Observer {
     }
 
     public void atualizarValores() {
-        txtQntQuestoes.setText(String.valueOf(configuracoes.getQntdQuestoesPorJogo()));
-
-        txtTempoFacil.setText(String.valueOf(configuracoes.getTempoPorDificuldade(Dificuldade.FACIL.getDescricao())));
-        txtTempoMedio.setText(String.valueOf(configuracoes.getTempoPorDificuldade(Dificuldade.MEDIO.getDescricao())));
-        txtTempoDificil.setText(String.valueOf(configuracoes.getTempoPorDificuldade(Dificuldade.DIFICIL.getDescricao())));
-        txtTempoAleatorio.setText(String.valueOf(configuracoes.getTempoPorDificuldade("Aleatória")));
-
-        txtPontuacaoFacil.setText(String.valueOf(configuracoes.getPontuacaoPorDificuldade(Dificuldade.FACIL.getDescricao())));
-        txtPontuacaoMedio.setText(String.valueOf(configuracoes.getPontuacaoPorDificuldade(Dificuldade.MEDIO.getDescricao())));
-        txtPontuacaoDificil.setText(String.valueOf(configuracoes.getPontuacaoPorDificuldade(Dificuldade.DIFICIL.getDescricao())));
+        txtQntQuestoes.setText(String.valueOf(model.getConfiguracoesQntdQuestoesPorJogo()));
+        txtTempoFacil.setText(String.valueOf(model.getConfiguracoesTempoPorDificuldade(Dificuldade.FACIL.getDescricao())));
+        txtTempoMedio.setText(String.valueOf(model.getConfiguracoesTempoPorDificuldade(Dificuldade.MEDIO.getDescricao())));
+        txtTempoDificil.setText(String.valueOf(model.getConfiguracoesTempoPorDificuldade(Dificuldade.DIFICIL.getDescricao())));
+        txtTempoAleatorio.setText(String.valueOf(model.getConfiguracoesTempoPorDificuldade("Aleatória")));
+        txtPontuacaoFacil.setText(String.valueOf(model.getConfiguracoesPontuacaoPorDificuldade(Dificuldade.FACIL.getDescricao())));
+        txtPontuacaoMedio.setText(String.valueOf(model.getConfiguracoesPontuacaoPorDificuldade(Dificuldade.MEDIO.getDescricao())));
+        txtPontuacaoDificil.setText(String.valueOf(model.getConfiguracoesPontuacaoPorDificuldade(Dificuldade.DIFICIL.getDescricao())));
     }
 
     @FXML
@@ -70,58 +58,47 @@ public class ConfiguracaoViewController implements Observer {
             int pontuacaoMedio = Integer.parseInt(txtPontuacaoMedio.getText());
             int pontuacaoDificil = Integer.parseInt(txtPontuacaoDificil.getText());
 
-            configuracoes.setQntdQuestoesPorJogo(qntQuestoes);
-            configuracoes.setTempoPorDificuldade(Dificuldade.FACIL.getDescricao(), tempoFacil);
-            configuracoes.setTempoPorDificuldade(Dificuldade.MEDIO.getDescricao(), tempoMedio);
-            configuracoes.setTempoPorDificuldade(Dificuldade.DIFICIL.getDescricao(), tempoDificil);
-            configuracoes.setTempoPorDificuldade("Aleatória", tempoAleatorio);
-            configuracoes.setPontuacaoPorDificuldade(Dificuldade.FACIL.getDescricao(), pontuacaoFacil);
-            configuracoes.setPontuacaoPorDificuldade(Dificuldade.MEDIO.getDescricao(), pontuacaoMedio);
-            configuracoes.setPontuacaoPorDificuldade(Dificuldade.DIFICIL.getDescricao(), pontuacaoDificil);
+            model.setConfiguracoesQntdQuestoesPorJogo(qntQuestoes);
+            model.setConfiguracoesTempoPorDificuldade(Dificuldade.FACIL.getDescricao(), tempoFacil);
+            model.setConfiguracoesTempoPorDificuldade(Dificuldade.MEDIO.getDescricao(), tempoMedio);
+            model.setConfiguracoesTempoPorDificuldade(Dificuldade.DIFICIL.getDescricao(), tempoDificil);
+            model.setConfiguracoesTempoPorDificuldade("Aleatória", tempoAleatorio);
+            model.setConfiguracoesPontuacaoPorDificuldade(Dificuldade.FACIL.getDescricao(), pontuacaoFacil);
+            model.setConfiguracoesPontuacaoPorDificuldade(Dificuldade.MEDIO.getDescricao(), pontuacaoMedio);
+            model.setConfiguracoesPontuacaoPorDificuldade(Dificuldade.DIFICIL.getDescricao(), pontuacaoDificil);
 
-            configuracoes.notificarObservers();
-            mostrarAlertaTemporario("Aviso", "Configurações salvas", Alert.AlertType.INFORMATION, 1);
+            mostrarAlerta("Configurações salvas com sucesso!", Alert.AlertType.INFORMATION);
             voltarMenu();
-        } catch (NumberFormatException e) {
-            mostrarAlertaTemporario("Aviso", "Erro: Certifique-se de inserir apenas números.", Alert.AlertType.INFORMATION, 1);
 
+        } catch (NumberFormatException e) {
+            mostrarAlerta("Erro: Certifique-se de inserir apenas números.", Alert.AlertType.ERROR);
         }
     }
 
     @FXML
     public void adicionarQuestao() {
         Stage stageAtual = (Stage) btnAdicionarQuestao.getScene().getWindow();
+        stageAtual.close();
 
-        if (stageAtual == null) {
-            return;
-        }
-
-        AdicionarQuestaoView adicionarQuestao = new AdicionarQuestaoView();
-        adicionarQuestao.initAdicionarQuestaoView(stageAtual, jogador);
-
+        AdicionarQuestaoView adicionarQuestaoView = new AdicionarQuestaoView(model);
+        adicionarQuestaoView.initAdicionarQuestaoView(new Stage());
     }
-
-    public static void mostrarAlertaTemporario(String titulo, String mensagem, Alert.AlertType tipo, int segundos) {
-        Alert alerta = new Alert(tipo);
-        alerta.setTitle(titulo);
-        alerta.setHeaderText(null);
-        alerta.setContentText(mensagem);
-
-        alerta.show(); // 🔥 Exibe o alerta
-
-        // ✅ Criando um contador para fechar automaticamente
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(segundos), event -> alerta.close()));
-        timeline.setCycleCount(1);
-        timeline.play();
-    }
-
 
     @FXML
     public void voltarMenu() {
-       // configuracoes.detachObserver(this);
-       // configuracoes.notificarObservers();
-        //TelaMenuView telaMenu = new TelaMenuView();
-       // telaMenu.initTelaMenuView((Stage) btnSalvar.getScene().getWindow(), model);
-       // System.out.println("Voltando para a tela do menu.");
+        Stage stageAtual = (Stage) btnSalvar.getScene().getWindow();
+        stageAtual.close();
+        model.removerObservador(this);
+
+        TelaMenuView telaMenu = new TelaMenuView(model);
+        telaMenu.initTelaMenuView(stageAtual);
+    }
+
+    private void mostrarAlerta(String mensagem, Alert.AlertType tipo) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle("Aviso");
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensagem);
+        alerta.showAndWait();
     }
 }

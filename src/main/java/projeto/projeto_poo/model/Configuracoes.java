@@ -1,22 +1,15 @@
 package projeto.projeto_poo.model;
 
-import projeto.projeto_poo.view.Observer;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class Configuracoes {
-    private static Configuracoes instancia;
-    private Jogador jogador;
-    private int qntdQuestoesPorJogo = 4; // altarar para 10 depois
+    private int qntdQuestoesPorJogo = 4; // alterar para 10 depois
     private HashMap<String, Integer> tempoDificuldadeQuestao;
     private HashMap<String, Integer> pontuacaoDificuldadeQuestao;
-    private List<Observer> observers = new ArrayList<>();
 
-    private Configuracoes(Jogador aux) {
+    public Configuracoes() {
         tempoDificuldadeQuestao = new HashMap<>();
         pontuacaoDificuldadeQuestao = new HashMap<>();
-        jogador = aux;
 
         tempoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 20);
         tempoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 30);
@@ -26,32 +19,7 @@ public class Configuracoes {
         pontuacaoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 50);
         pontuacaoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 100);
         pontuacaoDificuldadeQuestao.put(Dificuldade.DIFICIL.getDescricao(), 200);
-
     }
-
-    public static Configuracoes getInstancia(Jogador aux) {
-        if (instancia == null) {
-            instancia = new Configuracoes(aux);
-        }
-        return instancia;
-    }
-
-    public void attachObserver(Observer observer) {
-        if(observers.contains(observer)){
-            observers.add(observer);
-        }
-    }
-
-    public void detachObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    public void notificarObservers() {
-        for (Observer observer : observers) {
-            observer.update();
-        }
-    }
-
 
     public int getTempoPorDificuldade(String dificuldade) {
         return tempoDificuldadeQuestao.getOrDefault(dificuldade, 30);
@@ -65,26 +33,32 @@ public class Configuracoes {
         return qntdQuestoesPorJogo;
     }
 
-
     public void setTempoPorDificuldade(String dificuldade, int tempo) {
         tempoDificuldadeQuestao.put(dificuldade, tempo);
-        notificarObservers();
     }
 
     public void setPontuacaoPorDificuldade(String dificuldade, int pontuacao) {
         pontuacaoDificuldadeQuestao.put(dificuldade, pontuacao);
-        notificarObservers();
     }
 
     public void setQntdQuestoesPorJogo(int qntQuestoes) {
         this.qntdQuestoesPorJogo = qntQuestoes;
-        notificarObservers();
     }
 
-    public Jogador getJogador() {
-        return jogador;
+    public void resetarConfiguracoes() {
+        qntdQuestoesPorJogo = 4;
+        tempoDificuldadeQuestao.clear();
+        pontuacaoDificuldadeQuestao.clear();
+
+        tempoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 20);
+        tempoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 30);
+        tempoDificuldadeQuestao.put(Dificuldade.DIFICIL.getDescricao(), 40);
+        tempoDificuldadeQuestao.put("Aleatória", 30);
+
+        pontuacaoDificuldadeQuestao.put(Dificuldade.FACIL.getDescricao(), 50);
+        pontuacaoDificuldadeQuestao.put(Dificuldade.MEDIO.getDescricao(), 100);
+        pontuacaoDificuldadeQuestao.put(Dificuldade.DIFICIL.getDescricao(), 200);
     }
-    public void setJogador(Jogador jogador) {}
 
     @Override
     public String toString() {

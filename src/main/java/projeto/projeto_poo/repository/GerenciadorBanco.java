@@ -22,6 +22,10 @@ public class GerenciadorBanco {
         carregarQuestoes();
     }
 
+    public Map<String, List<Questao>> getGerenciadorBancoQuestoes() {
+        return bancoQuestoes;
+    }
+
 
     public static void carregarQuestoes(){
         bancoQuestoes.clear();
@@ -68,7 +72,7 @@ public class GerenciadorBanco {
         }
     }
 
-    public static Map<String, List<Questao>> embaralharQuestoes(int quantidade, Map<String, List<Questao>> aux) {
+    private Map<String, List<Questao>> embaralharQuestoes(int quantidade, Map<String, List<Questao>> aux) {
 
         while(quantidade != 0) {
             Random rand = new Random();
@@ -80,12 +84,12 @@ public class GerenciadorBanco {
         return aux;
     }
 
-    public static void adicionarQuestao(Questao questao) {
+    public  void adicionarQuestao(Questao questao) {
         bancoQuestoes.putIfAbsent(questao.getAssunto(), new ArrayList<>());
         bancoQuestoes.get(questao.getAssunto()).add(questao);
     }
 
-    public static List<Questao> obterQuestoesAleatoria(int quantidade) {
+    public  List<Questao> obterQuestoesAleatoria(int quantidade) {
         Map<String, List<Questao>> auxBancoQuestoes = bancoQuestoes;
         embaralharQuestoes(5, auxBancoQuestoes);
 
@@ -111,7 +115,7 @@ public class GerenciadorBanco {
         return questoesEscolhidas;
     }
 
-    public static List<Questao> obterQuestoesPersonalizada(int quantidade, Dificuldade dificuldade, Assunto assunto) {
+    public  List<Questao> obterQuestoesPersonalizada(int quantidade, Dificuldade dificuldade, Assunto assunto) {
         ArrayList<Questao> auxListaQuestaoPorDificuldade = new ArrayList<>();
         ArrayList<Questao> questoesPersonalizada = new ArrayList<>();
 
@@ -130,7 +134,7 @@ public class GerenciadorBanco {
         return questoesPersonalizada;
     }
 
-    public static void imprimirQuestoes() {
+    public void imprimirQuestoes() {
         for (Map.Entry<String, List<Questao>> entry : bancoQuestoes.entrySet()) {
             System.out.println("Categoria: " + entry.getKey());
             for (Questao questao : entry.getValue()) {

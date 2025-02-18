@@ -13,16 +13,11 @@ public class Model {
     private List<Observer> observers = new ArrayList<>();
 
     private Model() {
-        GerenciadorBanco.carregarQuestoes();
-        inicializarConfiguracoes();
+        gerenciadorBanco = new GerenciadorBanco();
+        configuracoes = new Configuracoes();
+        estatisticaGlobal = new Estatistica();
+        jogador = new Jogador();
 
-    }
-
-    public void inicializarConfiguracoes() {
-        this.jogador = new Jogador();
-        this.configuracoes = Configuracoes.getInstancia(jogador);
-        this.estatisticaGlobal = new Estatistica();
-        // tem q por o gerenciador banco e arrumar ele
     }
 
     public static Model getInstancia() {
@@ -32,6 +27,8 @@ public class Model {
         return instancia;
     }
 
+
+
     /*
         MÉTODOS PARA CONFIGURAÇÕES
      */
@@ -39,6 +36,33 @@ public class Model {
     public Configuracoes getConfiguracoes() {
         return configuracoes;
     }
+
+    public int getConfiguracoesTempoPorDificuldade(String dificuldade) {
+        return configuracoes.getTempoPorDificuldade( dificuldade);
+    }
+    public void setConfiguracoesTempoPorDificuldade(String Dificuldade, int tempo) {
+        configuracoes.setTempoPorDificuldade(Dificuldade, tempo);
+    }
+
+    public int getConfiguracoesPontuacaoPorDificuldade(String dificuldade) {
+        return configuracoes.getPontuacaoPorDificuldade(dificuldade);
+    }
+    public void setConfiguracoesPontuacaoPorDificuldade(String Dificuldade, int pontuacao) {
+        configuracoes.setPontuacaoPorDificuldade(Dificuldade, pontuacao);
+    }
+
+    public int getConfiguracoesQntdQuestoesPorJogo(){
+        return configuracoes.getQntdQuestoesPorJogo();
+    }
+    public void setConfiguracoesQntdQuestoesPorJogo(int qntd) {
+        configuracoes.setQntdQuestoesPorJogo(qntd);
+    }
+
+    public void setConfiguracoesResetar(){
+        configuracoes.resetarConfiguracoes();
+    }
+
+
 
     /*
         MÉTODOS PARA JOGADOR
@@ -60,6 +84,7 @@ public class Model {
     public void setNomeJogadorPadrao() {
         this.jogador.setNome("Jogador");
     }
+
 
 
     /*
@@ -103,22 +128,39 @@ public class Model {
     }
 
 
+    /*
+        MÉTODOS PARA GERENCIADORANCO
+     */
 
-
-
-
-    // arrumar esses métodos no gerenciador banco
-
-    public List<Questao> obterQuestoesAleatorias(int quantidade) {
-        return GerenciadorBanco.obterQuestoesAleatoria(quantidade);
+    public Map<String, List<Questao>> getGerenciadorBancoQuestoes() {
+        return gerenciadorBanco.getGerenciadorBancoQuestoes();
     }
 
-    public List<Questao> obterQuestoesPersonalizadas(Dificuldade dificuldade, Assunto assunto, int quantidade) {
-        return GerenciadorBanco.obterQuestoesPersonalizada(quantidade, dificuldade, assunto);
+    public void adicionarQuestaoBancoQuestao(Questao questao) {
+        gerenciadorBanco.adicionarQuestao(questao);
+        System.out.println("Passou na model adicionar questoes");
     }
 
-    // arrumar os métodos acima
+    public List<Questao> getBancoQuestoesAleatoria(int qntd) {
+        return gerenciadorBanco.obterQuestoesAleatoria(qntd);
+    }
 
+    public List<Questao> getBancoQuestoesPersonalizada(int qntd, Dificuldade dificuldade, Assunto assunto) {
+        return gerenciadorBanco.obterQuestoesPersonalizada(qntd, dificuldade, assunto);
+    }
+
+    /*
+            MÉTODOS PARA DEBUGWIN
+     */
+    public
+
+
+
+
+
+    /*
+           METODOS PARA OS OBSERVADORES
+     */
     public void adicionarObservador(Observer observer) {
         if (!observers.contains(observer)) {
             observers.add(observer);

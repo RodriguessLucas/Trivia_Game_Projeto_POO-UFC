@@ -8,7 +8,7 @@ public class MainApp extends javafx.application.Application {
     @Override
     public void start(Stage primaryStage) {
         Model model = Model.getInstancia();
-        model.inicializarConfiguracoes();
+
 
         TelaInicialView telaInicial = new TelaInicialView(model);
         model.adicionarObservador(telaInicial);

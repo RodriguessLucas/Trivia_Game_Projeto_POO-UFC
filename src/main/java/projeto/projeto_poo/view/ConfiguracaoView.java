@@ -1,34 +1,44 @@
 package projeto.projeto_poo.view;
 
-import projeto.projeto_poo.model.Configuracoes;
-import projeto.projeto_poo.model.Jogador;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import projeto.projeto_poo.model.Model;
+
 import java.io.IOException;
 
 public class ConfiguracaoView implements Observer {
-    private Configuracoes configuracoes;
+    private Model model;
     private ConfiguracaoViewController controller;
     private Stage stage;
 
-    public void initConfiguracaoView(Stage stage, Jogador jogador) {
-        this.configuracoes = Configuracoes.getInstancia(jogador); // Usa Singleton para garantir que é único
-        this.stage = stage;
+    public ConfiguracaoView(Model model) {
+        this.model = model;
+    }
 
-        // Registra a view como observador das mudanças nas configurações
-        configuracoes.attachObserver(this);
+    public void initConfiguracaoView(Stage stage) {
+        this.stage = stage;
+        model.adicionarObservador(this);
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaConfiguracoes-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/projeto/projeto_poo/view/telaConfiguracao-view.fxml"));
+            System.out.println(loader.toString());
             Parent root = loader.load();
 
             controller = loader.getController();
-            controller.initConfiguracaoViewController(configuracoes, this, jogador);
+            controller.initConfiguracaoViewController(model, this);
+            if(controller == null){
+                System.out.println("esta null");
+                throw new NullPointerException("esta null");
+            }
 
-            stage.setTitle("Debug & Win");
+            stage.setTitle("Configurações - Debug & Win");
             stage.setScene(new Scene(root, 650, 800));
+
+            // Remove o observador ao fechar a tela
+            stage.setOnCloseRequest(event -> removerObservador());
+
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
@@ -44,5 +54,7 @@ public class ConfiguracaoView implements Observer {
         }
     }
 
-
+    public void removerObservador() {
+        model.removerObservador(this);
+    }
 }

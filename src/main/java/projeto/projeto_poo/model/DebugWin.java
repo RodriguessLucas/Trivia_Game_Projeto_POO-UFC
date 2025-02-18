@@ -1,13 +1,8 @@
 package projeto.projeto_poo.model;
 
-import projeto.projeto_poo.repository.GerenciadorBanco;
-import projeto.projeto_poo.view.Observer;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 
 public class DebugWin {
     private List<Questao> questoes;
@@ -15,80 +10,67 @@ public class DebugWin {
     private int maiorSequenciaAcerto;
     private int auxSequenciaAcerto;
     private int questaoAtual;
-    private Dificuldade dificuldade;
-    private Assunto assunto;
     private Configuracoes configuracoes;
-    private static Map<String, Integer> auxAcertosPorAssunto = new HashMap<>();
-    private static Map<String, Integer> auxErrosPorAssunto = new HashMap<>();
-    private ArrayList<Observer> observers = new ArrayList<>();
+    private Map<String, Integer> auxAcertosPorAssunto;
+    private Map<String, Integer> auxErrosPorAssunto;
 
-    public DebugWin() {}
 
-    public DebugWin(Configuracoes configuracoes) {
+
+    public DebugWin(List<Questao> questoes, Configuracoes configuracoes) {
+        this.questoes = questoes;
         this.configuracoes = configuracoes;
-        GerenciadorBanco.carregarQuestoes();
-        questoes = GerenciadorBanco.obterQuestoesAleatoria(configuracoes.getQntdQuestoesPorJogo());
+        inicializarVariaveis();
+    }
+
+    private void inicializarVariaveis() {
         pontuacao = 0;
         maiorSequenciaAcerto = 0;
         auxSequenciaAcerto = 0;
+        questaoAtual = 0;
+        auxAcertosPorAssunto = new HashMap<>();
+        auxErrosPorAssunto = new HashMap<>();
         iniciarAuxiliaresMap();
     }
 
-    public DebugWin(Configuracoes configuracoes, Dificuldade dificuldade, Assunto assunto, int qntdQuestoes) {
-        this.configuracoes = configuracoes;
-        GerenciadorBanco.carregarQuestoes();
-        questoes = GerenciadorBanco.obterQuestoesPersonalizada(configuracoes.getQntdQuestoesPorJogo(), dificuldade, assunto);
-        this.dificuldade = dificuldade;
-        this.assunto = assunto;
-        pontuacao = 0;
-        maiorSequenciaAcerto = 0;
-        auxSequenciaAcerto = 0;
-        iniciarAuxiliaresMap();
-    }
-
-    private void iniciarAuxiliaresMap(){
+    private void iniciarAuxiliaresMap() {
         for (Assunto assunto : Assunto.values()) {
             auxAcertosPorAssunto.put(assunto.getDescricao(), 0);
             auxErrosPorAssunto.put(assunto.getDescricao(), 0);
         }
     }
 
-    public int getPontuacao() { return this.pontuacao; }
-    public void setPontuacao(int pontuacao) {}
+    public Map<String, Integer> getauxAcertosPorAssunto() {
+        return auxAcertosPorAssunto;
+    }
+    public Map<String, Integer> getauxErrosPorAssunto() {
+        return auxErrosPorAssunto;
+    }
 
-    public Configuracoes getConfiguracoes() { return this.configuracoes; }
-    public void setConfiguracoes(Configuracoes configuracoes) {}
+    public int getPontuacao() {
+        return pontuacao;
+    }
 
-    public Dificuldade getDificuldade() { return this.dificuldade; }
-    public void setDificuldade(Dificuldade dificuldade) {}
+    public int getMaiorSequenciaAcerto() {
+        return maiorSequenciaAcerto;
+    }
 
-    public Assunto getAssunto() { return this.assunto; }
-    public void setAssunto(Assunto assunto) { this.assunto = assunto;}
+    public int getAuxSequenciaAcerto() {
+        return auxSequenciaAcerto;
+    }
 
-    public int getMaiorSequenciaAcerto() { return this.maiorSequenciaAcerto; }
-    public void setMaiorSequenciaAcerto(int maiorSequenciaAcerto) {}
-    public int getAuxSequenciaAcerto() { return this.auxSequenciaAcerto; }
-
-    public int getIntQuestaoAtual(){
+    public int getQuestaoAtualIndex() {
         return questaoAtual;
-    }
-    public void setIntQuestaoAtual(int questaoAtual){
-        this.questaoAtual = questaoAtual;
-    }
-
-    public void setAuxSequenciaAcerto(int auxSequenciaAcerto) {
-        this.auxSequenciaAcerto = auxSequenciaAcerto;
     }
 
     public Map<String, Integer> getAuxAcertosPorAssunto() {
         return auxAcertosPorAssunto;
     }
-    public Map<String, Integer> getAuxErrosPorAssunto(){
+
+    public Map<String, Integer> getAuxErrosPorAssunto() {
         return auxErrosPorAssunto;
     }
 
-
-    public boolean temMaisQuestao(){
+    public boolean temMaisQuestao() {
         return questaoAtual < questoes.size();
     }
 
@@ -96,49 +78,25 @@ public class DebugWin {
         return temMaisQuestao() ? questoes.get(questaoAtual) : null;
     }
 
-    public void responderQuestao(int resposta){
-        if(!temMaisQuestao()){return;}
+    public void responderQuestao(int resposta) {
+        if (!temMaisQuestao()) return;
 
         Questao questao = questoes.get(questaoAtual);
-        if(questao.verificarResposta(resposta) ){
+        if (questao.verificarResposta(resposta)) {
             auxAcertosPorAssunto.put(questao.getAssunto(), auxAcertosPorAssunto.get(questao.getAssunto()) + 1);
-            pontuacao+= configuracoes.getPontuacaoPorDificuldade(questao.getDificuldade().getDescricao());
+            pontuacao += configuracoes.getPontuacaoPorDificuldade(questao.getDificuldade().getDescricao());
             auxSequenciaAcerto++;
 
-            if(questaoAtual == questoes.size()-1){
+            if (questaoAtual == questoes.size() - 1) {
                 maiorSequenciaAcerto = auxSequenciaAcerto;
             }
-        }
-        else{
+        } else {
             auxErrosPorAssunto.put(questao.getAssunto(), auxErrosPorAssunto.get(questao.getAssunto()) + 1);
-            if(auxSequenciaAcerto > maiorSequenciaAcerto){
+            if (auxSequenciaAcerto > maiorSequenciaAcerto) {
                 maiorSequenciaAcerto = auxSequenciaAcerto;
-                auxSequenciaAcerto = 0;
             }
+            auxSequenciaAcerto = 0;
         }
-
         questaoAtual++;
     }
-
-
-    public void attachObserver(Observer observer) {
-        if(!observers.contains(observer)){
-            observers.add(observer);
-        }
-    }
-
-    public void detachObserver(Observer observer) {
-        observers.remove(observer);
-    }
-
-    public void notificarObservers() {
-        if(observers.isEmpty()){
-            System.out.println("Nenhum Observer foi encontrado");
-            return;
-        }
-        for (Observer o : observers) {
-            o.update();
-        }
-    }
-
 }
