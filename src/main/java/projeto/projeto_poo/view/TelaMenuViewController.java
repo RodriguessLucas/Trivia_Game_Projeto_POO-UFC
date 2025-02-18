@@ -41,7 +41,17 @@ public class TelaMenuViewController implements Observer {
 
     // Métodos comentados mantidos
     @FXML
-    public void iniciarJogoAleatorio() {}
+    public void iniciarJogoAleatorio() {
+        Stage stageAtual = (Stage) btnJogoAleatorio.getScene().getWindow();
+        stageAtual.close();
+
+        model.iniciarDebugWinAleatorio();
+
+        DebugWinView debugWinView = new DebugWinView(model);
+        debugWinView.initDebugWinView(new Stage());
+    }
+
+
     @FXML
     public void iniciarPythonFacilCurto() {}
     @FXML

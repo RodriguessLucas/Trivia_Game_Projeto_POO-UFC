@@ -40,7 +40,7 @@ public class DebugWinViewController implements Observer {
     }
 
     public void atualizarQuestao() {
-        Questao questaoAtual = model.getQuestaoAtual();
+        Questao questaoAtual = model.getDebugWinQuestaoAtual();
         if (questaoAtual == null) {
             encerrarDebugWin();
             return;
@@ -66,7 +66,7 @@ public class DebugWinViewController implements Observer {
     private void responderD() { processarResposta(3); }
 
     private void processarResposta(int resposta) {
-        model.responderQuestao(resposta);
+        model.debugWinResponderQuestao(resposta);
         atualizarQuestao();
     }
 
@@ -94,11 +94,12 @@ public class DebugWinViewController implements Observer {
     private void pularQuestao() {
         if (timer != null) timer.stop();
         if (qntdPulos > 0) {
-            model.responderQuestao(-1);
+            model.debugWinResponderQuestao(-1);
             atualizarQuestao();
             qntdPulos--;
-        } else {
-            btnPularQuestao.setDisable(true);
+            if (qntdPulos == 0) {
+                btnPularQuestao.setDisable(true);
+            }
         }
     }
 
@@ -107,7 +108,7 @@ public class DebugWinViewController implements Observer {
 
         lblPergunta.setText("Fim do jogo!");
         lblExibirTempoPorPergunta.setText("");
-        lblExibirPontuacaoQuestao.setText("Pontuação Final: " + model.getPontuacao());
+        lblExibirPontuacaoQuestao.setText("Pontuação Final: " + model.getDebugWinPontuacao());
 
         btnLetraA.setDisable(true);
         btnLetraB.setDisable(true);
@@ -118,6 +119,7 @@ public class DebugWinViewController implements Observer {
 
         btnFinalizarJogo.setDisable(false);
         btnFinalizarJogo.setVisible(true);
+
     }
 
     @FXML
@@ -132,7 +134,7 @@ public class DebugWinViewController implements Observer {
 
     @FXML
     private void finalizarJogo() {
-        model.atualizarEstatistica();
+        model.finalizarDebugWin();
         Stage stageAtual = (Stage) btnFinalizarJogo.getScene().getWindow();
         stageAtual.close();
         view.removerObservador();

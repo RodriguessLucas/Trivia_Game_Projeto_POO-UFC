@@ -113,7 +113,9 @@ public class Model {
     public int getEstatisticaMaiorPontuacao(){
         return estatisticaGlobal.getMaiorPontuacao();
     }
-
+    public void setEstatisticaMaiorPontuacao(int maiorPontuacao) {
+        estatisticaGlobal.setMaiorPontuacao(maiorPontuacao);
+    }
 
     public int getEstatisticaTotalAcertos(){
         return estatisticaGlobal.getTotalAcertos();
@@ -172,6 +174,13 @@ public class Model {
         return debugWin.getMaiorSequenciaAcerto();
     }
 
+    public Questao getDebugWinQuestaoAtual(){
+        return debugWin.getQuestaoAtual();
+    }
+
+    public void debugWinResponderQuestao(int resposta){
+        debugWin.responderQuestao(resposta);
+    }
 
     public void iniciarDebugWinAleatorio() {
         List<Questao> questoes = gerenciadorBanco.obterQuestoesAleatoria(configuracoes.getQntdQuestoesPorJogo());
@@ -183,9 +192,19 @@ public class Model {
         debugWin = new DebugWin(questoes, configuracoes);
     }
 
-    public boolean jogoAtivo() {
-        return debugWin != null;
+    public void finalizarDebugWin() {
+        if (debugWin == null) return;
+
+        setEstatisticaMaiorPontuacao(getDebugWinPontuacao());
+        estatisticaContabilizarAcertosAssuntos(getDebugWinAcertosPorAssunto());
+        estatisticaContabilizarErrosAssuntos(getDebugWinErrosPorAssunto());
+        setMaiorSequenciaAcerto(getDebugWinMaiorSequenciaAcerto());
+        atualizarEstatistica();
+
+        encerrarJogo();
     }
+
+
 
     public void encerrarJogo() {
         debugWin = null;
