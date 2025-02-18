@@ -3,6 +3,7 @@ package projeto.projeto_poo.view;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
@@ -57,18 +58,43 @@ public class DebugWinViewController implements Observer {
     }
 
     @FXML
-    private void responderA() { processarResposta(0); }
+    private void responderA() { processarResposta(1, btnLetraA); }
     @FXML
-    private void responderB() { processarResposta(1); }
+    private void responderB() { processarResposta(2, btnLetraB); }
     @FXML
-    private void responderC() { processarResposta(2); }
+    private void responderC() { processarResposta(3, btnLetraC); }
     @FXML
-    private void responderD() { processarResposta(3); }
+    private void responderD() { processarResposta(4, btnLetraD); }
 
-    private void processarResposta(int resposta) {
-        model.debugWinResponderQuestao(resposta);
-        atualizarQuestao();
+    private void processarResposta(int resposta, Button btnResposta) {
+        // Para o contador de tempo imediatamente
+        if (timer != null) {
+            timer.stop();
+        }
+
+        boolean acertou = model.debugWinResponderQuestao(resposta);
+
+        // Muda a cor do botão para verde (acertou) ou vermelho (errou)
+        btnResposta.setStyle(acertou ? "-fx-background-color: #7df37d;" : "-fx-background-color: #f17474;");
+
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
+
+            btnResposta.setStyle("");
+
+            if (model.debugWinTemMaisQuestao()) {
+                atualizarQuestao();
+            } else {
+                encerrarDebugWin();
+            }
+        }));
+
+        timeline.setCycleCount(1);
+        timeline.play();
     }
+
+
+
 
     private void iniciarContadorDeTempo() {
         if (timer != null) timer.stop();
@@ -83,6 +109,10 @@ public class DebugWinViewController implements Observer {
             if (tempoRestante <= 0) {
                 timer.stop();
                 pularQuestao();
+            }
+            if(tempoRestante == 0 && qntdPulos ==0) {
+                mostrarAlerta("Encerrando jogo por inatividade...", Alert.AlertType.INFORMATION);
+                desistirJogo();
             }
         }));
 
@@ -124,6 +154,7 @@ public class DebugWinViewController implements Observer {
 
     @FXML
     private void desistirJogo() {
+        model.encerrarJogo();
         Stage stageAtual = (Stage) btnDesistir.getScene().getWindow();
         stageAtual.close();
         view.removerObservador();
@@ -142,4 +173,13 @@ public class DebugWinViewController implements Observer {
         TelaMenuView telaMenu = new TelaMenuView(model);
         telaMenu.initTelaMenuView(new Stage());
     }
+
+    private void mostrarAlerta(String mensagem, Alert.AlertType tipo) {
+        Alert alerta = new Alert(tipo);
+        alerta.setTitle("Aviso");
+        alerta.setHeaderText(null);
+        alerta.setContentText(mensagem);
+        alerta.showAndWait();
+    }
+
 }

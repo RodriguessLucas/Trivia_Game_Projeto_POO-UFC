@@ -78,15 +78,18 @@ public class Estatistica {
 
     public void atualizarEstatisticaJogador() {
         assuntoMaiorAcerto = acertosPorAssunto.entrySet().stream()
+                .filter(entry -> entry.getValue() > 0)
                 .max(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey)
-                .orElse("");
+                .orElse(""); // Se todos forem 0, mantém vazio
 
         assuntoMenorAcerto = errosPorAssunto.entrySet().stream()
+                .filter(entry -> entry.getValue() > 0)
                 .max(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey)
                 .orElse("");
     }
+
 
     @Override
     public String toString() {

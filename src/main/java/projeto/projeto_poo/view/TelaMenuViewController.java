@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import projeto.projeto_poo.model.Assunto;
+import projeto.projeto_poo.model.Dificuldade;
 import projeto.projeto_poo.model.Model;
 
 public class TelaMenuViewController implements Observer {
@@ -51,9 +53,19 @@ public class TelaMenuViewController implements Observer {
         debugWinView.initDebugWinView(new Stage());
     }
 
-
     @FXML
-    public void iniciarPythonFacilCurto() {}
+    public void iniciarPythonFacilCurto() {
+        //telaDeJogoAleatorio.initDebugWinView((Stage) btnJogoAleatorio.getScene().getWindow(),Configuracoes.getInstancia(jogador), Dificuldade.FACIL, Assunto.PYTHON, 5);
+        Stage stageAtual = (Stage) btnJogoAleatorio.getScene().getWindow();
+        stageAtual.close();
+
+        model.iniciarJogoPersonalizado(Dificuldade.FACIL, Assunto.PYTHON, 5);
+
+        DebugWinView debugWinView = new DebugWinView(model);
+        debugWinView.initDebugWinView(new Stage());
+
+    }
+
     @FXML
     public void iniciarPOOFacil() {}
     @FXML

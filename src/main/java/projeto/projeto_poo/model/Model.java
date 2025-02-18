@@ -177,9 +177,12 @@ public class Model {
     public Questao getDebugWinQuestaoAtual(){
         return debugWin.getQuestaoAtual();
     }
+    public boolean debugWinTemMaisQuestao(){
+        return debugWin.temMaisQuestao();
+    }
 
-    public void debugWinResponderQuestao(int resposta){
-        debugWin.responderQuestao(resposta);
+    public boolean debugWinResponderQuestao(int resposta){
+        return debugWin.responderQuestao(resposta);
     }
 
     public void iniciarDebugWinAleatorio() {
@@ -187,8 +190,8 @@ public class Model {
         debugWin = new DebugWin(questoes, configuracoes);
     }
 
-    public void iniciarJogoPersonalizado(Dificuldade dificuldade, Assunto assunto) {
-        List<Questao> questoes = gerenciadorBanco.obterQuestoesPersonalizada(configuracoes.getQntdQuestoesPorJogo(), dificuldade, assunto);
+    public void iniciarJogoPersonalizado(Dificuldade dificuldade, Assunto assunto, int qntd) {
+        List<Questao> questoes = gerenciadorBanco.obterQuestoesPersonalizada(qntd, dificuldade, assunto);
         debugWin = new DebugWin(questoes, configuracoes);
     }
 
@@ -203,8 +206,6 @@ public class Model {
 
         encerrarJogo();
     }
-
-
 
     public void encerrarJogo() {
         debugWin = null;

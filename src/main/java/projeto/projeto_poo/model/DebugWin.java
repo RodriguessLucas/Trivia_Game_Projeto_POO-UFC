@@ -15,7 +15,6 @@ public class DebugWin {
     private Map<String, Integer> auxErrosPorAssunto;
 
 
-
     public DebugWin(List<Questao> questoes, Configuracoes configuracoes) {
         this.questoes = questoes;
         this.configuracoes = configuracoes;
@@ -42,6 +41,7 @@ public class DebugWin {
     public List<Questao> getQuestoes() {
         return questoes;
     }
+
     public void setQuestoes(List<Questao> questoes) {
         this.questoes = questoes;
     }
@@ -76,11 +76,13 @@ public class DebugWin {
         return temMaisQuestao() ? questoes.get(questaoAtual) : null;
     }
 
-    public void responderQuestao(int resposta) {
-        if (!temMaisQuestao()) return;
+    public boolean responderQuestao(int resposta) {
+        if (!temMaisQuestao()) return false;
 
         Questao questao = questoes.get(questaoAtual);
-        if (questao.verificarResposta(resposta)) {
+        boolean acertou = questao.verificarResposta(resposta);
+
+        if (acertou) {
             auxAcertosPorAssunto.put(questao.getAssunto(), auxAcertosPorAssunto.get(questao.getAssunto()) + 1);
             pontuacao += configuracoes.getPontuacaoPorDificuldade(questao.getDificuldade().getDescricao());
             auxSequenciaAcerto++;
@@ -95,6 +97,10 @@ public class DebugWin {
             }
             auxSequenciaAcerto = 0;
         }
+
         questaoAtual++;
+        return acertou;
     }
 }
+
+
