@@ -189,12 +189,12 @@ public class DebugWinViewController implements Observer {
 
     @FXML
     private void desistirJogo() {
-        if (timer != null) {
-            timer.stop();
-        }
-        debugWinJogo.detachObserver(this);
-        TelaMenuView menuView = new TelaMenuView();
-        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWinJogo.getConfiguracoes().getJogador());
+       // if (timer != null) {
+       //     timer.stop();
+       // }
+        //debugWinJogo.detachObserver(this);
+       // TelaMenuView menuView = new TelaMenuView();
+        //menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWinJogo.getConfiguracoes().getJogador());
     }
 
     @FXML
@@ -209,9 +209,9 @@ public class DebugWinViewController implements Observer {
         EstatisticaJogador.contabilizarErrosAssunto(debugWinJogo.getAuxErrosPorAssunto());
         EstatisticaJogador.atualizarEstatisticaJogador();
 
-        debugWinJogo.detachObserver(this);
-        TelaMenuView menuView = new TelaMenuView();
-        menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWinJogo.getConfiguracoes().getJogador());// arruma esse new jogador
+        //debugWinJogo.detachObserver(this);
+        //TelaMenuView menuView = new TelaMenuView();
+        //menuView.initTelaMenuView((Stage) btnDesistir.getScene().getWindow(), debugWinJogo.getConfiguracoes().getJogador());// arruma esse new jogador
     }
 
     @Override

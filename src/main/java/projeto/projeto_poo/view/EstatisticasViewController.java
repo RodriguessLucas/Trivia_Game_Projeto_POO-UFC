@@ -36,10 +36,10 @@ public class EstatisticasViewController implements Observer{
 
     @FXML
     public void voltarMenu() {
-        EstatisticaJogador.removerObservador(this);
-        TelaMenuView telaMenu = new TelaMenuView();
-        telaMenu.initTelaMenuView((Stage) lblMaiorSequenciaAcertos.getScene().getWindow(), jogador);
-        System.out.println("Voltando para a tela do menu.");
+        //EstatisticaJogador.removerObservador(this);
+       // TelaMenuView telaMenu = new TelaMenuView();
+        //telaMenu.initTelaMenuView((Stage) lblMaiorSequenciaAcertos.getScene().getWindow(), jogador);
+       // System.out.println("Voltando para a tela do menu.");
     }
 
     @Override

@@ -118,10 +118,10 @@ public class ConfiguracaoViewController implements Observer {
 
     @FXML
     public void voltarMenu() {
-        configuracoes.detachObserver(this);
-        configuracoes.notificarObservers();
-        TelaMenuView telaMenu = new TelaMenuView();
-        telaMenu.initTelaMenuView((Stage) btnSalvar.getScene().getWindow(), jogador);
-        System.out.println("Voltando para a tela do menu.");
+       // configuracoes.detachObserver(this);
+       // configuracoes.notificarObservers();
+        //TelaMenuView telaMenu = new TelaMenuView();
+       // telaMenu.initTelaMenuView((Stage) btnSalvar.getScene().getWindow(), model);
+       // System.out.println("Voltando para a tela do menu.");
     }
 }

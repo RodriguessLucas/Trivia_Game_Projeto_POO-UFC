@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import projeto.projeto_poo.model.Jogador;
+import projeto.projeto_poo.model.Model;
 
 public class TelaInicialViewController {
     @FXML private Label txtInstrucao;
@@ -13,35 +14,36 @@ public class TelaInicialViewController {
     @FXML private TextField entradaNomeJogador;
     @FXML private Button btnIniciar;
 
-    private Jogador jogador;
+    private Model model;
     private TelaInicialView view;
 
 
-    public void initTelaInicialViewController(Jogador jogador, TelaInicialView view) {
-        this.jogador = jogador;
+    public void initTelaInicialViewController(Model model, TelaInicialView view) {
+        this.model = model;
         this.view = view;
         System.out.println("entradaNomeJogador: " + entradaNomeJogador);
     }
 
     @FXML
     private void handleEvent() {
-        if (jogador == null) {
+        if (model.getJogador() == null) {
             System.out.println("Erro: jogador não foi inicializado!");
             return;
         }
 
         String nome = entradaNomeJogador.getText().trim();
         if (nome.isEmpty() || (nome.equalsIgnoreCase("Ex: astuto")) || (nome.matches("\\s*")) ) {
-            jogador.setNome("Jogador");
+            model.getJogador().setNome("Jogador");
         }
         else{
-            jogador.setNome(nome);
+            model.getJogador().setNome(nome);
         }
 
-        System.out.println("Nome salvo no jogador: " + jogador.getNome());
+        System.out.println("Nome salvo no jogador: " + model.getJogador().getNome());
+
 
 
         TelaMenuView telaMenu = new TelaMenuView();
-        telaMenu.initTelaMenuView((Stage) btnIniciar.getScene().getWindow(), jogador);
+        telaMenu.initTelaMenuView((Stage) btnIniciar.getScene().getWindow(),model);
     }
 }
