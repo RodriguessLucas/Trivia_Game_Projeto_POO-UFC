@@ -97,21 +97,23 @@ public class DebugWinViewController implements Observer {
     }
 
     private void processarResposta(int resposta, Button btnResposta) {
-        // Para o contador de tempo imediatamente
         if (timer != null) {
             timer.stop();
         }
 
         boolean acertou = model.debugWinResponderQuestao(resposta);
+        btnPularQuestao.setDisable(true);
+        btnDesistir.setDisable(true);
 
-        // Muda a cor do botão para verde (acertou) ou vermelho (errou)
-        btnResposta.setStyle(acertou ? "-fx-background-color: #7df37d;" : "-fx-background-color: #f17474;");
+        btnResposta.setStyle(acertou ? "-fx-background-color: #70f370;" : "-fx-background-color: #f17474;");
         ajustarFonteBotao(btnResposta);
 
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(2), event -> {
 
             btnResposta.setStyle("");
+            btnPularQuestao.setDisable(false);
+            btnDesistir.setDisable(false);
 
             if (model.debugWinTemMaisQuestao()) {
                 atualizarQuestao();
