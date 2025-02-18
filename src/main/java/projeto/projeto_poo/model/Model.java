@@ -8,6 +8,8 @@ public class Model {
     private static Model instancia;
     private Configuracoes configuracoes;
     private Jogador jogador;
+    private Estatistica estatisticaGlobal;
+    private GerenciadorBanco gerenciadorBanco;
     private List<Observer> observers = new ArrayList<>();
 
     private Model() {
@@ -19,6 +21,8 @@ public class Model {
     public void inicializarConfiguracoes() {
         this.jogador = new Jogador();
         this.configuracoes = Configuracoes.getInstancia(jogador);
+        this.estatisticaGlobal = new Estatistica();
+        // tem q por o gerenciador banco e arrumar ele
     }
 
     public static Model getInstancia() {
@@ -28,9 +32,17 @@ public class Model {
         return instancia;
     }
 
+    /*
+        MÉTODOS PARA CONFIGURAÇÕES
+     */
+
     public Configuracoes getConfiguracoes() {
         return configuracoes;
     }
+
+    /*
+        MÉTODOS PARA JOGADOR
+     */
 
     public Jogador getJogador() {
         return jogador;
@@ -38,7 +50,6 @@ public class Model {
     public void setJogador(Jogador jogador) {
         this.jogador = jogador;
     }
-
 
     public String getNomeJogador() {
         return jogador.getNome();
@@ -51,6 +62,53 @@ public class Model {
     }
 
 
+    /*
+        MÉTODOS PARA ESTATISTICA
+     */
+    public void estatisticaContabilizarAcertosAssuntos(Map<String, Integer> aux) {
+        estatisticaGlobal.contabilizarAcertosAssunto(aux);
+    }
+    public void estatisticaContabilizarErrosAssuntos(Map<String, Integer> aux) {
+        estatisticaGlobal.contabilizarErrosAssunto(aux);
+    }
+
+    public int getMaiorSequenciaAcerto(){
+        return estatisticaGlobal.getMaiorSequenciaAcerto();
+    }
+    public void setMaiorSequenciaAcerto(int maiorSequenciaAcerto) {
+        estatisticaGlobal.setMaiorSequenciaAcerto(maiorSequenciaAcerto);
+    }
+
+    public String getEstatisticaAssuntoMaiorAcerto(){
+        return estatisticaGlobal.getAssuntoMaiorAcerto();
+    }
+    public String getEstatisticaAssuntoMenorAcerto(){
+        return estatisticaGlobal.getAssuntoMenorAcerto();
+    }
+
+    public int getEstatisticaMaiorPontuacao(){
+        return estatisticaGlobal.getMaiorPontuacao();
+    }
+
+
+    public int getEstatisticaTotalAcertos(){
+        return estatisticaGlobal.getTotalAcertos();
+    }
+    public int getEstatisticaTotalErros(){
+        return estatisticaGlobal.getTotalErros();
+    }
+
+    public void atualizarEstatistica(){
+        estatisticaGlobal.atualizarEstatisticaJogador();
+    }
+
+
+
+
+
+
+    // arrumar esses métodos no gerenciador banco
+
     public List<Questao> obterQuestoesAleatorias(int quantidade) {
         return GerenciadorBanco.obterQuestoesAleatoria(quantidade);
     }
@@ -58,6 +116,8 @@ public class Model {
     public List<Questao> obterQuestoesPersonalizadas(Dificuldade dificuldade, Assunto assunto, int quantidade) {
         return GerenciadorBanco.obterQuestoesPersonalizada(quantidade, dificuldade, assunto);
     }
+
+    // arrumar os métodos acima
 
     public void adicionarObservador(Observer observer) {
         if (!observers.contains(observer)) {

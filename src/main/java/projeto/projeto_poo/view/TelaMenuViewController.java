@@ -56,8 +56,20 @@ public class TelaMenuViewController implements Observer {
     public void iniciarEDDificil() {}
     @FXML
     public void iniciarCMedio() {}
+
+
     @FXML
-    public void estatisticas() {}
+    public void estatisticas() {
+        Stage stageAtual = (Stage) btnEstatisticas.getScene().getWindow();
+        stageAtual.close();
+
+        EstatisticasView estatisticasView = new EstatisticasView(model);
+        estatisticasView.initEstatisticasView(new Stage());
+
+        System.out.println("Indo para a tela de estatísticas...");
+    }
+
+
     @FXML
     public void configuracoes() {}
 

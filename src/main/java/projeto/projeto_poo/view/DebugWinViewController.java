@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextBoundsType;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import projeto.projeto_poo.model.*;
 
@@ -201,13 +200,13 @@ public class DebugWinViewController implements Observer {
     private void finalizarJogo() {
 
 
-        if(debugWinJogo.getPontuacao() > EstatisticaJogador.getMaiorPontuacao()){
-            EstatisticaJogador.setMaiorPontuacao(debugWinJogo.getPontuacao());
-        }
-        EstatisticaJogador.setMaiorSequenciaAcerto(debugWinJogo.getMaiorSequenciaAcerto());
-        EstatisticaJogador.contabilizarAcertosAssunto(debugWinJogo.getAuxAcertosPorAssunto());
-        EstatisticaJogador.contabilizarErrosAssunto(debugWinJogo.getAuxErrosPorAssunto());
-        EstatisticaJogador.atualizarEstatisticaJogador();
+        //if(debugWinJogo.getPontuacao() > Estatistica.getMaiorPontuacao()){
+       //     Estatistica.setMaiorPontuacao(debugWinJogo.getPontuacao());
+       // }
+        //Estatistica.setMaiorSequenciaAcerto(debugWinJogo.getMaiorSequenciaAcerto());
+        //Estatistica.contabilizarAcertosAssunto(debugWinJogo.getAuxAcertosPorAssunto());
+        //Estatistica.contabilizarErrosAssunto(debugWinJogo.getAuxErrosPorAssunto());
+       // Estatistica.atualizarEstatisticaJogador();
 
         //debugWinJogo.detachObserver(this);
         //TelaMenuView menuView = new TelaMenuView();
