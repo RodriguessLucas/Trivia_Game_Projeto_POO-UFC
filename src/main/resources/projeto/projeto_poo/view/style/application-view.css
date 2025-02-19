@@ -19,6 +19,7 @@
     -fx-alignment: BASELINE_LEFT;
 }
 
+
 /* Campo de Entrada */
 .input-field {
     -fx-max-width: Infinity;
