@@ -15,6 +15,7 @@ public class MainApp extends javafx.application.Application {
         telaInicial.initTelaInicial(primaryStage);
     }
 
+
     public static void main(String[] args) {
         launch(args);
     }
